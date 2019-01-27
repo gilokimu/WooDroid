@@ -1,3 +1,3 @@
 # Woocommerce Android SDK
 
-This is n android sdk for woocommerce 
+This is an android sdk for woocommerce 
