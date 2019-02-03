@@ -55,3 +55,32 @@ Getting products example
             }
         })
 ```
+
+## API Support Checklist
+
+Method | Create | Delete | Retrieve  | Update | Batch
+--------------------- | ------------- | ------------- | ------------- | ------------- | -------------   
+Coupons | N | N | N | N | N 
+Customers | N | N | N | N | N
+Orders | N | N | N | N | N
+Order notes | N | N | N | N | N
+Refunds | N | N | N | N | N
+Products | N | N | N | N | N
+Product variations | N | N | N | N | N
+Product attributes | N | N | N | N | N
+Product attribute terms | N | N | N | N | N
+Product categories | N | N | N | N | N
+Product shipping classes | N | N | N | N | N
+Product tags | N | N | N | N | N
+Product reviews | N | N | N | N | N
+Reports | N | N | N | N | N
+Tax rates | N | N | N | N | N
+Tax classes | N | N | N | N | N
+Webhooks | N | N | N | N | N
+Settings | N | N | N | N | N
+Setting options | N | N | N | N | N
+Payment gateways | N | N | N | N | N
+Shipping zones | N | N | N | N | N
+Shipping zone locations | N | N | N | N | N
+Shipping zone methods | N | N | N | N | N
+Shipping methods | N | N | N | N | N
