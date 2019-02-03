@@ -1,6 +1,9 @@
 package me.gilo.woodroid;
 
+import me.gilo.woodroid.dto.CouponData;
+import me.gilo.woodroid.models.Coupon;
 import me.gilo.woodroid.models.Product;
+import me.gilo.woodroid.repo.CouponRepository;
 import me.gilo.woodroid.repo.ProductRepository;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,33 +20,7 @@ public class Woocommerce {
     private String consumerSecret;
 
     final ProductRepository productRepository;
-
-    public static void main(String args[]){
-        System.out.println("Hello");
-
-        Woocommerce woocommerce = new Woocommerce.Builder()
-                .setSiteUrl("http://iappsdevelopers.com/codecan/woodroid")
-                .setApiVersion("2")
-                .setConsumerKey("ck_62b755890341ad3d2bd334433d30b5070eea349f")
-                .setConsumerSecret("cs_8f678fedc94cbf520e0240d6eacab4dab2954aaa")
-                .build();
-
-
-        woocommerce.getProducts().enqueue(new Callback<ArrayList<Product>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
-                ArrayList<Product> products = response.body();
-                for (Product product : products){
-                    System.out.println(product.getTitle());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
-
-            }
-        });
-    }
+    final CouponData couponData;
 
     public Woocommerce(String siteUrl, String apiVerion, String consumerKey, String consumerSecret) {
         this.siteUrl = siteUrl;
@@ -54,6 +31,7 @@ public class Woocommerce {
         this.baseUrl = siteUrl + "/wp-json/wc/v" + apiVerion + "/";
 
         productRepository = new ProductRepository(baseUrl, consumerKey, consumerSecret);
+        couponData = new CouponData(baseUrl, consumerKey, consumerSecret);
     }
 
 
@@ -98,5 +76,7 @@ public class Woocommerce {
         return productRepository.products();
     }
 
-
+    public CouponData Coupon() {
+        return couponData;
+    }
 }

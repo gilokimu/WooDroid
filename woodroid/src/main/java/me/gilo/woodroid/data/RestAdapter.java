@@ -1,19 +1,16 @@
 package me.gilo.woodroid.data;
 
 import android.util.Base64;
-import android.util.Log;
 
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -101,6 +98,81 @@ public class RestAdapter {
                 .build();
 
         return retrofit.create(API.class);
+    }
+
+    public API createAPI(Class<API> service, final String endpoint, Map<String, String> query) {
+
+        if (query != null) {
+            setParams(endpoint, query);
+        }else{
+            setParams(endpoint);
+        }
+
+        // Define the interceptor, add authentication headers
+        Interceptor interceptor = chain -> {
+
+            HttpUrl.Builder builder = chain.request().url().newBuilder();
+            for (NameValuePair entry : params) {
+                builder.addQueryParameter(entry.getName(), entry.getValue());
+            }
+
+            Request newRequest = chain.request()
+                    .newBuilder()
+                    .url(builder.build())
+                    .header("Accept", "application/json")
+                    .build();
+
+            return chain.proceed(newRequest);
+        };
+
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .addInterceptor(loggingInterceptor)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                //.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
+
+        return retrofit.create(API.class);
+    }
+
+    public Interceptor getInterceptor(final String endpoint, Map<String, String> query) {
+
+        if (query != null) {
+            setParams(endpoint, query);
+        }else{
+            setParams(endpoint);
+        }
+
+        // Define the interceptor, add authentication headers
+        Interceptor interceptor = chain -> {
+
+            HttpUrl.Builder builder = chain.request().url().newBuilder();
+            for (NameValuePair entry : params) {
+                builder.addQueryParameter(entry.getName(), entry.getValue());
+            }
+
+            Request newRequest = chain.request()
+                    .newBuilder()
+                    .url(builder.build())
+                    .header("Accept", "application/json")
+                    .build();
+
+            return chain.proceed(newRequest);
+        };
+
+
+       return interceptor;
     }
 
     public ArrayList<NameValuePair> setParams(String endpoint) {

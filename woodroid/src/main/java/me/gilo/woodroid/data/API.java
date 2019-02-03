@@ -77,7 +77,15 @@ public interface API {
     Call<Data> loginUser2(@Path("email") String email);
 
     ////////////////////////////////////////////////////////////////////////
-    //Coupons
+    /** Coupons
+        The coupons API allows you to
+            1. create,
+            2. view,
+            3. update
+            4. delete
+        individual, or a batch, of coupon codes.
+
+    **/
     ////////////////////////////////////////////////////////////////////////
 
     @Headers("Content-Type: application/json")

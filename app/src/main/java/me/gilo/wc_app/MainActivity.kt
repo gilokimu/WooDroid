@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import me.gilo.woodroid.Woocommerce
 import me.gilo.woodroid.Woocommerce.Builder
 import me.gilo.woodroid.callback.Status
+import me.gilo.woodroid.models.Coupon
 import me.gilo.woodroid.models.Product
 import java.util.ArrayList
 import retrofit2.Call
@@ -29,16 +30,40 @@ class MainActivity : AppCompatActivity() {
             .setConsumerSecret("cs_062e8e3a7ae0ce08fdebc0c39f8f834d5e87598e")
             .build()
 
+//        tvText.append("\n")
+//        tvText.append("\n")
+//        tvText.append("Products")
+//        tvText.append("\n")
+//        tvText.append("\n")
+//
+//        woocommerce.products.enqueue(object : Callback<ArrayList<Product>> {
+//            override fun onResponse(call: Call<ArrayList<Product>>, response: Response<ArrayList<Product>>) {
+//                val products = response.body()
+//                for (product in products!!) {
+//                    tvText.append(product.title + "\n")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ArrayList<Product>>, t: Throwable) {
+//
+//            }
+//        })
+//
+//        tvText.append("\n")
+//        tvText.append("\n")
+//        tvText.append("Coupons")
+//        tvText.append("\n")
+//        tvText.append("\n")
 
-        woocommerce.products.enqueue(object : Callback<ArrayList<Product>> {
-            override fun onResponse(call: Call<ArrayList<Product>>, response: Response<ArrayList<Product>>) {
-                val products = response.body()
-                for (product in products!!) {
-                    tvText.append(product.title)
+        woocommerce.Coupon().coupons().enqueue(object : Callback<List<Coupon>> {
+            override fun onResponse(call: Call<List<Coupon>>, response: Response<List<Coupon>>) {
+                val coupons = response.body()
+                for (coupon in coupons!!) {
+                    tvText.append(coupon.description + "\n")
                 }
             }
 
-            override fun onFailure(call: Call<ArrayList<Product>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Coupon>>, t: Throwable) {
 
             }
         })
