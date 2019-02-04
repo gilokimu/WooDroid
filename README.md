@@ -4,6 +4,8 @@ This is an android sdk for woocommerce
 
 # Under construction, is not ready for use yet. :(
 
+![alt text](https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1549248597583.jpg "Woocommerce Android app")
+
 Built-based on the documentation: http://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
 
 ## Installation
