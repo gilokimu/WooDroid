@@ -1,4 +1,4 @@
-package me.gilo.wc_app
+package me.gilo.wc
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

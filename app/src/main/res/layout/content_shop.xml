@@ -9,9 +9,12 @@
         tools:showIn="@layout/activity_shop"
         tools:context=".ui.ShopActivity">
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-    />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:id="@+id/rvShop"
+        ></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

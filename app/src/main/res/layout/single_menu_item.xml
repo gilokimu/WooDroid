@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	tools:ignore="MissingPrefix"
+	android:orientation="vertical"
+	>
+
+  <TextView
+	  android:id="@+id/tvTitle"
+	  fontPath="@string/font_regular"
+	  android:layout_width="match_parent"
+	  android:layout_height="wrap_content"
+	  android:padding="16dp"
+	  android:text="Ada Lovelace"
+	  android:textColor="@color/text_black_4"
+	  android:textSize="18sp"
+	  />
+
+  <View
+	  android:layout_width="match_parent"
+	  android:layout_height="1dp"
+	  android:background="#d3d3d3"
+	  />
+
+</LinearLayout>

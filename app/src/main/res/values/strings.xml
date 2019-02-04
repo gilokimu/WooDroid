@@ -1,4 +1,12 @@
 <resources>
-    <string name="app_name">wc-app</string>
-    <string name="title_activity_shop">ShopActivity</string>
+  <string name="app_name">wc-app</string>
+  <string name="title_activity_shop">ShopActivity</string>
+  <string name="title_activity_coupon">CouponActivity</string>
+  <string name="title_activity_menu">MenuActivity</string>
+
+
+  <string name="font_bold">fonts/GT-America-Bold.otf</string>
+  <string name="font_medium">fonts/GT-America-Medium.otf</string>
+  <string name="font_regular">fonts/GT-America-Regular.otf</string>
+
 </resources>

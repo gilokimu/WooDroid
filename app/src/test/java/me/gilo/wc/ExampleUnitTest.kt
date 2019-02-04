@@ -1,4 +1,4 @@
-package me.gilo.wc_app
+package me.gilo.wc
 
 import org.junit.Test
 
