@@ -7,7 +7,7 @@ import retrofit2.http.*;
 
 import java.util.List;
 
-public interface CouponAPI{
+public interface ShippingAPI {
 
     @Headers("Content-Type: application/json")
     @POST("coupons")
