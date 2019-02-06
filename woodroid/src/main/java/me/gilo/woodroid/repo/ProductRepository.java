@@ -1,19 +1,22 @@
 package me.gilo.woodroid.repo;
 
-import me.gilo.woodroid.data.API;
-import me.gilo.woodroid.data.RestAdapter;
-import me.gilo.woodroid.models.Category;
+import me.gilo.woodroid.data.api.API;
+import me.gilo.woodroid.data.api.ProductAPI;
+import me.gilo.woodroid.data.api.ProductCategoryAPI;
 import me.gilo.woodroid.models.Product;
+import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ProductRepository extends WooRepository{
+public class ProductRepository extends WooRepository {
 
+    private final ProductAPI apiService;
 
     public ProductRepository(String baseUrl, String consumerKey, String consumerSecret) {
-        super(baseUrl, consumerKey, consumerSecret);
+        super("products", baseUrl, consumerKey, consumerSecret);
+        apiService = retrofit.create(ProductAPI.class);
     }
 
     //TODO

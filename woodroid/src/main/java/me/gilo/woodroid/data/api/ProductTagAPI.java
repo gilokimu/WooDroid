@@ -1,4 +1,4 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.models.Coupon;
@@ -6,9 +6,11 @@ import me.gilo.woodroid.models.Tag;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public interface TagAPI {
+public interface ProductTagAPI {
 
     @Headers("Content-Type: application/json")
     @POST("products/tags")
@@ -32,5 +34,8 @@ public interface TagAPI {
 
     @POST("products/tags/batch")
     Call<String> batch(@Body Tag body);
+
+    @GET("coupons")
+    Call<ArrayList<Tag>> filter(@QueryMap Map<String, String> filter);
 
 }

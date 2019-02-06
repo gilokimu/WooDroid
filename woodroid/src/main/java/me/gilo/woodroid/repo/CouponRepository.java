@@ -1,22 +1,17 @@
 package me.gilo.woodroid.repo;
 
-import me.gilo.woodroid.data.CouponAPI;
+import me.gilo.woodroid.data.api.CouponAPI;
 import me.gilo.woodroid.models.Coupon;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class CouponRepository extends WooRepository{
 
     private final CouponAPI apiService;
 
     public CouponRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super(baseUrl, consumerKey, consumerSecret);
+       super("coupon", baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(CouponAPI.class);
     }
 

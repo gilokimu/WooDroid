@@ -4,10 +4,8 @@ import android.os.Parcel;
 
 import java.io.Serializable;
 
-/**
- * Created by Aron on 11/26/2015.
- */
 public class Attribute implements Serializable {
+    int id;
     private String name;
     private String slug;
     private int position;
@@ -15,13 +13,13 @@ public class Attribute implements Serializable {
     private boolean variation;
     private String[] options;
 
-    protected Attribute(Parcel in) {
-        name = in.readString();
-        slug = in.readString();
-        position = in.readInt();
-        visible = in.readByte() != 0;
-        variation = in.readByte() != 0;
-        options = in.createStringArray();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -1,4 +1,4 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.data.callbacks.*;

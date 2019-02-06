@@ -1,4 +1,4 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.models.Coupon;
@@ -7,7 +7,9 @@ import me.gilo.woodroid.models.Download;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface CustomerAPI {
 
@@ -36,5 +38,8 @@ public interface CustomerAPI {
 
     @POST("customers/{id}/downloads")
     Call<List<Download>> downloads(@Path("id") int id);
+
+    @GET("coupons")
+    Call<ArrayList<Customer>> filter(@QueryMap Map<String, String> filter);
 
 }

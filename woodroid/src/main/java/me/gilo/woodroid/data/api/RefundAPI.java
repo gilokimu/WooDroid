@@ -1,4 +1,4 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.models.Coupon;
@@ -7,13 +7,15 @@ import me.gilo.woodroid.models.Refund;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface RefundAPI {
 
     @Headers("Content-Type: application/json")
     @POST("orders/{id}/refunds")
-    Call<Refund> create(@Body Refund body);
+    Call<Refund> create(@Path("id") int order_id, @Body Refund body);
 
     @GET("orders/{id}/refunds/{refund_id}")
     Call<Refund> view(@Path("id") int order_id, @Path("refund_id") int refund_id);
@@ -26,5 +28,8 @@ public interface RefundAPI {
 
     @DELETE("orders/{id}/refunds/{refund_id}")
     Call<Refund> delete(@Path("id") int order_id, @Path("refund_id") int refund_id, @Query("force") boolean force);
+
+    @GET("coupons")
+    Call<ArrayList<Refund>> filter(@QueryMap Map<String, String> filter);
 
 }

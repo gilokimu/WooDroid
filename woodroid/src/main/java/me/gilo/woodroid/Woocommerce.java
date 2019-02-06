@@ -1,13 +1,9 @@
 package me.gilo.woodroid;
 
 import me.gilo.woodroid.dto.CouponData;
-import me.gilo.woodroid.models.Coupon;
 import me.gilo.woodroid.models.Product;
-import me.gilo.woodroid.repo.CouponRepository;
 import me.gilo.woodroid.repo.ProductRepository;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import java.util.ArrayList;
 

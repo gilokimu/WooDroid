@@ -1,14 +1,17 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.models.Attribute;
 import me.gilo.woodroid.models.AttributeTerm;
+import me.gilo.woodroid.models.Coupon;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public interface AttributeTermAPI {
+public interface ProductAttributeTermAPI {
 
     @Headers("Content-Type: application/json")
     @POST("products/attributes/{id}/terms")
@@ -32,5 +35,8 @@ public interface AttributeTermAPI {
 
     @POST("products/attributes/batch")
     Call<String> batch(@Body AttributeTerm body);
+
+    @GET("coupons")
+    Call<ArrayList<AttributeTerm>> filter(@QueryMap Map<String, String> filter);
 
 }

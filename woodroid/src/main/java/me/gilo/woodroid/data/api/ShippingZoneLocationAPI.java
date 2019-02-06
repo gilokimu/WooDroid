@@ -1,13 +1,15 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.models.Coupon;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public interface ShippingZoneAPI {
+public interface ShippingZoneLocationAPI {
 
     @Headers("Content-Type: application/json")
     @POST("coupons")
@@ -31,5 +33,8 @@ public interface ShippingZoneAPI {
 
     @POST("coupons/batch")
     Call<String> batch(@Body Coupon body);
+
+    @GET("coupons")
+    Call<ArrayList<ShippingZoneLocationAPI>> filter(@QueryMap Map<String, String> filter);
 
 }

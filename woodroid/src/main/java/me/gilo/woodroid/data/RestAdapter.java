@@ -2,6 +2,7 @@ package me.gilo.woodroid.data;
 
 import android.util.Base64;
 
+import me.gilo.woodroid.data.api.API;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -156,6 +157,8 @@ public class RestAdapter {
 
         // Define the interceptor, add authentication headers
         Interceptor interceptor = chain -> {
+
+            chain.request().method();
 
             HttpUrl.Builder builder = chain.request().url().newBuilder();
             for (NameValuePair entry : params) {

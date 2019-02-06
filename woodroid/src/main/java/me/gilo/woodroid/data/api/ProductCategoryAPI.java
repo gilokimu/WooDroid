@@ -1,4 +1,4 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.models.Category;
@@ -6,9 +6,11 @@ import me.gilo.woodroid.models.Coupon;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public interface CategoryAPI {
+public interface ProductCategoryAPI {
 
     @Headers("Content-Type: application/json")
     @POST("products/categories")
@@ -32,5 +34,8 @@ public interface CategoryAPI {
 
     @POST("products/categories/batch")
     Call<String> batch(@Body Category body);
+
+    @GET("coupons")
+    Call<ArrayList<Category>> filter(@QueryMap Map<String, String> filter);
 
 }

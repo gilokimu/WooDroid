@@ -1,4 +1,4 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.data.callbacks.ReviewsData;
@@ -7,7 +7,9 @@ import me.gilo.woodroid.models.ProductReview;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface ProductReviewAPI {
 
@@ -33,5 +35,8 @@ public interface ProductReviewAPI {
 
     @POST("products/reviews/batch")
     Call<String> batch(@Body ProductReview body);
+
+    @GET("coupons")
+    Call<ArrayList<ProductReview>> filter(@QueryMap Map<String, String> filter);
 
 }

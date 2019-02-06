@@ -1,11 +1,14 @@
-package me.gilo.woodroid.data;
+package me.gilo.woodroid.data.api;
 
 
 import me.gilo.woodroid.models.Coupon;
+import me.gilo.woodroid.models.Product;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface CouponAPI{
 
@@ -18,6 +21,9 @@ public interface CouponAPI{
 
     @GET("coupons")
     Call<List<Coupon>> list();
+
+    @GET("coupons")
+    Call<ArrayList<Coupon>> filter(@QueryMap Map<String, String> filter);
 
     @Headers("Content-Type: application/json")
     @PUT("coupons/{id}")
