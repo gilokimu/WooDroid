@@ -1,8 +1,6 @@
 package me.gilo.woodroid.repo.product;
 
-import me.gilo.woodroid.data.api.ProductCategoryAPI;
 import me.gilo.woodroid.data.api.ProductTagAPI;
-import me.gilo.woodroid.models.Category;
 import me.gilo.woodroid.models.Tag;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
@@ -14,7 +12,7 @@ public class TagRepository extends WooRepository {
     private final ProductTagAPI apiService;
 
     public TagRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super("products/categories", baseUrl, consumerKey, consumerSecret);
+       super( baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(ProductTagAPI.class);
     }
 

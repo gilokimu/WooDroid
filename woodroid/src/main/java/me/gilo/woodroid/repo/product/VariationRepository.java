@@ -1,8 +1,6 @@
 package me.gilo.woodroid.repo.product;
 
-import me.gilo.woodroid.data.api.ProductCategoryAPI;
 import me.gilo.woodroid.data.api.ProductVariationAPI;
-import me.gilo.woodroid.models.Category;
 import me.gilo.woodroid.models.Product;
 import me.gilo.woodroid.models.Variation;
 import me.gilo.woodroid.repo.WooRepository;
@@ -16,7 +14,7 @@ public class VariationRepository extends WooRepository {
     Product product;
 
     public VariationRepository(String baseUrl, String consumerKey, String consumerSecret, Product product) {
-       super("products/categories", baseUrl, consumerKey, consumerSecret);
+       super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(ProductVariationAPI.class);
 
        this.product = product;

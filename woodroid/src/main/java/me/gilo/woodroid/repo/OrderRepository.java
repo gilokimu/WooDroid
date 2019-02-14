@@ -17,7 +17,7 @@ public class OrderRepository extends WooRepository {
     RefundRepository refundRepository;
 
     public OrderRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super("orders", baseUrl, consumerKey, consumerSecret);
+       super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(OrderAPI.class);
 
        orderNoteRepository = new OrderNoteRepository(baseUrl, consumerKey, consumerSecret);

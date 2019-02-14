@@ -11,7 +11,7 @@ public class CouponRepository extends WooRepository{
     private final CouponAPI apiService;
 
     public CouponRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super("coupon", baseUrl, consumerKey, consumerSecret);
+       super( baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(CouponAPI.class);
     }
 

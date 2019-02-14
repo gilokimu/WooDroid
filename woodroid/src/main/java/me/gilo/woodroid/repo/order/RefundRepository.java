@@ -13,7 +13,7 @@ public class RefundRepository extends WooRepository {
     private final RefundAPI apiService;
 
     public RefundRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super("orders", baseUrl, consumerKey, consumerSecret);
+       super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(RefundAPI.class);
 
     }

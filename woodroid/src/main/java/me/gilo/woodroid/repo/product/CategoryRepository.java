@@ -1,9 +1,7 @@
 package me.gilo.woodroid.repo.product;
 
-import me.gilo.woodroid.data.api.CustomerAPI;
 import me.gilo.woodroid.data.api.ProductCategoryAPI;
 import me.gilo.woodroid.models.Category;
-import me.gilo.woodroid.models.Customer;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -14,7 +12,7 @@ public class CategoryRepository extends WooRepository {
     private final ProductCategoryAPI apiService;
 
     public CategoryRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super("products/categories", baseUrl, consumerKey, consumerSecret);
+       super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(ProductCategoryAPI.class);
     }
 

@@ -1,6 +1,5 @@
-package me.gilo.woodroid.dto;
+package me.gilo.woodroid.services;
 
-import me.gilo.woodroid.data.RestAdapter;
 import me.gilo.woodroid.models.Coupon;
 import me.gilo.woodroid.repo.CouponRepository;
 import retrofit2.Call;

@@ -1,10 +1,8 @@
 package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ProductAttributeTermAPI;
-import me.gilo.woodroid.data.api.ProductCategoryAPI;
 import me.gilo.woodroid.models.Attribute;
 import me.gilo.woodroid.models.AttributeTerm;
-import me.gilo.woodroid.models.Category;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -17,7 +15,7 @@ public class AttributeTermRepository extends WooRepository {
     Attribute attribute;
 
     public AttributeTermRepository(String baseUrl, String consumerKey, String consumerSecret, Attribute attribute) {
-       super("products/categories", baseUrl, consumerKey, consumerSecret);
+       super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(ProductAttributeTermAPI.class);
 
        this.attribute = attribute;

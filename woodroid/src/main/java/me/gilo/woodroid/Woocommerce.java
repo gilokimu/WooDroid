@@ -1,11 +1,11 @@
 package me.gilo.woodroid;
 
-import me.gilo.woodroid.dto.CouponData;
 import me.gilo.woodroid.models.Product;
 import me.gilo.woodroid.repo.ProductRepository;
+import me.gilo.woodroid.services.CouponData;
 import retrofit2.Call;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Woocommerce {
 
@@ -68,7 +68,7 @@ public class Woocommerce {
     }
 
 
-    public Call<ArrayList<Product>> getProducts() {
+    public Call<List<Product>> getProducts() {
         return productRepository.products();
     }
 

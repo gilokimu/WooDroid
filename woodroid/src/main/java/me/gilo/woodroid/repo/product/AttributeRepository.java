@@ -1,9 +1,7 @@
 package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ProductAttributeAPI;
-import me.gilo.woodroid.data.api.ProductCategoryAPI;
 import me.gilo.woodroid.models.Attribute;
-import me.gilo.woodroid.models.Category;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -14,7 +12,7 @@ public class AttributeRepository extends WooRepository {
     private final ProductAttributeAPI apiService;
 
     public AttributeRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super("products/attributes", baseUrl, consumerKey, consumerSecret);
+       super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(ProductAttributeAPI.class);
     }
 

@@ -1,53 +1,49 @@
 package me.gilo.woodroid.repo;
 
-import me.gilo.woodroid.data.api.API;
 import me.gilo.woodroid.data.api.ProductAPI;
-import me.gilo.woodroid.data.api.ProductCategoryAPI;
 import me.gilo.woodroid.models.Product;
-import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ProductRepository extends WooRepository {
 
     private final ProductAPI apiService;
 
     public ProductRepository(String baseUrl, String consumerKey, String consumerSecret) {
-        super("products", baseUrl, consumerKey, consumerSecret);
+        super(baseUrl, consumerKey, consumerSecret);
         apiService = retrofit.create(ProductAPI.class);
     }
 
-    //TODO
-    public void create(Product product) {
-
+    public Call<Product> create(Product product) {
+        return apiService.create(product);
     }
 
-    //TODO
-    public void update() {
 
+    public Call<Product> product(int id) {
+        return apiService.view(id);
     }
 
-    //TODO
-    public void delete() {
-
+    public Call<List<Product>> products() {
+        return apiService.list();
     }
 
-    public Call<ArrayList<Product>> products() {
-        API apiService = restAdapter.createAPI("products");
-        return apiService.getProducts();
-
+    public Call<Product> update(int id, Product product) {
+        return apiService.update(id, product);
     }
 
-    public Call<ArrayList<Product>> products(HashMap<String, String> filters) {
-        API apiService = restAdapter.createAPI("products", filters);
+    public Call<Product> delete(int id) {
+        return apiService.delete(id);
+    }
+
+    public Call<Product> delete(int id, boolean force) {
+        return apiService.delete(id, force);
+    }
+
+    public Call<List<Product>> products(HashMap<String, String> filters) {
         return apiService.filter(filters);
     }
-
-
-
-
 
 
 }

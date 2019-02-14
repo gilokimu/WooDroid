@@ -8,9 +8,6 @@ import me.gilo.woodroid.models.Category;
 import java.util.ArrayList;
 
 
-/**
- * Created by Aron on 12/8/2015.
- */
 public class CategoriesCallback {
     @SerializedName("product_categories")
     ArrayList<Category> categories;

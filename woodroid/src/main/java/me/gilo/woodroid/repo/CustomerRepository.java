@@ -1,9 +1,7 @@
 package me.gilo.woodroid.repo;
 
 import me.gilo.woodroid.data.api.CustomerAPI;
-import me.gilo.woodroid.data.api.OrderAPI;
 import me.gilo.woodroid.models.Customer;
-import me.gilo.woodroid.models.Order;
 import retrofit2.Call;
 
 import java.util.List;
@@ -13,7 +11,7 @@ public class CustomerRepository extends WooRepository{
     private final CustomerAPI apiService;
 
     public CustomerRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super("customers", baseUrl, consumerKey, consumerSecret);
+       super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(CustomerAPI.class);
     }
 

@@ -13,7 +13,7 @@ public class OrderNoteRepository extends WooRepository {
     private final OrderNoteAPI apiService;
 
     public OrderNoteRepository(String baseUrl, String consumerKey, String consumerSecret) {
-       super("orders", baseUrl, consumerKey, consumerSecret);
+       super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(OrderNoteAPI.class);
     }
 
