@@ -89,13 +89,9 @@ Shipping methods | N | N | N | N | N
 
 
 ## TODO
-At them moment working on these : 
-1. Authentication
-a. More robust authentication : pick method and end point from retrofit interceptor 
-b. Add tests for end points
-2. API version support
-3. Support for ssl enabled api calls
-4. Review and clean all model classes
+See the trello board for items and progress https://trello.com/b/Muw8vcBb/woocommerce-android-sdk
+
+
 
 
 
