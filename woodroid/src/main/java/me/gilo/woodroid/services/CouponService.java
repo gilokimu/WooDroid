@@ -6,11 +6,11 @@ import retrofit2.Call;
 
 import java.util.List;
 
-public class CouponData {
+public class CouponService {
 
     final CouponRepository couponRepository;
 
-    public CouponData(String baseUrl, String consumerKey, String consumerSecret) {
+    public CouponService(String baseUrl, String consumerKey, String consumerSecret) {
         couponRepository = new CouponRepository(baseUrl, consumerKey, consumerSecret);
     }
 

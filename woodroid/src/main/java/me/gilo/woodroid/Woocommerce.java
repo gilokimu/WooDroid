@@ -2,7 +2,7 @@ package me.gilo.woodroid;
 
 import me.gilo.woodroid.models.Product;
 import me.gilo.woodroid.repo.ProductRepository;
-import me.gilo.woodroid.services.CouponData;
+import me.gilo.woodroid.services.CouponService;
 import retrofit2.Call;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class Woocommerce {
     private String consumerSecret;
 
     final ProductRepository productRepository;
-    final CouponData couponData;
+    final CouponService couponService;
 
     public Woocommerce(String siteUrl, String apiVerion, String consumerKey, String consumerSecret) {
         this.siteUrl = siteUrl;
@@ -27,7 +27,7 @@ public class Woocommerce {
         this.baseUrl = siteUrl + "/wp-json/wc/v" + apiVerion + "/";
 
         productRepository = new ProductRepository(baseUrl, consumerKey, consumerSecret);
-        couponData = new CouponData(baseUrl, consumerKey, consumerSecret);
+        couponService = new CouponService(baseUrl, consumerKey, consumerSecret);
     }
 
 
@@ -72,7 +72,7 @@ public class Woocommerce {
         return productRepository.products();
     }
 
-    public CouponData Coupon() {
-        return couponData;
+    public CouponService Coupon() {
+        return couponService;
     }
 }

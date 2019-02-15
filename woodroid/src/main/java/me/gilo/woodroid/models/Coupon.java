@@ -2,59 +2,42 @@ package me.gilo.woodroid.models;
 
 import java.io.Serializable;
 
-/**
- * Created by Aron on 1/24/2016.
- */
 public class Coupon implements Serializable{
-    private String[] customer_emails;
 
-    private double maximum_amount;
-    private int usage_limit_per_user;
-    private String exclude_sale_items;
-    private String code;
-    private boolean individual_use;
-    private String type;
-    private int[] product_ids;
-    private int amount;
-    private int limit_usage_to_x_items;
-    private int[] product_category_ids;
-    private String description;
-    private double minimum_amount;
-    private String expiry_date;
-    private int[] exclude_product_ids;
-    private boolean enable_free_shipping;
-    private int[] exclude_product_category_ids;
     private int usage_limit;
-    public String[] getCustomer_emails() {
-        return customer_emails;
+    private String code;
+    private String free_shipping;
+    private String description;
+    private String minimum_amount;
+    private String[] email_restrictions;
+    private String exclude_sale_items;
+    private String[] excluded_product_ids;
+    private String usage_count;
+    private String individual_use;
+    private int usage_limit_per_user;
+    private int limit_usage_to_x_items;
+    private String[] meta_data;
+    private String id;
+    private String date_modified_gmt;
+    private String amount;
+    private String date_created;
+    private String date_created_gmt;
+    private String maximum_amount;
+    private String discount_type;
+    private String[] used_by;
+    private String date_modified;
+    private String[] product_ids;
+    private String[] product_categories;
+    private String date_expires;
+    private String[] excluded_product_categories;
+    private String date_expires_gmt;
+
+    public int getUsage_limit() {
+        return usage_limit;
     }
 
-    public void setCustomer_emails(String[] customer_emails) {
-        this.customer_emails = customer_emails;
-    }
-
-    public double getMaximum_amount() {
-        return maximum_amount;
-    }
-
-    public void setMaximum_amount(double maximum_amount) {
-        this.maximum_amount = maximum_amount;
-    }
-
-    public int getUsage_limit_per_user() {
-        return usage_limit_per_user;
-    }
-
-    public void setUsage_limit_per_user(int usage_limit_per_user) {
-        this.usage_limit_per_user = usage_limit_per_user;
-    }
-
-    public String getExclude_sale_items() {
-        return exclude_sale_items;
-    }
-
-    public void setExclude_sale_items(String exclude_sale_items) {
-        this.exclude_sale_items = exclude_sale_items;
+    public void setUsage_limit(int usage_limit) {
+        this.usage_limit = usage_limit;
     }
 
     public String getCode() {
@@ -65,52 +48,12 @@ public class Coupon implements Serializable{
         this.code = code;
     }
 
-    public boolean isIndividual_use() {
-        return individual_use;
+    public String getFree_shipping() {
+        return free_shipping;
     }
 
-    public void setIndividual_use(boolean individual_use) {
-        this.individual_use = individual_use;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int[] getProduct_ids() {
-        return product_ids;
-    }
-
-    public void setProduct_ids(int[] product_ids) {
-        this.product_ids = product_ids;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public int getLimit_usage_to_x_items() {
-        return limit_usage_to_x_items;
-    }
-
-    public void setLimit_usage_to_x_items(int limit_usage_to_x_items) {
-        this.limit_usage_to_x_items = limit_usage_to_x_items;
-    }
-
-    public int[] getProduct_category_ids() {
-        return product_category_ids;
-    }
-
-    public void setProduct_category_ids(int[] product_category_ids) {
-        this.product_category_ids = product_category_ids;
+    public void setFree_shipping(String free_shipping) {
+        this.free_shipping = free_shipping;
     }
 
     public String getDescription() {
@@ -121,51 +64,187 @@ public class Coupon implements Serializable{
         this.description = description;
     }
 
-    public double getMinimum_amount() {
+    public String getMinimum_amount() {
         return minimum_amount;
     }
 
-    public void setMinimum_amount(double minimum_amount) {
+    public void setMinimum_amount(String minimum_amount) {
         this.minimum_amount = minimum_amount;
     }
 
-    public String getExpiry_date() {
-        return expiry_date;
+    public String[] getEmail_restrictions() {
+        return email_restrictions;
     }
 
-    public void setExpiry_date(String expiry_date) {
-        this.expiry_date = expiry_date;
+    public void setEmail_restrictions(String[] email_restrictions) {
+        this.email_restrictions = email_restrictions;
     }
 
-    public int[] getExclude_product_ids() {
-        return exclude_product_ids;
+    public String getExclude_sale_items() {
+        return exclude_sale_items;
     }
 
-    public void setExclude_product_ids(int[] exclude_product_ids) {
-        this.exclude_product_ids = exclude_product_ids;
+    public void setExclude_sale_items(String exclude_sale_items) {
+        this.exclude_sale_items = exclude_sale_items;
     }
 
-    public boolean isEnable_free_shipping() {
-        return enable_free_shipping;
+    public String[] getExcluded_product_ids() {
+        return excluded_product_ids;
     }
 
-    public void setEnable_free_shipping(boolean enable_free_shipping) {
-        this.enable_free_shipping = enable_free_shipping;
+    public void setExcluded_product_ids(String[] excluded_product_ids) {
+        this.excluded_product_ids = excluded_product_ids;
     }
 
-    public int[] getExclude_product_category_ids() {
-        return exclude_product_category_ids;
+    public String getUsage_count() {
+        return usage_count;
     }
 
-    public void setExclude_product_category_ids(int[] exclude_product_category_ids) {
-        this.exclude_product_category_ids = exclude_product_category_ids;
+    public void setUsage_count(String usage_count) {
+        this.usage_count = usage_count;
     }
 
-    public int getUsage_limit() {
-        return usage_limit;
+    public String getIndividual_use() {
+        return individual_use;
     }
 
-    public void setUsage_limit(int usage_limit) {
-        this.usage_limit = usage_limit;
+    public void setIndividual_use(String individual_use) {
+        this.individual_use = individual_use;
+    }
+
+    public int getUsage_limit_per_user() {
+        return usage_limit_per_user;
+    }
+
+    public void setUsage_limit_per_user(int usage_limit_per_user) {
+        this.usage_limit_per_user = usage_limit_per_user;
+    }
+
+    public int getLimit_usage_to_x_items() {
+        return limit_usage_to_x_items;
+    }
+
+    public void setLimit_usage_to_x_items(int limit_usage_to_x_items) {
+        this.limit_usage_to_x_items = limit_usage_to_x_items;
+    }
+
+    public String[] getMeta_data() {
+        return meta_data;
+    }
+
+    public void setMeta_data(String[] meta_data) {
+        this.meta_data = meta_data;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDate_modified_gmt() {
+        return date_modified_gmt;
+    }
+
+    public void setDate_modified_gmt(String date_modified_gmt) {
+        this.date_modified_gmt = date_modified_gmt;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getDate_created() {
+        return date_created;
+    }
+
+    public void setDate_created(String date_created) {
+        this.date_created = date_created;
+    }
+
+    public String getDate_created_gmt() {
+        return date_created_gmt;
+    }
+
+    public void setDate_created_gmt(String date_created_gmt) {
+        this.date_created_gmt = date_created_gmt;
+    }
+
+    public String getMaximum_amount() {
+        return maximum_amount;
+    }
+
+    public void setMaximum_amount(String maximum_amount) {
+        this.maximum_amount = maximum_amount;
+    }
+
+    public String getDiscount_type() {
+        return discount_type;
+    }
+
+    public void setDiscount_type(String discount_type) {
+        this.discount_type = discount_type;
+    }
+
+    public String[] getUsed_by() {
+        return used_by;
+    }
+
+    public void setUsed_by(String[] used_by) {
+        this.used_by = used_by;
+    }
+
+    public String getDate_modified() {
+        return date_modified;
+    }
+
+    public void setDate_modified(String date_modified) {
+        this.date_modified = date_modified;
+    }
+
+    public String[] getProduct_ids() {
+        return product_ids;
+    }
+
+    public void setProduct_ids(String[] product_ids) {
+        this.product_ids = product_ids;
+    }
+
+    public String[] getProduct_categories() {
+        return product_categories;
+    }
+
+    public void setProduct_categories(String[] product_categories) {
+        this.product_categories = product_categories;
+    }
+
+    public String getDate_expires() {
+        return date_expires;
+    }
+
+    public void setDate_expires(String date_expires) {
+        this.date_expires = date_expires;
+    }
+
+    public String[] getExcluded_product_categories() {
+        return excluded_product_categories;
+    }
+
+    public void setExcluded_product_categories(String[] excluded_product_categories) {
+        this.excluded_product_categories = excluded_product_categories;
+    }
+
+    public String getDate_expires_gmt() {
+        return date_expires_gmt;
+    }
+
+    public void setDate_expires_gmt(String date_expires_gmt) {
+        this.date_expires_gmt = date_expires_gmt;
     }
 }
