@@ -91,7 +91,8 @@ Shipping methods | N | N | N | N | N
 ## TODO
 See the trello board for items and progress https://trello.com/b/Muw8vcBb/woocommerce-android-sdk
 
-
+##Contribution
+Contributions are highly welcomed, just create a PR
 
 
 
