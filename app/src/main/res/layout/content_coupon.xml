@@ -7,6 +7,14 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_coupon"
-        tools:context=".ui.CouponActivity">
+        tools:context=".ui.coupon.CouponActivity">
+
+  <android.support.v7.widget.RecyclerView
+	  android:layout_width="match_parent"
+	  android:layout_height="match_parent"
+	  android:layout_marginLeft="8dp"
+	  android:layout_marginRight="8dp"
+	  android:id="@+id/rvCoupons"
+	  ></android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

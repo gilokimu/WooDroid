@@ -1,13 +1,12 @@
 package me.gilo.woodroid.models;
 
-import android.os.Parcel;
-
 import java.io.Serializable;
 
 public class Attribute implements Serializable {
     int id;
     private String name;
     private String slug;
+    private String type;
     private int position;
     private boolean visible;
     private boolean variation;
@@ -70,4 +69,11 @@ public class Attribute implements Serializable {
         this.options = options;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

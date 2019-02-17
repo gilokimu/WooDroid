@@ -8,5 +8,6 @@
   <string name="font_bold">fonts/GT-America-Bold.otf</string>
   <string name="font_medium">fonts/GT-America-Medium.otf</string>
   <string name="font_regular">fonts/GT-America-Regular.otf</string>
+  <string name="title_activity_add_coupon">AddCouponActivity</string>
 
 </resources>

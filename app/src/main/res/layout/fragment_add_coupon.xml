@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:app="http://schemas.android.com/apk/res-auto"
+			  xmlns:tools="http://schemas.android.com/tools"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:background="@color/bg"
+			  android:orientation="vertical"
+			  tools:showIn="@layout/activity_add_coupon"
+			  tools:context=".ui.coupon.AddCouponActivity"
+			  app:layout_behavior="@string/appbar_scrolling_view_behavior"
+	>
+
+  <android.support.v4.widget.NestedScrollView
+	  android:layout_width="match_parent"
+	  android:layout_height="wrap_content"
+	  >
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_margin="16dp"
+		android:padding="16dp"
+		android:background="@drawable/rect_white"
+		android:orientation="vertical">
+
+	  <TextView
+		  android:layout_width="wrap_content"
+		  android:layout_height="17dp"
+		  android:layout_marginLeft="0dp"
+		  android:layout_marginTop="8dp"
+		  android:layout_marginRight="8dp"
+		  android:layout_marginBottom="8dp"
+		  android:text="Create a coupon"
+		  android:textColor="#9298a4"
+		  android:textSize="16sp"
+		  tools:ignore="MissingPrefix"/>
+
+	  <LinearLayout
+		  android:layout_width="match_parent"
+		  android:layout_height="wrap_content"
+		  android:layout_marginTop="8dp"
+		  android:layout_marginBottom="0dp"
+		  android:background="@drawable/rect_white"
+		  android:elevation="2dp"
+		  android:gravity="center_vertical"
+		  android:orientation="horizontal"
+		  android:padding="8dp">
+
+		<android.support.v7.widget.AppCompatEditText
+			android:id="@+id/etCode"
+			android:layout_width="360dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:cursorVisible="false"
+			android:hint="Coupon code"
+			android:paddingLeft="8dp"
+			android:paddingTop="8dp"
+			android:paddingRight="8dp"
+			android:paddingBottom="8dp"
+			android:textSize="18sp"
+			app:backgroundTint="#ffffff"/>
+
+	  </LinearLayout>
+
+
+	  <LinearLayout
+		  android:layout_width="match_parent"
+		  android:layout_height="wrap_content"
+		  android:layout_marginTop="16dp"
+		  android:layout_marginBottom="16dp"
+		  android:background="@drawable/rect_white"
+		  android:elevation="2dp"
+		  android:gravity="center_vertical"
+		  android:orientation="horizontal"
+		  android:padding="8dp">
+
+		<android.support.v7.widget.AppCompatEditText
+			android:id="@+id/etDescription"
+			android:layout_width="360dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:cursorVisible="false"
+			android:gravity="top|left"
+			android:hint="Enter text here"
+			android:minLines="3"
+			android:paddingLeft="8dp"
+			android:paddingTop="8dp"
+			android:paddingRight="8dp"
+			android:paddingBottom="8dp"
+			android:textSize="18sp"
+			app:backgroundTint="#ffffff"/>
+
+	  </LinearLayout>
+
+
+	</LinearLayout>
+  </android.support.v4.widget.NestedScrollView>
+
+  <Button
+	  android:id="@+id/bCreate"
+	  android:layout_width="match_parent"
+	  android:layout_height="wrap_content"
+	  android:layout_marginLeft="16dp"
+	  android:layout_marginTop="16dp"
+	  android:layout_marginRight="16dp"
+	  android:layout_marginBottom="16dp"
+	  android:background="@color/colorPrimary"
+	  android:text="Create"
+	  android:textAllCaps="false"
+	  android:textColor="#ffffff"
+	  android:textSize="18sp"
+
+	  />
+
+
+</LinearLayout>

@@ -13,12 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.coupon.AddCouponActivity"
+            android:label="@string/title_activity_add_coupon"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
             android:name=".ui.MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".ui.CouponActivity"
+            android:name=".ui.coupon.CouponActivity"
             android:label="@string/title_activity_coupon"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

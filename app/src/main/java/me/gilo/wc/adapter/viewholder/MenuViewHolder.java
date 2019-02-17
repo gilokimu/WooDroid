@@ -1,14 +1,12 @@
 package me.gilo.wc.adapter.viewholder;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import me.gilo.wc.R;
-import me.gilo.wc.ui.CouponActivity;
+import me.gilo.wc.ui.coupon.CouponActivity;
 import me.gilo.wc.ui.ShopActivity;
 
 public class MenuViewHolder extends RecyclerView.ViewHolder {
