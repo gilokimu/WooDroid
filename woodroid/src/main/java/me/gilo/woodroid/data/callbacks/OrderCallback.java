@@ -5,9 +5,7 @@ import me.gilo.woodroid.models.Order;
 
 import java.util.ArrayList;
 
-/**
- * Created by Aron on 12/7/2015.
- */
+
 public class OrderCallback {
     ArrayList<Order> orders = new ArrayList<>();
 

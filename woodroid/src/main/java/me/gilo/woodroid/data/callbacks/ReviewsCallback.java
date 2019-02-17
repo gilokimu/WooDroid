@@ -7,9 +7,7 @@ import me.gilo.woodroid.models.ProductReview;
 import java.util.ArrayList;
 
 
-/**
- * Created by Aron on 12/8/2015.
- */
+
 public class ReviewsCallback {
     @SerializedName("product_reviews")
     ArrayList<ProductReview> productReviews;

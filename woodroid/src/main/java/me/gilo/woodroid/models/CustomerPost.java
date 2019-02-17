@@ -5,9 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by Aron on 12/11/2015.
- */
+
 public class CustomerPost implements Serializable{
     @SerializedName("data")
     ArrayList<Data> datas;

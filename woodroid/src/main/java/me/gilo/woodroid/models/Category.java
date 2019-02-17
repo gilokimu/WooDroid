@@ -2,9 +2,6 @@ package me.gilo.woodroid.models;
 
 import java.io.Serializable;
 
-/**
- * Created by Aron on 12/8/2015.
- */
 public class Category implements Serializable{
     private int id;
     private String name;

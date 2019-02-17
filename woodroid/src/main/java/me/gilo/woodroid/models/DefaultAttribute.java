@@ -4,9 +4,6 @@ import android.os.Parcel;
 
 import java.io.Serializable;
 
-/**
- * Created by Aron on 11/26/2015.
- */
 public class DefaultAttribute implements Serializable {
     int id;
     String name;

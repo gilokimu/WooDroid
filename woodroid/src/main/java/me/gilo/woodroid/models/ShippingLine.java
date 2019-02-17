@@ -2,9 +2,7 @@ package me.gilo.woodroid.models;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Aron on 12/8/2015.
- */
+
 public class ShippingLine {
     @SerializedName("method_id")
     private String id;

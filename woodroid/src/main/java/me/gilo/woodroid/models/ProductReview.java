@@ -3,9 +3,7 @@ package me.gilo.woodroid.models;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Aron on 12/9/2015.
- */
+
 public class ProductReview implements Serializable{
     private int id;
     private Date date_created;

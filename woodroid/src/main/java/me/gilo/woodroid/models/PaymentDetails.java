@@ -2,9 +2,7 @@ package me.gilo.woodroid.models;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Aron on 12/7/2015.
- */
+
 public class PaymentDetails {
     @SerializedName("method_id")
     public String methodId;
