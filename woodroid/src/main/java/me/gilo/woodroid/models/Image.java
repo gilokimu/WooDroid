@@ -5,9 +5,6 @@ import android.os.Parcel;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Aron on 11/23/2015.
- */
 public class Image implements Serializable{
     private int id;
     private String date_created;

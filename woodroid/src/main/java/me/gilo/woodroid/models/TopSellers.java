@@ -1,8 +1,5 @@
 package me.gilo.woodroid.models;
 
-/**
- * Created by Aron on 1/24/2016.
- */
 public class TopSellers {
     private String title;
     private int product_id;

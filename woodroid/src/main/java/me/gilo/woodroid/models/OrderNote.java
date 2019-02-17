@@ -5,9 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Aron on 12/7/2015.
- */
+
 public class OrderNote {
    int id;
    String author;

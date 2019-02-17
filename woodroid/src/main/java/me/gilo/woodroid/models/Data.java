@@ -1,8 +1,5 @@
 package me.gilo.woodroid.models;
 
-/**
- * Created by Aron on 12/11/2015.
- */
 public class Data {
     Customer customer;
 

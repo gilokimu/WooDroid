@@ -4,9 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-/**
- * Created by Aron on 12/7/2015.
- */
 public class BillingAddress implements Serializable{
     public int id;
     @SerializedName("first_name")

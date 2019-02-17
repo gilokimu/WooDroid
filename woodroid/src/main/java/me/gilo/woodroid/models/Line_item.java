@@ -1,8 +1,5 @@
 package me.gilo.woodroid.models;
 
-/**
- * Created by Aron on 12/8/2015.
- */
 public class Line_item {
     private int product_id;
     private int quantity;
