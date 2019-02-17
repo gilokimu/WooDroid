@@ -9,16 +9,34 @@ import java.util.List;
 
 public class Woocommerce {
 
+    public static final ApiVersion API_V1 = ApiVersion.API_VERSION1;
+    public static final ApiVersion API_V2 = ApiVersion.API_VERSION2;
+
     private String baseUrl;
     private String siteUrl;
-    private String apiVerion;
+    private ApiVersion apiVerion;
     private String consumerKey;
     private String consumerSecret;
 
     final ProductRepository productRepository;
     final CouponService couponService;
 
-    public Woocommerce(String siteUrl, String apiVerion, String consumerKey, String consumerSecret) {
+    enum ApiVersion {
+        API_VERSION1{
+            @Override
+            public String toString() {
+                return "1";
+            }
+        },
+        API_VERSION2{
+            @Override
+            public String toString() {
+                return "2";
+            }
+        };
+    }
+
+    public Woocommerce(String siteUrl, ApiVersion apiVerion, String consumerKey, String consumerSecret) {
         this.siteUrl = siteUrl;
         this.apiVerion = apiVerion;
         this.consumerKey = consumerKey;
@@ -33,7 +51,7 @@ public class Woocommerce {
 
     public static class Builder {
         private String siteUrl;
-        private String apiVerion;
+        private ApiVersion apiVerion;
         private String consumerKey;
         private String consumerSecret;
 
@@ -46,7 +64,7 @@ public class Woocommerce {
             return this;
         }
 
-        public Builder setApiVersion(String apiVerion) {
+        public Builder setApiVersion(ApiVersion apiVerion) {
             this.apiVerion = apiVerion;
             return this;
         }
