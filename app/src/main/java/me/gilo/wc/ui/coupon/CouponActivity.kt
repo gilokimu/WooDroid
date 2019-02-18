@@ -46,7 +46,7 @@ class CouponActivity : BaseActivity() {
     private fun getCoupon(couponId: Int) {
         showLoading()
 
-        woocommerce.Coupon().coupon(couponId).enqueue(object : Callback<Coupon> {
+        woocommerce.CouponRepository().coupon(couponId).enqueue(object : Callback<Coupon> {
             override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
                 val coupon = response.body()!!
 
@@ -65,7 +65,7 @@ class CouponActivity : BaseActivity() {
     private fun delete(couponId: Int) {
         showLoading()
 
-        woocommerce.Coupon().delete(couponId).enqueue(object : Callback<Coupon> {
+        woocommerce.CouponRepository().delete(couponId).enqueue(object : Callback<Coupon> {
             override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
                 if (response.isSuccessful) {
                     val coupon = response.body()!!
@@ -91,7 +91,7 @@ class CouponActivity : BaseActivity() {
     private fun update(coupon: Coupon) {
         showLoading()
 
-        woocommerce.Coupon().update(coupon.id, coupon).enqueue(object : Callback<Coupon> {
+        woocommerce.CouponRepository().update(coupon.id, coupon).enqueue(object : Callback<Coupon> {
             override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
                 val coupon = response.body()!!
 

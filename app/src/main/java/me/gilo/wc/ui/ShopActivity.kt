@@ -47,7 +47,7 @@ class ShopActivity : BaseActivity() {
             .setConsumerSecret("cs_062e8e3a7ae0ce08fdebc0c39f8f834d5e87598e")
             .build()
 
-        woocommerce.Product().products().enqueue(object : Callback<List<Product>> {
+        woocommerce.ProductRepository().products().enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 val productsResponse = response.body()
                 for (product in productsResponse!!) {
@@ -61,7 +61,6 @@ class ShopActivity : BaseActivity() {
 
             }
         })
-
 
     }
 

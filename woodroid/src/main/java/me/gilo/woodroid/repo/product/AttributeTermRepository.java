@@ -1,7 +1,6 @@
 package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ProductAttributeTermAPI;
-import me.gilo.woodroid.models.Attribute;
 import me.gilo.woodroid.models.AttributeTerm;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
@@ -12,41 +11,33 @@ public class AttributeTermRepository extends WooRepository {
 
     private final ProductAttributeTermAPI apiService;
 
-    Attribute attribute;
-
-    public AttributeTermRepository(String baseUrl, String consumerKey, String consumerSecret, Attribute attribute) {
+    public AttributeTermRepository(String baseUrl, String consumerKey, String consumerSecret) {
        super(baseUrl, consumerKey, consumerSecret);
        apiService = retrofit.create(ProductAttributeTermAPI.class);
-
-       this.attribute = attribute;
     }
 
-    public Call<AttributeTerm> create(AttributeTerm term) {
-        return apiService.create(term);
+    public Call<AttributeTerm> create(int attribute_id, AttributeTerm term) {
+        return apiService.create(attribute_id, term);
     }
 
-    public void setAttribute(Attribute attribute) {
-        this.attribute = attribute;
+    public Call<AttributeTerm> term(int attribute_id, int id) {
+        return apiService.view(attribute_id, id);
     }
 
-    public Call<AttributeTerm> term(int id) {
-        return apiService.view(attribute.getId(), id);
+    public Call<List<AttributeTerm>> terms(int attribute_id) {
+        return apiService.list(attribute_id);
     }
 
-    public Call<List<AttributeTerm>> terms() {
-        return apiService.list(attribute.getId());
+    public Call<AttributeTerm> update(int attribute_id, int id, AttributeTerm term) {
+        return apiService.update(attribute_id, id, term);
     }
 
-    public Call<AttributeTerm> update(int id, AttributeTerm term) {
-        return apiService.update(attribute.getId(), id, term);
+    public Call<AttributeTerm> delete(int attribute_id, int id) {
+        return apiService.delete(attribute_id, id);
     }
 
-    public Call<AttributeTerm> delete(int id) {
-        return apiService.delete(attribute.getId(), id);
-    }
-
-    public Call<AttributeTerm> delete(int id, boolean force) {
-        return apiService.delete(attribute.getId(), id, force);
+    public Call<AttributeTerm> delete(int attribute_id, int id, boolean force) {
+        return apiService.delete(attribute_id, id, force);
     }
 
 

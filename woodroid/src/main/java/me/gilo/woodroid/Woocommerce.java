@@ -1,19 +1,33 @@
 package me.gilo.woodroid;
 
-import me.gilo.woodroid.services.CouponService;
-import me.gilo.woodroid.services.CustomerService;
-import me.gilo.woodroid.services.OrderService;
-import me.gilo.woodroid.services.ProductService;
+import me.gilo.woodroid.repo.CouponRepository;
+import me.gilo.woodroid.repo.CustomerRepository;
+import me.gilo.woodroid.repo.OrderRepository;
+import me.gilo.woodroid.repo.ProductRepository;
+import me.gilo.woodroid.repo.order.OrderNoteRepository;
+import me.gilo.woodroid.repo.order.RefundRepository;
+import me.gilo.woodroid.repo.product.*;
 
 public class Woocommerce {
 
     public static final ApiVersion API_V1 = ApiVersion.API_VERSION1;
     public static final ApiVersion API_V2 = ApiVersion.API_VERSION2;
 
-    final CouponService couponService;
-    final CustomerService customerService;
-    final OrderService orderService;
-    final ProductService productService;
+    final OrderNoteRepository orderNoteRepository;
+    final RefundRepository refundRepository;
+    final AttributeRepository attributeRepository;
+    final AttributeTermRepository attributeTermRepository;
+    final CategoryRepository categoryRepository;
+
+    final ShippingClassRepository shippingClassRepository;
+    final TagRepository tagRepository;
+    final VariationRepository variationRepository;
+    final CouponRepository couponRepository;
+    final CustomerRepository customerRepository;
+
+    final OrderRepository orderRepository;
+    final ProductRepository productRepository;
+
 
     enum ApiVersion {
         API_VERSION1{
@@ -38,10 +52,20 @@ public class Woocommerce {
 
     public Woocommerce(String siteUrl, ApiVersion apiVerion, String consumerKey, String consumerSecret) {
         String baseUrl = siteUrl + "/wp-json/wc/v" + apiVerion + "/";
-        couponService = new CouponService(baseUrl, consumerKey, consumerSecret);
-        customerService = new CustomerService(baseUrl, consumerKey, consumerSecret);
-        orderService = new OrderService(baseUrl, consumerKey, consumerSecret);
-        productService = new ProductService(baseUrl, consumerKey, consumerSecret);
+
+        orderNoteRepository = new OrderNoteRepository(baseUrl, consumerKey, consumerSecret);
+        refundRepository = new RefundRepository(baseUrl, consumerKey, consumerSecret);
+        attributeRepository = new AttributeRepository(baseUrl, consumerKey, consumerSecret);
+        attributeTermRepository = new AttributeTermRepository(baseUrl, consumerKey, consumerSecret);
+        categoryRepository = new CategoryRepository(baseUrl, consumerKey, consumerSecret);
+        shippingClassRepository = new ShippingClassRepository(baseUrl, consumerKey, consumerSecret);
+        tagRepository = new TagRepository(baseUrl, consumerKey, consumerSecret);
+        variationRepository = new VariationRepository(baseUrl, consumerKey, consumerSecret);
+        couponRepository = new CouponRepository(baseUrl, consumerKey, consumerSecret);
+        customerRepository = new CustomerRepository(baseUrl, consumerKey, consumerSecret);
+        orderRepository = new OrderRepository(baseUrl, consumerKey, consumerSecret);
+        productRepository = new ProductRepository(baseUrl, consumerKey, consumerSecret);
+
     }
 
 
@@ -81,19 +105,51 @@ public class Woocommerce {
         }
     }
 
-    public CouponService Coupon() {
-        return couponService;
+    public OrderNoteRepository OrderNoteRepository() {
+        return orderNoteRepository;
     }
 
-    public CustomerService Customer() {
-        return customerService;
+    public RefundRepository RefundRepository() {
+        return refundRepository;
     }
 
-    public OrderService Order() {
-        return orderService;
+    public AttributeRepository AttributeRepository() {
+        return attributeRepository;
     }
 
-    public ProductService Product() {
-        return productService;
+    public AttributeTermRepository AttributeTermRepository() {
+        return attributeTermRepository;
+    }
+
+    public CategoryRepository CategoryRepository() {
+        return categoryRepository;
+    }
+
+    public ShippingClassRepository ShippingClassRepository() {
+        return shippingClassRepository;
+    }
+
+    public TagRepository TagRepository() {
+        return tagRepository;
+    }
+
+    public VariationRepository VariationRepository() {
+        return variationRepository;
+    }
+
+    public CouponRepository CouponRepository() {
+        return couponRepository;
+    }
+
+    public CustomerRepository CustomerRepository() {
+        return customerRepository;
+    }
+
+    public OrderRepository OrderRepository() {
+        return orderRepository;
+    }
+
+    public ProductRepository ProductRepository() {
+        return productRepository;
     }
 }

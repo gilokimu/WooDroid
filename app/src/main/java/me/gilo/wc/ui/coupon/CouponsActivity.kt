@@ -46,7 +46,7 @@ class CouponsActivity : BaseActivity() {
 
     //Not best practise, but works for purposes of demo
     private fun coupons() {
-        woocommerce.Coupon().coupons().enqueue(object : Callback<List<Coupon>> {
+        woocommerce.CouponRepository().coupons().enqueue(object : Callback<List<Coupon>> {
             override fun onResponse(call: Call<List<Coupon>>, response: Response<List<Coupon>>) {
                 val couponResponse = response.body()
                 for (coupon in couponResponse!!) {

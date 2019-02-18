@@ -42,7 +42,7 @@ class AddCouponActivity : BaseActivity() {
     private fun createCoupon(coupon: Coupon) {
         showLoading("Loading", "This won't take long")
 
-        woocommerce.Coupon().create(coupon).enqueue(object : Callback<Coupon> {
+        woocommerce.CouponRepository().create(coupon).enqueue(object : Callback<Coupon> {
             override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
                 val couponResponse = response.body()
                 stopShowingLoading()

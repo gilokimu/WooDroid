@@ -1,9 +1,7 @@
 package me.gilo.woodroid.data.api;
 
 
-import me.gilo.woodroid.models.Attribute;
 import me.gilo.woodroid.models.AttributeTerm;
-import me.gilo.woodroid.models.Coupon;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -15,7 +13,7 @@ public interface ProductAttributeTermAPI {
 
     @Headers("Content-Type: application/json")
     @POST("products/attributes/{id}/terms")
-    Call<AttributeTerm> create(@Body AttributeTerm body);
+    Call<AttributeTerm> create(@Path("id") int attribute_id, @Body AttributeTerm body);
 
     @GET("products/attributes/{id}/terms/[term_id]")
     Call<AttributeTerm> view(@Path("id") int attribute_id, @Path("term_id") int term_id);
