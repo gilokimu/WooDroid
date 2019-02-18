@@ -9,6 +9,7 @@ This is an android sdk for woocommerce
 Built-based on the documentation: http://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
 
 ## Installation
+Please note that files are still being moved around - the project should be stable before end Feb 2019
 
 ### Maven dependency:
 Step 1. Add the JitPack repository to your build file
@@ -64,7 +65,7 @@ Setup for the new WP REST API integration (WooCommerce 2.6 or later):
 ```kotlin
  val woocommerce = Woocommerce.Builder()
             .setSiteUrl("http://example.com")
-            .setApiVersion("2")
+            .setApiVersion(Woocommerce.API_V2)
             .setConsumerKey("ck_XXXXX")
             .setConsumerSecret("cs_XXXX")
             .build()
@@ -74,15 +75,17 @@ Setup for the new WP REST API integration (WooCommerce 2.6 or later):
 Getting products example
 
 ```kotlin
-  woocommerce.products.enqueue(object : Callback<ArrayList<Product>> {
-            override fun onResponse(call: Call<ArrayList<Product>>, response: Response<ArrayList<Product>>) {
-                val products = response.body()
-                for (product in products!!) {
-                    tvText.append(product.title + "\n")
+   woocommerce.ProductRepository().products().enqueue(object : Callback<List<Product>> {
+            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+                val productsResponse = response.body()
+                for (product in productsResponse!!) {
+                    products.add(product)
                 }
+
+                adapter.notifyDataSetChanged()
             }
 
-            override fun onFailure(call: Call<ArrayList<Product>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
 
             }
         })
