@@ -24,74 +24,36 @@
 		android:background="@drawable/rect_white"
 		android:orientation="vertical">
 
-	  <TextView
-		  android:layout_width="wrap_content"
-		  android:layout_height="17dp"
-		  android:layout_marginLeft="0dp"
-		  android:layout_marginTop="8dp"
-		  android:layout_marginRight="8dp"
-		  android:layout_marginBottom="8dp"
-		  android:text="Create a coupon"
-		  android:textColor="#9298a4"
-		  android:textSize="16sp"
-		  tools:ignore="MissingPrefix"/>
-
-	  <LinearLayout
+	  <android.support.v7.widget.AppCompatEditText
+		  android:id="@+id/etCode"
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
-		  android:layout_marginTop="8dp"
-		  android:layout_marginBottom="0dp"
-		  android:background="@drawable/rect_white"
-		  android:elevation="2dp"
-		  android:gravity="center_vertical"
-		  android:orientation="horizontal"
-		  android:padding="8dp">
-
-		<android.support.v7.widget.AppCompatEditText
-			android:id="@+id/etCode"
-			android:layout_width="360dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:cursorVisible="false"
-			android:hint="Coupon code"
-			android:paddingLeft="8dp"
-			android:paddingTop="8dp"
-			android:paddingRight="8dp"
-			android:paddingBottom="8dp"
-			android:textSize="18sp"
-			app:backgroundTint="#ffffff"/>
-
-	  </LinearLayout>
+		  android:layout_weight="1"
+		  android:cursorVisible="true"
+		  android:hint="Coupon code"
+		  android:paddingLeft="8dp"
+		  android:paddingTop="8dp"
+		  android:paddingRight="8dp"
+		  android:paddingBottom="8dp"
+		  android:textSize="18sp"
+		  />
 
 
-	  <LinearLayout
+	  <android.support.v7.widget.AppCompatEditText
+		  android:id="@+id/etDescription"
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
-		  android:layout_marginTop="16dp"
-		  android:layout_marginBottom="16dp"
-		  android:background="@drawable/rect_white"
-		  android:elevation="2dp"
-		  android:gravity="center_vertical"
-		  android:orientation="horizontal"
-		  android:padding="8dp">
-
-		<android.support.v7.widget.AppCompatEditText
-			android:id="@+id/etDescription"
-			android:layout_width="360dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:cursorVisible="false"
-			android:gravity="top|left"
-			android:hint="Enter text here"
-			android:minLines="3"
-			android:paddingLeft="8dp"
-			android:paddingTop="8dp"
-			android:paddingRight="8dp"
-			android:paddingBottom="8dp"
-			android:textSize="18sp"
-			app:backgroundTint="#ffffff"/>
-
-	  </LinearLayout>
+		  android:layout_weight="1"
+		  android:cursorVisible="true"
+		  android:gravity="top|left"
+		  android:hint="Enter text here"
+		  android:minLines="3"
+		  android:paddingLeft="8dp"
+		  android:paddingTop="8dp"
+		  android:paddingRight="8dp"
+		  android:paddingBottom="8dp"
+		  android:textSize="18sp"
+		  />
 
 
 	</LinearLayout>

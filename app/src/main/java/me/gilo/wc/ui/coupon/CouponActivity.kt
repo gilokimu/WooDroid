@@ -1,25 +1,19 @@
 package me.gilo.wc.ui.coupon
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_coupon.*
 import kotlinx.android.synthetic.main.content_coupon.*
 import me.gilo.wc.R
-import me.gilo.wc.adapter.CouponAdapter
 import me.gilo.wc.ui.BaseActivity
-import me.gilo.woodroid.Woocommerce
 import me.gilo.woodroid.models.Coupon
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
+
+
 
 class CouponActivity : BaseActivity() {
-
-
-    lateinit var adapter : CouponAdapter
-    lateinit var coupons: ArrayList<Coupon>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,44 +22,89 @@ class CouponActivity : BaseActivity() {
 
         title = "Coupon"
 
-        val layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
-        rvCoupons.layoutManager = layoutManager
-        rvCoupons.isNestedScrollingEnabled = false
+        val couponId = intent.getIntExtra("couponId", 0)
 
-        coupons = ArrayList()
+        if (couponId != 0){
+            getCoupon(couponId)
 
-        adapter = CouponAdapter(coupons)
-        rvCoupons.adapter = adapter
+            bDelete.setOnClickListener{delete(couponId)}
+            bUpdate.setOnClickListener{
+                val coupon = Coupon()
+                coupon.id = couponId
+                coupon.code = etCode.text.toString()
+                coupon.description = etDescription.text.toString()
 
-        coupons()
+                update(coupon)
+            }
 
-        fab.setOnClickListener{
-            startActivity(Intent(baseContext, AddCouponActivity::class.java))
+        }else{
+            Toast.makeText(baseContext, "You did not pass coupon id", Toast.LENGTH_LONG).show()
         }
 
     }
 
-    //Not best practise, but works for purposes of demo
-    private fun coupons() {
-        val woocommerce = Woocommerce.Builder()
-            .setSiteUrl("http://157.230.131.179")
-            .setApiVersion(Woocommerce.API_V2)
-            .setConsumerKey("ck_26c61abd7eeff238d87dc56585bf26cb2d1a1ec3")
-            .setConsumerSecret("cs_062e8e3a7ae0ce08fdebc0c39f8f834d5e87598e")
-            .build()
+    private fun getCoupon(couponId: Int) {
+        showLoading()
 
-        woocommerce.Coupon().coupons().enqueue(object : Callback<List<Coupon>> {
-            override fun onResponse(call: Call<List<Coupon>>, response: Response<List<Coupon>>) {
-                val couponResponse = response.body()
-                for (coupon in couponResponse!!) {
-                    coupons.add(coupon)
-                }
+        woocommerce.Coupon().coupon(couponId).enqueue(object : Callback<Coupon> {
+            override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
+                val coupon = response.body()!!
 
-                adapter.notifyDataSetChanged()
+                etCode.setText(coupon.code.toUpperCase())
+                etDescription.setText(coupon.description)
+
+                stopShowingLoading()
             }
 
-            override fun onFailure(call: Call<List<Coupon>>, t: Throwable) {
+            override fun onFailure(call: Call<Coupon>, t: Throwable) {
+                stopShowingLoading()
+            }
+        })
+    }
 
+    private fun delete(couponId: Int) {
+        showLoading()
+
+        woocommerce.Coupon().delete(couponId).enqueue(object : Callback<Coupon> {
+            override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
+                if (response.isSuccessful) {
+                    val coupon = response.body()!!
+
+                    etCode.setText(coupon.code.toUpperCase())
+                    etDescription.setText(coupon.description)
+
+                    finish()
+                }else{
+                    Toast.makeText(this@CouponActivity, "" + response.code() + " : " + response.message(), Toast.LENGTH_SHORT).show()
+                }
+
+                stopShowingLoading()
+            }
+
+            override fun onFailure(call: Call<Coupon>, t: Throwable) {
+                stopShowingLoading()
+            }
+        })
+    }
+
+
+    private fun update(coupon: Coupon) {
+        showLoading()
+
+        woocommerce.Coupon().update(coupon.id, coupon).enqueue(object : Callback<Coupon> {
+            override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
+                val coupon = response.body()!!
+
+                etCode.setText(coupon.code.toUpperCase())
+                etDescription.setText(coupon.description)
+
+                stopShowingLoading()
+
+                finish()
+            }
+
+            override fun onFailure(call: Call<Coupon>, t: Throwable) {
+                stopShowingLoading()
             }
         })
     }

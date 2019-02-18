@@ -17,7 +17,7 @@ public class Coupon implements Serializable{
     private int usage_limit_per_user;
     private int limit_usage_to_x_items;
     private String[] meta_data;
-    private String id;
+    private int id;
     private String date_modified_gmt;
     private String amount;
     private String date_created;
@@ -136,11 +136,11 @@ public class Coupon implements Serializable{
         this.meta_data = meta_data;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

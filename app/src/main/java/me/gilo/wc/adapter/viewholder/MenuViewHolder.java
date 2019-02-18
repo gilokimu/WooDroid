@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import me.gilo.wc.R;
-import me.gilo.wc.ui.coupon.CouponActivity;
+import me.gilo.wc.ui.coupon.CouponsActivity;
 import me.gilo.wc.ui.ShopActivity;
 
 public class MenuViewHolder extends RecyclerView.ViewHolder {
@@ -37,7 +37,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
                 context.startActivity(intent);
                 break;
             case "Coupons":
-                intent = new Intent(context, CouponActivity.class);
+                intent = new Intent(context, CouponsActivity.class);
                 context.startActivity(intent);
                 break;
         }
