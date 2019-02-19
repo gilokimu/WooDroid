@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo;
 
 import me.gilo.woodroid.data.api.ProductAPI;
 import me.gilo.woodroid.models.Product;
+import me.gilo.woodroid.models.filters.ProductFilter;
 import retrofit2.Call;
 
 import java.util.HashMap;
@@ -32,6 +33,32 @@ public class ProductRepository extends WooRepository {
 
     public Call<List<Product>> filter(Map<String, String> filters) {
         return apiService.filter(filters);
+    }
+
+    public Call<List<Product>> products(ProductFilter productFilter) {
+        return filter(productFilter.getFilters());
+    }
+
+    public Call<List<Product>> search(String term) {
+        ProductFilter productFilter = new ProductFilter();
+        productFilter.setSearch(term);
+
+        return filter(productFilter.getFilters());
+    }
+
+    public Call<List<Product>> products(int page, int per_page) {
+        ProductFilter productFilter = new ProductFilter();
+        productFilter.setPage(page);
+        productFilter.setPer_page(per_page);
+
+        return filter(productFilter.getFilters());
+    }
+
+    public Call<List<Product>> products(int page) {
+        ProductFilter productFilter = new ProductFilter();
+        productFilter.setPage(page);
+
+        return filter(productFilter.getFilters());
     }
 
     public Call<Product> update(int id, Product product) {

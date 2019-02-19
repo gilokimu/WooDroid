@@ -10,6 +10,7 @@ import me.gilo.wc.R
 import me.gilo.wc.adapter.ProductAdapter
 import me.gilo.woodroid.Woocommerce
 import me.gilo.woodroid.models.Product
+import me.gilo.woodroid.models.filters.ProductFilter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,10 +51,10 @@ class ShopActivity : BaseActivity() {
             .setConsumerSecret("cs_062e8e3a7ae0ce08fdebc0c39f8f834d5e87598e")
             .build()
 
-        val filters = HashMap<String, String>()
-        filters["search"] = "ship"
+       val filters = ProductFilter()
+        filters.per_page = 3
 
-        woocommerce.ProductRepository().filter(filters).enqueue(object : Callback<List<Product>> {
+        woocommerce.ProductRepository().products(filters).enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
 
                 if (response.isSuccessful) {
