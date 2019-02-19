@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ProductReviewAPI;
 import me.gilo.woodroid.models.ProductReview;
+import me.gilo.woodroid.models.filters.ProductReviewFilter;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -27,6 +28,10 @@ public class ReviewRepository extends WooRepository {
 
     public Call<List<ProductReview>> reviews() {
         return apiService.list();
+    }
+
+    public Call<List<ProductReview>> reviews(ProductReviewFilter productReviewFilter) {
+        return apiService.filter(productReviewFilter.getFilters());
     }
 
     public Call<ProductReview> update(int id, ProductReview review) {

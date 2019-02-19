@@ -34,7 +34,7 @@ public interface ProductAttributeTermAPI {
     @POST("products/attributes/batch")
     Call<String> batch(@Body AttributeTerm body);
 
-    @GET("coupons")
-    Call<ArrayList<AttributeTerm>> filter(@QueryMap Map<String, String> filter);
+    @GET("products/attributes/{id}/terms")
+    Call<List<AttributeTerm>> filter(@Path("id") int attribute_id, @QueryMap Map<String, String> filter);
 
 }

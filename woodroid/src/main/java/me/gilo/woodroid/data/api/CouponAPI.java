@@ -23,7 +23,7 @@ public interface CouponAPI{
     Call<List<Coupon>> list();
 
     @GET("coupons")
-    Call<ArrayList<Coupon>> filter(@QueryMap Map<String, String> filter);
+    Call<List<Coupon>> filter(@QueryMap Map<String, String> filter);
 
     @Headers("Content-Type: application/json")
     @PUT("coupons/{id}")

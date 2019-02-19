@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo;
 
 import me.gilo.woodroid.data.api.CustomerAPI;
 import me.gilo.woodroid.models.Customer;
+import me.gilo.woodroid.models.filters.CustomerFilter;
 import retrofit2.Call;
 
 import java.util.List;
@@ -26,6 +27,10 @@ public class CustomerRepository extends WooRepository{
 
     public Call<List<Customer>> customers() {
         return apiService.list();
+    }
+
+    public Call<List<Customer>> customers(CustomerFilter customerFilter) {
+        return apiService.filter(customerFilter.getFilters());
     }
 
     public Call<Customer> update(int id, Customer customer) {

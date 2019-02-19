@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ProductAttributeAPI;
 import me.gilo.woodroid.models.Attribute;
+import me.gilo.woodroid.models.filters.ProductAttributeFilter;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -27,6 +28,10 @@ public class AttributeRepository extends WooRepository {
 
     public Call<List<Attribute>> attributes() {
         return apiService.list();
+    }
+
+    public Call<List<Attribute>> attributes(ProductAttributeFilter productAttributeFilter) {
+        return apiService.filter(productAttributeFilter.getFilters());
     }
 
     public Call<Attribute> update(int id, Attribute attribute) {

@@ -29,7 +29,7 @@ public interface RefundAPI {
     @DELETE("orders/{id}/refunds/{refund_id}")
     Call<Refund> delete(@Path("id") int order_id, @Path("refund_id") int refund_id, @Query("force") boolean force);
 
-    @GET("coupons")
-    Call<ArrayList<Refund>> filter(@QueryMap Map<String, String> filter);
+    @GET("orders/{id}/refunds")
+    Call<List<Refund>> filter(@Path("id") int order_id, @QueryMap Map<String, String> filter);
 
 }

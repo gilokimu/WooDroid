@@ -35,7 +35,7 @@ public interface ShippingClassAPI {
     @POST("products/shipping_classes/batch")
     Call<String> batch(@Body ShippingClass body);
 
-    @GET("coupons")
-    Call<ArrayList<ShippingClass>> filter(@QueryMap Map<String, String> filter);
+    @GET("products/shipping_classes")
+    Call<List<ShippingClass>> filter(@QueryMap Map<String, String> filter);
 
 }

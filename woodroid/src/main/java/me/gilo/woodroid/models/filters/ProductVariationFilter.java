@@ -1,9 +1,6 @@
 package me.gilo.woodroid.models.filters;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class ProductFilter extends ListFilter{
+public class ProductVariationFilter extends ListFilter{
     private int[] parent;
     private int[] parent_exclude;
     private String slug;

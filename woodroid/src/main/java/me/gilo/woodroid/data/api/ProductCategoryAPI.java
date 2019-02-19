@@ -35,7 +35,7 @@ public interface ProductCategoryAPI {
     @POST("products/categories/batch")
     Call<String> batch(@Body Category body);
 
-    @GET("coupons")
-    Call<ArrayList<Category>> filter(@QueryMap Map<String, String> filter);
+    @GET("products/categories")
+    Call<List<Category>> filter(@QueryMap Map<String, String> filter);
 
 }

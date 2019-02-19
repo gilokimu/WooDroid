@@ -39,7 +39,7 @@ public interface CustomerAPI {
     @POST("customers/{id}/downloads")
     Call<List<Download>> downloads(@Path("id") int id);
 
-    @GET("coupons")
-    Call<ArrayList<Customer>> filter(@QueryMap Map<String, String> filter);
+    @GET("customers")
+    Call<List<Customer>> filter(@QueryMap Map<String, String> filter);
 
 }

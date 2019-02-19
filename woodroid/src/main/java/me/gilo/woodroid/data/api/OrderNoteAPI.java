@@ -29,7 +29,7 @@ public interface OrderNoteAPI {
     @DELETE("orders/{id}/notes/{note_id}")
     Call<OrderNote> delete(@Path("id") int order_id, @Path("note_id") int note_id, @Query("force") boolean force);
 
-    @GET("coupons")
-    Call<ArrayList<OrderNote>> filter(@QueryMap Map<String, String> filter);
+    @GET("orders/{id}/notes")
+    Call<List<OrderNote>> filter(@Path("id") int order_id, @QueryMap Map<String, String> filter);
 
 }

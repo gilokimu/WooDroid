@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ProductAttributeTermAPI;
 import me.gilo.woodroid.models.AttributeTerm;
+import me.gilo.woodroid.models.filters.ProductAttributeFilter;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -26,6 +27,10 @@ public class AttributeTermRepository extends WooRepository {
 
     public Call<List<AttributeTerm>> terms(int attribute_id) {
         return apiService.list(attribute_id);
+    }
+
+    public Call<List<AttributeTerm>> terms(int attribute_id, ProductAttributeFilter productAttributeFilter) {
+        return apiService.filter(attribute_id, productAttributeFilter.getFilters());
     }
 
     public Call<AttributeTerm> update(int attribute_id, int id, AttributeTerm term) {

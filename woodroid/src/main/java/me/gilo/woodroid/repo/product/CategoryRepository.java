@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ProductCategoryAPI;
 import me.gilo.woodroid.models.Category;
+import me.gilo.woodroid.models.filters.ProductCategoryFilter;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -27,6 +28,10 @@ public class CategoryRepository extends WooRepository {
 
     public Call<List<Category>> categories() {
         return apiService.list();
+    }
+
+    public Call<List<Category>> categories(ProductCategoryFilter productCategoryFilter) {
+        return apiService.filter(productCategoryFilter.getFilters());
     }
 
     public Call<Category> update(int id, Category category) {

@@ -38,9 +38,7 @@ public interface ProductVariationAPI {
     @PUT("products/{id}/variations/{variation_id}")
     Call<Variation> batch(@Path("id") int product_id, @Path("variation_id") int variation_id, @Body Product body);
 
-    @GET("coupons")
-    Call<ArrayList<Variation>> filter(@QueryMap Map<String, String> filter);
-
-
+    @GET("products/{id}/variations")
+    Call<List<Variation>> filter(@Path("id") int product_id, @QueryMap Map<String, String> filter);
 
 }

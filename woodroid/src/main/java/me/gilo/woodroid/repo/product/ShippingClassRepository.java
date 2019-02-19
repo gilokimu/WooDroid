@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ShippingClassAPI;
 import me.gilo.woodroid.models.ShippingClass;
+import me.gilo.woodroid.models.filters.ShippingClassesFilter;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -27,6 +28,10 @@ public class ShippingClassRepository extends WooRepository {
 
     public Call<List<ShippingClass>> shippingClasses() {
         return apiService.list();
+    }
+
+    public Call<List<ShippingClass>> shippingClasses(ShippingClassesFilter shippingClassesFilter) {
+        return apiService.filter(shippingClassesFilter.getFilters());
     }
 
     public Call<ShippingClass> update(int id, ShippingClass shippingClass) {

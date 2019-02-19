@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo.product;
 
 import me.gilo.woodroid.data.api.ProductTagAPI;
 import me.gilo.woodroid.models.Tag;
+import me.gilo.woodroid.models.filters.ProductTagFilter;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -27,6 +28,10 @@ public class TagRepository extends WooRepository {
 
     public Call<List<Tag>> tags() {
         return apiService.list();
+    }
+
+    public Call<List<Tag>> tags(ProductTagFilter productTagFilter) {
+        return apiService.filter(productTagFilter.getFilters());
     }
 
     public Call<Tag> update(int id, Tag tag) {

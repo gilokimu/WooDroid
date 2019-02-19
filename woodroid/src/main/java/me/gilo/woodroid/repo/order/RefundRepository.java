@@ -3,6 +3,7 @@ package me.gilo.woodroid.repo.order;
 import me.gilo.woodroid.data.api.RefundAPI;
 import me.gilo.woodroid.models.Order;
 import me.gilo.woodroid.models.Refund;
+import me.gilo.woodroid.models.filters.RefundFilter;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -28,6 +29,10 @@ public class RefundRepository extends WooRepository {
 
     public Call<List<Refund>> refunds(Order order) {
         return apiService.list(order.getId());
+    }
+
+    public Call<List<Refund>> refunds(Order order, RefundFilter refundFilter) {
+        return apiService.filter(order.getId(), refundFilter.getFilters());
     }
 
     public Call<Refund> delete(Order order, int id) {

@@ -36,7 +36,7 @@ public interface ProductReviewAPI {
     @POST("products/reviews/batch")
     Call<String> batch(@Body ProductReview body);
 
-    @GET("coupons")
-    Call<ArrayList<ProductReview>> filter(@QueryMap Map<String, String> filter);
+    @GET("products/reviews")
+    Call<List<ProductReview>> filter(@QueryMap Map<String, String> filter);
 
 }

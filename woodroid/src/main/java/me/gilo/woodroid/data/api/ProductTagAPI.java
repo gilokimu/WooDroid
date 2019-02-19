@@ -35,7 +35,7 @@ public interface ProductTagAPI {
     @POST("products/tags/batch")
     Call<String> batch(@Body Tag body);
 
-    @GET("coupons")
-    Call<ArrayList<Tag>> filter(@QueryMap Map<String, String> filter);
+    @GET("products/tags")
+    Call<List<Tag>> filter(@QueryMap Map<String, String> filter);
 
 }

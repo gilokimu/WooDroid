@@ -35,7 +35,7 @@ public interface ProductAttributeAPI {
     @POST("products/attributes/batch")
     Call<String> batch(@Body Attribute body);
 
-    @GET("coupons")
-    Call<ArrayList<Attribute>> filter(@QueryMap Map<String, String> filter);
+    @GET("products/attributes")
+    Call<List<Attribute>> filter(@QueryMap Map<String, String> filter);
 
 }

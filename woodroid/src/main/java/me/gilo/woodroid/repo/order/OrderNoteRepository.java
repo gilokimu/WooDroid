@@ -3,6 +3,7 @@ package me.gilo.woodroid.repo.order;
 import me.gilo.woodroid.data.api.OrderNoteAPI;
 import me.gilo.woodroid.models.Order;
 import me.gilo.woodroid.models.OrderNote;
+import me.gilo.woodroid.models.filters.OrderNoteFilter;
 import me.gilo.woodroid.repo.WooRepository;
 import retrofit2.Call;
 
@@ -27,6 +28,10 @@ public class OrderNoteRepository extends WooRepository {
 
     public Call<List<OrderNote>> notes(Order order) {
         return apiService.list(order.getId());
+    }
+
+    public Call<List<OrderNote>> notes(Order order, OrderNoteFilter orderNoteFilter) {
+        return apiService.filter(order.getId(), orderNoteFilter.getFilters());
     }
 
     public Call<OrderNote> delete(Order order, int id) {

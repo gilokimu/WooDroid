@@ -35,7 +35,7 @@ public interface OrderAPI {
     @POST("orders/batch")
     Call<String> batch(@Body Order body);
 
-    @GET("coupons")
-    Call<ArrayList<Order>> filter(@QueryMap Map<String, String> filter);
+    @GET("orders")
+    Call<List<Order>> filter(@QueryMap Map<String, String> filter);
 
 }

@@ -2,6 +2,7 @@ package me.gilo.woodroid.repo;
 
 import me.gilo.woodroid.data.api.CouponAPI;
 import me.gilo.woodroid.models.Coupon;
+import me.gilo.woodroid.models.filters.CouponFilter;
 import retrofit2.Call;
 
 import java.util.List;
@@ -26,6 +27,10 @@ public class CouponRepository extends WooRepository{
 
     public Call<List<Coupon>> coupons() {
         return apiService.list();
+    }
+
+    public Call<List<Coupon>> coupons(CouponFilter couponFilter) {
+        return apiService.filter(couponFilter.getFilters());
     }
 
     public Call<Coupon> update(int id, Coupon coupon) {
