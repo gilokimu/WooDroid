@@ -6,6 +6,7 @@ import retrofit2.Call;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductRepository extends WooRepository {
 
@@ -27,6 +28,10 @@ public class ProductRepository extends WooRepository {
 
     public Call<List<Product>> products() {
         return apiService.list();
+    }
+
+    public Call<List<Product>> filter(Map<String, String> filters) {
+        return apiService.filter(filters);
     }
 
     public Call<Product> update(int id, Product product) {

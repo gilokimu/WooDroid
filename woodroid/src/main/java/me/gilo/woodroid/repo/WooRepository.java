@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class WooRepository {
 
-    //TODO Apply DI or single instance on this
+    //TODO ('Apply DI or single instance on this')
     public Retrofit retrofit;
 
     public WooRepository(String baseUrl, String consumerKey, String consumerSecret) {

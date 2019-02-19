@@ -12,6 +12,7 @@ public class Woocommerce {
 
     public static final ApiVersion API_V1 = ApiVersion.API_VERSION1;
     public static final ApiVersion API_V2 = ApiVersion.API_VERSION2;
+    public static final ApiVersion API_V3 = ApiVersion.API_VERSION3;
 
     final OrderNoteRepository orderNoteRepository;
     final RefundRepository refundRepository;
