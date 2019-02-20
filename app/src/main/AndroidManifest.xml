@@ -33,7 +33,7 @@
 		android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-		android:name=".ui.ShopActivity"
+		android:name=".ui.product.ShopActivity"
 		android:label="@string/title_activity_shop"
 		android:theme="@style/AppTheme.NoActionBar">
 	</activity>

@@ -1,9 +1,6 @@
 package me.gilo.woodroid;
 
-import me.gilo.woodroid.repo.CouponRepository;
-import me.gilo.woodroid.repo.CustomerRepository;
-import me.gilo.woodroid.repo.OrderRepository;
-import me.gilo.woodroid.repo.ProductRepository;
+import me.gilo.woodroid.repo.*;
 import me.gilo.woodroid.repo.order.OrderNoteRepository;
 import me.gilo.woodroid.repo.order.RefundRepository;
 import me.gilo.woodroid.repo.product.*;
@@ -28,6 +25,8 @@ public class Woocommerce {
 
     final OrderRepository orderRepository;
     final ProductRepository productRepository;
+
+    final ReportsRepository reportsRepository;
 
 
     enum ApiVersion {
@@ -66,6 +65,8 @@ public class Woocommerce {
         customerRepository = new CustomerRepository(baseUrl, consumerKey, consumerSecret);
         orderRepository = new OrderRepository(baseUrl, consumerKey, consumerSecret);
         productRepository = new ProductRepository(baseUrl, consumerKey, consumerSecret);
+
+        reportsRepository = new ReportsRepository(baseUrl, consumerKey, consumerSecret);
 
     }
 
@@ -152,5 +153,9 @@ public class Woocommerce {
 
     public ProductRepository ProductRepository() {
         return productRepository;
+    }
+
+    public ReportsRepository ReportsRepository() {
+        return reportsRepository;
     }
 }

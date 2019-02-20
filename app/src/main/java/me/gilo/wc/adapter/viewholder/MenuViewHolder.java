@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import me.gilo.wc.R;
 import me.gilo.wc.ui.coupon.CouponsActivity;
-import me.gilo.wc.ui.ShopActivity;
+import me.gilo.wc.ui.product.ShopActivity;
 
 public class MenuViewHolder extends RecyclerView.ViewHolder {
 

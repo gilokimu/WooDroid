@@ -1,11 +1,14 @@
 package me.gilo.wc;
 
 import android.app.Application;
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.viewpump.ViewPump;
+import me.gilo.wc.di.DaggerAppComponent;
 
-public class WcApp extends Application {
+public class WcApp extends DaggerApplication {
 
     @Override
     public void onCreate() {
@@ -20,5 +23,10 @@ public class WcApp extends Application {
                 .build());
 
 
+    }
+
+    @Override
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerAppComponent.create();
     }
 }
