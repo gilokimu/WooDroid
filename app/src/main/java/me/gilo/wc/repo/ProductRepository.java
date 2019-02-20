@@ -22,4 +22,12 @@ public class ProductRepository extends WoocommerceRepository {
     }
 
 
+    public WooLiveData<List<Product>> search(String term) {
+        final WooLiveData<List<Product>> callBack = new WooLiveData();
+
+        woocommerce.ProductRepository().search(term).enqueue(callBack);
+        return callBack;
+    }
+
+
 }

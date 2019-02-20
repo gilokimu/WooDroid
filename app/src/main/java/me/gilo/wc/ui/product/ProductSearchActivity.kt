@@ -1,15 +1,20 @@
 package me.gilo.wc.ui.product
 
+import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.widget.Toast
-import com.miguelcatalan.materialsearchview.MaterialSearchView
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
-import kotlinx.android.synthetic.main.activity_shop.*
-import kotlinx.android.synthetic.main.content_shop.*
 import me.gilo.wc.R
+
+import kotlinx.android.synthetic.main.activity_product_search.*
+import kotlinx.android.synthetic.main.content_shop.*
 import me.gilo.wc.adapter.ProductAdapter
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
@@ -17,12 +22,9 @@ import me.gilo.wc.ui.state.ProgressDialogFragment
 import me.gilo.wc.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
 import org.json.JSONObject
-import java.util.*
-import android.text.Editable
-import android.text.TextWatcher
+import java.util.ArrayList
 
-
-class ShopActivity : BaseActivity() {
+class ProductSearchActivity : BaseActivity() {
 
     lateinit var adapter: ProductAdapter
     lateinit var products: ArrayList<Product>
@@ -36,12 +38,12 @@ class ShopActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shop)
+        setContentView(R.layout.activity_product_search)
         setSupportActionBar(toolbar)
 
         viewModel = getViewModel(ProductViewModel::class.java)
 
-        title = "Shop"
+        title = "Search"
 
         val layoutManager = GridLayoutManager(baseContext, 2)
         rvShop.layoutManager = layoutManager
@@ -52,31 +54,30 @@ class ShopActivity : BaseActivity() {
         adapter = ProductAdapter(products)
         rvShop.adapter = adapter
 
-        products()
+        handleIntent(intent)
+    }
 
-        etSearch.addTextChangedListener(object : TextWatcher {
+    override fun onNewIntent(intent: Intent) {
+        handleIntent(intent)
+    }
 
-            override fun afterTextChanged(s: Editable) {}
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+    private fun handleIntent(intent: Intent) {
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.isNotEmpty()) {
-                   search(s.toString())
-                }else{
-                    products()
-                }
-            }
-        })
+        if (Intent.ACTION_SEARCH == intent.action) {
+            val query = intent.getStringExtra(SearchManager.QUERY)
+            search(query)
+        }
     }
 
     private fun search(query : String) {
         viewModel.search(query).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
+                    showLoading("Performing search", "This will only take a short while")
                 }
 
                 Status.SUCCESS -> {
-                    products.clear()
+                    stopShowingLoading()
 
                     val productsResponse = response.data()
                     for (product in productsResponse) {
@@ -88,54 +89,27 @@ class ShopActivity : BaseActivity() {
                 }
 
                 Status.ERROR -> {
+                    stopShowingLoading()
 
+                    var message: String
+                    var loginError = JSONObject(response.error().message)
 
-                }
-
-                Status.EMPTY -> {
-
-                }
-            }
-
-        })
-
-    }
-
-    private fun products() {
-        viewModel.products().observe(this, android.arch.lifecycle.Observer { response ->
-            when (response!!.status()) {
-                Status.LOADING -> {
-
-                }
-
-                Status.SUCCESS -> {
-                    products.clear()
-                    val productsResponse = response.data()
-                    for (product in productsResponse) {
-                        products.add(product)
+                    if (loginError.has("status_message")) {
+                        message = loginError.getString("status_message")
+                    } else {
+                        message = response.error().message.toString()
                     }
 
-                    adapter.notifyDataSetChanged()
-
-                }
-
-                Status.ERROR -> {
-
+                    Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
                 }
 
                 Status.EMPTY -> {
-
+                    stopShowingLoading()
                 }
             }
 
         })
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.products, menu)
-
-        return true
     }
 
     private lateinit var progressDialog: ProgressDialogFragment
