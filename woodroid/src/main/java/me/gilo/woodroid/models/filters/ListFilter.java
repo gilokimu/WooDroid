@@ -1,5 +1,8 @@
 package me.gilo.woodroid.models.filters;
 
+import me.gilo.woodroid.utils.Converter;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,6 +77,14 @@ public class ListFilter {
         return before;
     }
 
+    public void setAfter(Date date) {
+        setAfter(Converter.getDateString(date));
+    }
+
+    public void setBefore(Date date) {
+        setBefore(Converter.getDateString(date));
+    }
+
     public void setBefore(String before) {
         this.before = before;
 
@@ -118,6 +129,10 @@ public class ListFilter {
         this.order = order;
 
         addFilter("order", order);
+    }
+
+    public void setOrder(Sort order) {
+       setOrder(order.toString());
     }
 
     public String getOrderby() {
