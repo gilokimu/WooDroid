@@ -35,7 +35,7 @@ Step 2. Add the dependency
 ### Gradle dependency:
 Step 1. Add the JitPack repository to your build file
 
-```xml
+```gradle
 allprojects {
 	repositories {
 		...
@@ -45,7 +45,7 @@ allprojects {
 ```
 
 Step 2. Add the dependency
-```xml
+```gradle
 dependencies {
 	implementation 'com.github.gilokimu:woodroid:0.1.0'
 }
