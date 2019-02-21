@@ -9,6 +9,7 @@ import me.gilo.wc.R
 import me.gilo.wc.adapter.CouponAdapter
 import me.gilo.wc.ui.BaseActivity
 import me.gilo.woodroid.models.Coupon
+import me.gilo.woodroid.models.filters.CouponFilter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,7 +47,10 @@ class CouponsActivity : BaseActivity() {
 
     //Not best practise, but works for purposes of demo
     private fun coupons() {
-        woocommerce.CouponRepository().coupons().enqueue(object : Callback<List<Coupon>> {
+        val filter = CouponFilter()
+        filter.search = "FEB"
+
+        woocommerce.CouponRepository().coupons(filter).enqueue(object : Callback<List<Coupon>> {
             override fun onResponse(call: Call<List<Coupon>>, response: Response<List<Coupon>>) {
                 val couponResponse = response.body()
                 for (coupon in couponResponse!!) {

@@ -2,8 +2,6 @@
 
 This is an android sdk for woocommerce 
 
-# Under construction, is not ready for use yet. :(
-
 ![alt text](https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1549248597583.jpg "Woocommerce Android app")
 
 Built-based on the documentation: http://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
@@ -76,55 +74,153 @@ Getting products example
 
 ```kotlin
 woocommerce.ProductRepository().products().enqueue(object : Callback<List<Product>> {
-            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-                val productsResponse = response.body()
-                for (product in productsResponse!!) {
-                    products.add(product)
-                }
-
-                adapter.notifyDataSetChanged()
+        override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+            val productsResponse = response.body()
+            for (product in productsResponse!!) {
+                products.add(product)
             }
 
-            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+            adapter.notifyDataSetChanged()
+        }
 
-            }
-        })
+        override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+
+        }
+    })
 ```
 
-## API Support Checklist
+## Supported resources
+The sdk currently supports : 
+1. Order Notes
+2. Refunds
+3. Attributes
+4. Attribute Terms  
+5. Product Category  
+6. Shipping Class  
+7. Product Tags  
+8. Variations  
+9. Coupons
+10. Customers  
+11. Orders  
+12. Products  
+13. Reports 
 
-Method | Create | Delete | Retrieve  | Update | Batch
---------------------- | ------------- | ------------- | ------------- | ------------- | -------------   
-Coupons | N | N | N | N | N 
-Customers | N | N | N | N | N
-Orders | N | N | N | N | N
-Order notes | N | N | N | N | N
-Refunds | N | N | N | N | N
-Products | N | N | N | N | N
-Product variations | N | N | N | N | N
-Product attributes | N | N | N | N | N
-Product attribute terms | N | N | N | N | N
-Product categories | N | N | N | N | N
-Product shipping classes | N | N | N | N | N
-Product tags | N | N | N | N | N
-Product reviews | N | N | N | N | N
-Reports | N | N | N | N | N
-Tax rates | N | N | N | N | N
-Tax classes | N | N | N | N | N
-Webhooks | N | N | N | N | N
-Settings | N | N | N | N | N
-Setting options | N | N | N | N | N
-Payment gateways | N | N | N | N | N
-Shipping zones | N | N | N | N | N
-Shipping zone locations | N | N | N | N | N
-Shipping zone methods | N | N | N | N | N
-Shipping methods | N | N | N | N | N
+### Coming soon
+14. Settings 
+15. Payment gateway
+
+## API Methods
+The general resource method calls are
+1. Create - Pass the object to create
+2. List - a list of all items
+3. View single method - retries a single item
+4. Delete - deletes the resource
+5. Filter - provides a list that meets a criteria
+
+### Create Method
+Create an instance of the resource then pass onto a .create() function on the resource repository
+
+```kotlin
+val coupon = Coupon()
+coupon.code = code
+coupon.description = description
+        
+woocommerce.CouponRepository().create(coupon).enqueue(object : Callback<Coupon> {
+    override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
+        val couponResponse = response.body()
+        finish()
+    }
+
+    override fun onFailure(call: Call<Coupon>, t: Throwable) {
+        
+    }
+})
+```
+
+### List Method
+```kotlin
+ woocommerce.CouponRepository().coupons().enqueue(object : Callback<List<Coupon>> {
+    override fun onResponse(call: Call<List<Coupon>>, response: Response<List<Coupon>>) {
+        val couponResponse = response.body()
+        for (coupon in couponResponse!!) {
+            coupons.add(coupon)
+        }
+
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onFailure(call: Call<List<Coupon>>, t: Throwable) {
+
+    }
+})
+```
+
+### View single item
+
+```kotlin
+val couponId = intent.getIntExtra("couponId", 0)
+
+woocommerce.CouponRepository().coupon(couponId).enqueue(object : Callback<Coupon> {
+    override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
+        val coupon = response.body()!!
+
+        etCode.setText(coupon.code.toUpperCase())
+        etDescription.setText(coupon.description)
+
+    }
+
+    override fun onFailure(call: Call<Coupon>, t: Throwable) {
+        
+    }
+})
+
+```
+
+### Delete item
+```kotlin
+woocommerce.CouponRepository().delete(couponId).enqueue(object : Callback<Coupon> {
+    override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
+        if (response.isSuccessful) {
+            val coupon = response.body()!!
+            finish()
+        }else{
+            Toast.makeText(this@CouponActivity, "" + response.code() + " : " + response.message(), Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    override fun onFailure(call: Call<Coupon>, t: Throwable) {
+        stopShowingLoading()
+    }
+})
+```
+
+### Filter item 
+```kotlin
+val filter = CouponFilter()
+filter.search = "FEB"
+
+woocommerce.CouponRepository().coupons(filter).enqueue(object : Callback<List<Coupon>> {
+    override fun onResponse(call: Call<List<Coupon>>, response: Response<List<Coupon>>) {
+        val couponResponse = response.body()
+        for (coupon in couponResponse!!) {
+            coupons.add(coupon)
+        }
+
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onFailure(call: Call<List<Coupon>>, t: Throwable) {
+
+    }
+})
+
+```
+### Sample app
+The sample app implements an MVVM approach which would look slightly different from the above. The methods are the same though
 
 
-## TODO
-See the trello board for items and progress https://trello.com/b/Muw8vcBb/woocommerce-android-sdk
-
-##Contribution
+## Contribution
 Contributions are highly welcomed, just create a PR
 
 
