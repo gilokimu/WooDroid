@@ -15,40 +15,40 @@ Please note that files are still being moved around - the project should be stab
 Step 1. Add the JitPack repository to your build file
 
 ```xml
-  <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+<repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
+</repositories>
 ```
 
 Step 2. Add the dependency
 ```xml
 <dependency>
-	    <groupId>com.github.gilokimu</groupId>
-	    <artifactId>woodroid</artifactId>
-	    <version>0.1.0</version>
-	</dependency>
+	<groupId>com.github.gilokimu</groupId>
+	<artifactId>woodroid</artifactId>
+	<version>0.1.0</version>
+</dependency>
 ```
 
 ### Gradle dependency:
 Step 1. Add the JitPack repository to your build file
 
 ```xml
-  allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 
 Step 2. Add the dependency
 ```xml
- dependencies {
-	        implementation 'com.github.gilokimu:woodroid:0.1.0'
-	}
+dependencies {
+	implementation 'com.github.gilokimu:woodroid:0.1.0'
+}
 ```
 
 ## Getting started
@@ -63,19 +63,19 @@ Check out the WooCommerce API endpoints and data that can be manipulated in <htt
 Setup for the new WP REST API integration (WooCommerce 2.6 or later):
 
 ```kotlin
- val woocommerce = Woocommerce.Builder()
-            .setSiteUrl("http://example.com")
-            .setApiVersion(Woocommerce.API_V2)
-            .setConsumerKey("ck_XXXXX")
-            .setConsumerSecret("cs_XXXX")
-            .build()
+val woocommerce = Woocommerce.Builder()
+	.setSiteUrl("http://example.com")
+	.setApiVersion(Woocommerce.API_V2)
+	.setConsumerKey("ck_XXXXX")
+	.setConsumerSecret("cs_XXXX")
+	.build()
 ```
 
 ## Usage
 Getting products example
 
 ```kotlin
-   woocommerce.ProductRepository().products().enqueue(object : Callback<List<Product>> {
+woocommerce.ProductRepository().products().enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 val productsResponse = response.body()
                 for (product in productsResponse!!) {
