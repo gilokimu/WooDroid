@@ -22,6 +22,14 @@ public class ProductRepository extends WoocommerceRepository {
     }
 
 
+    public WooLiveData<Product> product(int productId) {
+        final WooLiveData<Product> callBack = new WooLiveData();
+
+        woocommerce.ProductRepository().product(productId).enqueue(callBack);
+        return callBack;
+    }
+
+
     public WooLiveData<List<Product>> search(String term) {
         final WooLiveData<List<Product>> callBack = new WooLiveData();
 

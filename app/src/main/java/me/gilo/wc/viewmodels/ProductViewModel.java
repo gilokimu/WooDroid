@@ -21,6 +21,10 @@ public final class ProductViewModel extends ViewModel {
         return productRepository.products();
     }
 
+    public WooLiveData<Product> product(int productId) {
+        return productRepository.product(productId);
+    }
+
     public WooLiveData<List<Product>> search(String term) {
         return productRepository.search(term);
     }

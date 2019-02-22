@@ -14,10 +14,10 @@ Step 1. Add the JitPack repository to your build file
 
 ```xml
 <repositories>
-	<repository>
-		<id>jitpack.io</id>
-		<url>https://jitpack.io</url>
-	</repository>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
 </repositories>
 ```
 
@@ -35,10 +35,10 @@ Step 1. Add the JitPack repository to your build file
 
 ```gradle
 allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
 

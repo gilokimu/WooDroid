@@ -4,7 +4,10 @@ import android.annotation.SuppressLint;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import dagger.android.support.DaggerAppCompatActivity;
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
+import me.gilo.wc.ui.state.ProgressDialogFragment;
 
 import javax.inject.Inject;
 
@@ -21,5 +24,10 @@ public class BaseActivity extends DaggerAppCompatActivity {
 
     public <T extends ViewModel> T getViewModel(final Class<T> cls) {
         return ViewModelProviders.of(this, viewModelFactory).get(cls);
+    }
+
+
+    public void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 }

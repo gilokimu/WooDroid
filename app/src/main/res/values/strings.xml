@@ -1,17 +1,18 @@
 <resources>
-    <string name="app_name">wc-app</string>
-    <string name="title_activity_shop">ShopActivity</string>
-    <string name="title_activity_coupon">CouponActivity</string>
-    <string name="title_activity_menu">MenuActivity</string>
+  <string name="app_name">wc-app</string>
+  <string name="title_activity_shop">ShopActivity</string>
+  <string name="title_activity_coupon">CouponActivity</string>
+  <string name="title_activity_menu">MenuActivity</string>
 
 
-    <string name="font_bold">fonts/GT-America-Bold.otf</string>
-    <string name="font_medium">fonts/GT-America-Medium.otf</string>
-    <string name="font_regular">fonts/GT-America-Regular.otf</string>
-    <string name="title_activity_add_coupon">AddCouponActivity</string>
-    <string name="title_activity_coupons">CouponsActivity</string>
-    <string name="search_title">search</string>
-    <string name="search_hint">Search product</string>
-    <string name="title_activity_product_search">ProductSearchActivity</string>
+  <string name="font_bold">fonts/GT-America-Bold.otf</string>
+  <string name="font_medium">fonts/GT-America-Medium.otf</string>
+  <string name="font_regular">fonts/GT-America-Regular.otf</string>
+  <string name="title_activity_add_coupon">AddCouponActivity</string>
+  <string name="title_activity_coupons">CouponsActivity</string>
+  <string name="search_title">search</string>
+  <string name="search_hint">Search product</string>
+  <string name="title_activity_product_search">ProductSearchActivity</string>
+  <string name="title_activity_product">ProductActivity</string>
 
 </resources>
