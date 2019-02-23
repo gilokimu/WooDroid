@@ -13,6 +13,11 @@
 	android:supportsRtl="true"
 	android:theme="@style/AppTheme">
 	<activity
+	  android:name=".ui.product.NavigatioDrawerActivity"
+	  android:label="@string/title_activity_navigatio_drawer"
+	  android:theme="@style/AppTheme.NoActionBar">
+	</activity>
+	<activity
 	  android:name=".ui.product.ProductActivity"
 	  android:label="@string/title_activity_product"
 	  android:theme="@style/AppTheme.NoActionBar">

@@ -1,66 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.product.ShopActivity">
+<android.support.v4.widget.DrawerLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/drawer_layout"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".ui.product.ShopActivity"
+  tools:openDrawer="end">
 
-    <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:theme="@style/AppTheme.AppBarOverlay">
+  <android.support.design.widget.CoordinatorLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
 
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
+	<android.support.design.widget.AppBarLayout
+	  android:layout_height="wrap_content"
+	  android:layout_width="match_parent"
+	  android:theme="@style/AppTheme.AppBarOverlay">
+
+	  <android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="?attr/colorPrimary"
+		app:popupTheme="@style/AppTheme.PopupOverlay">
 
 
-        </android.support.v7.widget.Toolbar>
+	  </android.support.v7.widget.Toolbar>
 
-        <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:elevation="2dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="8dp">
+	</android.support.design.widget.AppBarLayout>
 
-            <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/etSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:cursorVisible="true"
-                    android:textColorHint="@color/text_black_9"
-                    android:textColor="@color/text_black_2"
-                    android:hint="Seatch"
-                    android:background="@drawable/rect_white"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingRight="12dp"
-                    android:paddingBottom="12dp"
-                    android:textSize="16sp"
-                    app:backgroundTint="#ffffff"/>
+	<include layout="@layout/content_shop"/>
 
-            <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/baseline_search_white_18dp"
-                    android:tint="@color/text_black_9"
-                    android:layout_gravity="right|center"
-            />
 
-        </FrameLayout>
+  </android.support.design.widget.CoordinatorLayout>
 
-    </android.support.design.widget.AppBarLayout>
+  <include
+	layout="@layout/drawer_filter"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_gravity="end"
 
-    <include layout="@layout/content_shop"/>
+	/>
 
-</android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.DrawerLayout>

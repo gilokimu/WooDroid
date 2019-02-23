@@ -1,6 +1,7 @@
 package me.gilo.woodroid.repo;
 
 import me.gilo.woodroid.data.api.OrderAPI;
+import me.gilo.woodroid.models.LineItem;
 import me.gilo.woodroid.models.Order;
 import me.gilo.woodroid.models.OrderNote;
 import me.gilo.woodroid.models.filters.OrderFilter;
@@ -8,6 +9,8 @@ import me.gilo.woodroid.repo.order.OrderNoteRepository;
 import me.gilo.woodroid.repo.order.RefundRepository;
 import retrofit2.Call;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepository extends WooRepository {
@@ -26,6 +29,18 @@ public class OrderRepository extends WooRepository {
     }
 
     public Call<Order> create(Order order) {
+        return apiService.create(order);
+    }
+
+    public Call<Order> addToCart(int productId) {
+        Order order = new Order();
+
+        LineItem lineItem = new LineItem();
+        lineItem.setProductId(productId);
+        lineItem.setQuantity(1);
+
+        order.addLineItem(lineItem);
+
         return apiService.create(order);
     }
 

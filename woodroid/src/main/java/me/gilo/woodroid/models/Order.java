@@ -261,6 +261,11 @@ public class Order {
         this.lineItems = lineItems;
     }
 
+    public void addLineItem(LineItem lineItem) {
+        lineItems.add(lineItem);
+
+    }
+
     public List<ShippingLine> getShippingLines() {
         return shippingLines;
     }

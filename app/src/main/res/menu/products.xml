@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-            android:id="@+id/action_filter"
-            android:icon="@drawable/baseline_filter_list_24"
-            android:orderInCategory="100"
-            android:title="Filter"
-            android:iconTint="#ffffff"
-            app:showAsAction="always"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+	android:id="@+id/action_filter"
+	android:icon="@drawable/baseline_filter_list_24"
+	android:orderInCategory="100"
+	android:title="Filter"
+	android:iconTint="#ffffff"
+	app:showAsAction="always"/>
+
+  <item
+	android:id="@+id/action_sort"
+	android:icon="@drawable/baseline_sort_by_alpha_24"
+	android:orderInCategory="100"
+	android:title="Sort"
+	android:iconTint="#ffffff"
+	app:showAsAction="always"/>
+
+  <item
+	android:id="@+id/action_search"
+	android:icon="@drawable/baseline_search_white_24"
+	android:orderInCategory="100"
+	android:title="Search"
+	android:iconTint="#ffffff"
+	app:showAsAction="always"/>
+
+
+
 </menu>

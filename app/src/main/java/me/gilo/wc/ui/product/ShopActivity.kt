@@ -2,13 +2,16 @@ package me.gilo.wc.ui.product
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v4.view.GravityCompat
 import android.support.v7.widget.GridLayoutManager
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Filter
 import android.widget.Toast
-import com.miguelcatalan.materialsearchview.MaterialSearchView
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_shop.*
 import kotlinx.android.synthetic.main.content_shop.*
+import kotlinx.android.synthetic.main.drawer_filter.*
 import me.gilo.wc.R
 import me.gilo.wc.adapter.ProductAdapter
 import me.gilo.wc.common.BaseActivity
@@ -16,18 +19,16 @@ import me.gilo.wc.common.Status
 import me.gilo.wc.ui.state.ProgressDialogFragment
 import me.gilo.wc.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
-import org.json.JSONObject
+import me.gilo.woodroid.models.filters.ProductFilter
 import java.util.*
-import android.text.Editable
-import android.text.TextWatcher
 
 
 class ShopActivity : BaseActivity() {
 
     lateinit var adapter: ProductAdapter
-    lateinit var products: ArrayList<Product>
+    private lateinit var products: ArrayList<Product>
 
-    lateinit var viewModel: ProductViewModel
+    private lateinit var viewModel: ProductViewModel
     val TAG = this::getLocalClassName
 
     override fun attachBaseContext(newBase: Context) {
@@ -54,18 +55,65 @@ class ShopActivity : BaseActivity() {
 
         products()
 
-        etSearch.addTextChangedListener(object : TextWatcher {
+        bFilter.setOnClickListener{filter()}
+    }
 
-            override fun afterTextChanged(s: Editable) {}
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+    private fun filter() {
+        val filter = ProductFilter()
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.isNotEmpty()) {
-                   search(s.toString())
-                }else{
-                    products()
+        if (etSearch.text.toString().isNotEmpty()){
+            filter.search = etSearch.text.toString()
+        }
+
+        if (etMinPrice.text.toString().isNotEmpty()){
+            filter.min_price = etMinPrice.text.toString()
+        }
+
+        if (etMaxPrice.text.toString().isNotEmpty()){
+            filter.max_price = etMaxPrice.text.toString()
+        }
+
+        if (cbFeatured.isChecked){
+            filter.isFeatured = true
+        }
+
+        if (cbOnSale.isChecked){
+            filter.isOn_sale = true
+        }
+
+        toggleDrawer()
+
+        products(filter)
+    }
+
+    private fun products(filter: ProductFilter) {
+        viewModel.products(filter).observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+                }
+
+                Status.SUCCESS -> {
+                    products.clear()
+
+                    val productsResponse = response.data()
+                    for (product in productsResponse) {
+                        products.add(product)
+                    }
+
+                    adapter.notifyDataSetChanged()
+
+                }
+
+                Status.ERROR -> {
+
+
+                }
+
+                Status.EMPTY -> {
+
                 }
             }
+
         })
     }
 
@@ -136,6 +184,33 @@ class ShopActivity : BaseActivity() {
         menuInflater.inflate(R.menu.products, menu)
 
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_filter -> {
+                toggleDrawer()
+                true
+            }
+
+            R.id.action_search -> {
+                toggleDrawer()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun toast(text: String) {
+        Toast.makeText(baseContext, text, Toast.LENGTH_LONG).show()
+    }
+
+    private fun toggleDrawer() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.END)) {
+            drawer_layout.closeDrawer(GravityCompat.END)
+        } else {
+            drawer_layout.openDrawer(GravityCompat.END)
+        }
     }
 
     private lateinit var progressDialog: ProgressDialogFragment

@@ -7,8 +7,7 @@ import java.util.List;
 
 
 public class LineItem {
-    @SerializedName("product_id")
-    public int id;
+
     public String subtotal;
     @SerializedName("subtotal_tax")
     public String subtotalTax;
@@ -18,7 +17,10 @@ public class LineItem {
     public int quantity;
     public Object taxClass;
     public String name;
+
+    @SerializedName("product_id")
     public int productId;
+
     public String sku;
     public String variations;
     public List<Metum> meta = new ArrayList<Metum>();
@@ -29,14 +31,6 @@ public class LineItem {
 
     public void setVariations(String variations) {
         this.variations = variations;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getSubtotal() {

@@ -41,6 +41,33 @@ class ProductActivity : BaseActivity() {
             product(productId)
         }
 
+        fab.setOnClickListener{addToCart(productId)}
+
+    }
+
+    private fun addToCart(productId: Int) {
+        viewModel.addToCart(productId).observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                    val order = response.data()
+
+
+                }
+
+                Status.ERROR -> {
+
+                }
+
+                Status.EMPTY -> {
+
+                }
+            }
+
+        })
     }
 
     private fun product(productId : Int) {

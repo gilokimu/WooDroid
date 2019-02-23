@@ -14,5 +14,19 @@
   <string name="search_hint">Search product</string>
   <string name="title_activity_product_search">ProductSearchActivity</string>
   <string name="title_activity_product">ProductActivity</string>
+  <string name="title_activity_navigatio_drawer">NavigatioDrawerActivity</string>
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="nav_header_title">Android Studio</string>
+  <string name="nav_header_subtitle">android.studio@android.com</string>
+  <string name="nav_header_desc">Navigation header</string>
+  <string name="action_settings">Settings</string>
+
+  <string-array name="sort">
+    <item>Popularity</item>
+    <item>Date added</item>
+    <item>Price lowest first</item>
+    <item>Price highest first</item>
+  </string-array>
 
 </resources>
