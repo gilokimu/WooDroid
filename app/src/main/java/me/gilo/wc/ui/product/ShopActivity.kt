@@ -54,6 +54,7 @@ class ShopActivity : BaseActivity() {
         rvShop.adapter = adapter
 
         products()
+        cart()
 
         bFilter.setOnClickListener{filter()}
     }
@@ -102,6 +103,30 @@ class ShopActivity : BaseActivity() {
 
                     adapter.notifyDataSetChanged()
 
+                }
+
+                Status.ERROR -> {
+
+
+                }
+
+                Status.EMPTY -> {
+
+                }
+            }
+
+        })
+    }
+
+    private fun cart() {
+        viewModel.cart().observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+                }
+
+                Status.SUCCESS -> {
+                    val cartResponse = response.data()
+                    toast("Cart items are " + cartResponse.size)
                 }
 
                 Status.ERROR -> {

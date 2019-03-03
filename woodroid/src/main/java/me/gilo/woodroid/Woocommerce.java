@@ -28,6 +28,8 @@ public class Woocommerce {
 
     final ReportsRepository reportsRepository;
 
+    final CartRepository cartRepository;
+
 
     enum ApiVersion {
         API_VERSION1{
@@ -53,6 +55,8 @@ public class Woocommerce {
     public Woocommerce(String siteUrl, ApiVersion apiVerion, String consumerKey, String consumerSecret) {
         String baseUrl = siteUrl + "/wp-json/wc/v" + apiVerion + "/";
 
+        String cartBaseUrl = siteUrl + "/wp-json/wc/v" + 2 + "/";
+
         orderNoteRepository = new OrderNoteRepository(baseUrl, consumerKey, consumerSecret);
         refundRepository = new RefundRepository(baseUrl, consumerKey, consumerSecret);
         attributeRepository = new AttributeRepository(baseUrl, consumerKey, consumerSecret);
@@ -67,6 +71,8 @@ public class Woocommerce {
         productRepository = new ProductRepository(baseUrl, consumerKey, consumerSecret);
 
         reportsRepository = new ReportsRepository(baseUrl, consumerKey, consumerSecret);
+
+        cartRepository = new CartRepository(cartBaseUrl, consumerKey, consumerSecret);
 
     }
 
@@ -157,5 +163,9 @@ public class Woocommerce {
 
     public ReportsRepository ReportsRepository() {
         return reportsRepository;
+    }
+
+    public CartRepository CartRepository() {
+        return cartRepository;
     }
 }

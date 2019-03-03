@@ -2,14 +2,16 @@ package me.gilo.wc.repo;
 
 
 import me.gilo.wc.common.WooLiveData;
+import me.gilo.woodroid.Woocommerce;
 import me.gilo.woodroid.models.Order;
-import me.gilo.woodroid.models.Product;
-import me.gilo.woodroid.models.filters.ProductFilter;
 
 import javax.inject.Inject;
-import java.util.List;
 
-public class OrderRepository extends WoocommerceRepository {
+public class OrderRepository {
+
+    @Inject
+    Woocommerce woocommerce;
+
 
     @Inject
     public OrderRepository() {
