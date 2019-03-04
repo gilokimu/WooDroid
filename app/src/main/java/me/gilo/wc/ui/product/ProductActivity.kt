@@ -1,20 +1,12 @@
 package me.gilo.wc.ui.product
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import com.squareup.picasso.Picasso
-import me.gilo.wc.R
-
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.content_product.*
+import me.gilo.wc.R
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
 import me.gilo.wc.ui.state.ProgressDialogFragment
@@ -46,7 +38,7 @@ class ProductActivity : BaseActivity() {
     }
 
     private fun addToCart(productId: Int) {
-        viewModel.addToCart(productId).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.addToCart(baseContext, productId).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 

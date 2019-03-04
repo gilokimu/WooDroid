@@ -53,6 +53,19 @@ public class AppUtils {
         return  prefs.getString("token", null);
     }
 
+    public void saveCartSession(String sessionId, String expiry){
+        SharedPreferences.Editor editor = context.getSharedPreferences(MY_PREFS_NAME, context.MODE_PRIVATE).edit();
+        editor.putString("cartSession", sessionId);
+        editor.putString("expiry", expiry);
+        editor.putBoolean("hasSession", true);
+        editor.apply();
+    }
+
+    public String getCartSession() {
+        SharedPreferences prefs = context.getSharedPreferences(MY_PREFS_NAME, context.MODE_PRIVATE);
+        return  prefs.getString("cartSession", null);
+    }
+
     public String getExpiry() {
         SharedPreferences prefs = context.getSharedPreferences(MY_PREFS_NAME, context.MODE_PRIVATE);
         return  prefs.getString("expiry", null);

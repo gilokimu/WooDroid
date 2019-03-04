@@ -1,5 +1,6 @@
 package me.gilo.woodroid;
 
+import android.content.Context;
 import me.gilo.woodroid.repo.*;
 import me.gilo.woodroid.repo.order.OrderNoteRepository;
 import me.gilo.woodroid.repo.order.RefundRepository;
@@ -165,7 +166,8 @@ public class Woocommerce {
         return reportsRepository;
     }
 
-    public CartRepository CartRepository() {
+    public CartRepository CartRepository(Context context) {
+        cartRepository.turnOnCookies(context);
         return cartRepository;
     }
 }

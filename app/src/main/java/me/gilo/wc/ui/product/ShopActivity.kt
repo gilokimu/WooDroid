@@ -6,7 +6,6 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.widget.GridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Filter
 import android.widget.Toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_shop.*
@@ -119,7 +118,7 @@ class ShopActivity : BaseActivity() {
     }
 
     private fun cart() {
-        viewModel.cart().observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.cart(baseContext).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                 }

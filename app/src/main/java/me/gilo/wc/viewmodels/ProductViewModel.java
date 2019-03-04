@@ -1,12 +1,12 @@
 package me.gilo.wc.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
 import me.gilo.wc.common.WooLiveData;
 import me.gilo.wc.repo.CartRepository;
 import me.gilo.wc.repo.OrderRepository;
 import me.gilo.wc.repo.ProductRepository;
 import me.gilo.woodroid.models.LineItem;
-import me.gilo.woodroid.models.Order;
 import me.gilo.woodroid.models.Product;
 import me.gilo.woodroid.models.filters.ProductFilter;
 
@@ -34,12 +34,12 @@ public final class ProductViewModel extends ViewModel {
         return productRepository.products();
     }
 
-    public WooLiveData<Map<String, LineItem>> addToCart(int productId) {
-        return cartRepository.addToCart(productId);
+    public WooLiveData<Map<String, LineItem>> addToCart(Context context, int productId) {
+        return cartRepository.addToCart(context, productId);
     }
 
-    public WooLiveData<Map<String, LineItem>> cart() {
-        return cartRepository.cart();
+    public WooLiveData<Map<String, LineItem>> cart(Context context) {
+        return cartRepository.cart(context);
     }
 
     public WooLiveData<List<Product>> products(ProductFilter filter) {
