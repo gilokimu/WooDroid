@@ -3,6 +3,7 @@ package me.gilo.wc.di;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import me.gilo.wc.MainActivity;
+import me.gilo.wc.ui.home.HomeActivity;
 import me.gilo.wc.ui.product.ProductActivity;
 import me.gilo.wc.ui.product.ShopActivity;
 
@@ -17,5 +18,8 @@ abstract class ActivitiesModule {
 
     @ContributesAndroidInjector
     abstract ProductActivity contributesProductActivity();
+
+    @ContributesAndroidInjector
+    abstract HomeActivity contributesHomeActivity();
 
 }

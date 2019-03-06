@@ -2,8 +2,7 @@ package me.gilo.woodroid.repo;
 
 import android.content.Context;
 import me.gilo.woodroid.data.api.CartAPI;
-import me.gilo.woodroid.data.cookie.AddCookiesInterceptor;
-import me.gilo.woodroid.data.cookie.ReceivedCookiesInterceptor;
+import me.gilo.woodroid.data.cookie.DemoCookieInterceptor;
 import me.gilo.woodroid.models.LineItem;
 import me.gilo.woodroid.models.filters.CartFilter;
 import okhttp3.OkHttpClient;
@@ -50,8 +49,9 @@ public class CartRepository{
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(new AddCookiesInterceptor(context))
-                .addInterceptor(new ReceivedCookiesInterceptor(context))
+//                .addInterceptor(new AddCookiesInterceptor(context))
+//                .addInterceptor(new ReceivedCookiesInterceptor(context))
+                .addInterceptor(new DemoCookieInterceptor())
                 .addInterceptor(loggingInterceptor)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)

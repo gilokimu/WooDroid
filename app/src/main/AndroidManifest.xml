@@ -13,6 +13,16 @@
 	android:supportsRtl="true"
 	android:theme="@style/AppTheme">
 	<activity
+	  android:name=".ui.home.HomeActivity"
+	  android:label="@string/title_activity_home"
+	  android:theme="@style/AppTheme.NoActionBar">
+	</activity>
+	<activity
+	  android:name=".ui.category.CategoryActivity"
+	  android:label="@string/title_activity_category"
+	  android:theme="@style/AppTheme.NoActionBar">
+	</activity>
+	<activity
 	  android:name=".ui.product.NavigatioDrawerActivity"
 	  android:label="@string/title_activity_navigatio_drawer"
 	  android:theme="@style/AppTheme.NoActionBar">

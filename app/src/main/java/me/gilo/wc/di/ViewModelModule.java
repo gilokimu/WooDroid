@@ -6,6 +6,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
 import me.gilo.wc.utils.ViewModelFactory;
+import me.gilo.wc.viewmodels.CategoryViewModel;
 import me.gilo.wc.viewmodels.ProductViewModel;
 
 
@@ -16,7 +17,12 @@ public abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(ProductViewModel.class)
-    abstract ViewModel bindUserViewModel(ProductViewModel viewModel);
+    abstract ViewModel bindProductViewModel(ProductViewModel viewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CategoryViewModel.class)
+    abstract ViewModel bindCategoryViewModel(CategoryViewModel viewModel);
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelFactory factory);

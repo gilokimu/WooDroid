@@ -23,10 +23,13 @@
   <string name="action_settings">Settings</string>
 
   <string-array name="sort">
-    <item>Popularity</item>
-    <item>Date added</item>
-    <item>Price lowest first</item>
-    <item>Price highest first</item>
+	<item>Popularity</item>
+	<item>Date added</item>
+	<item>Price lowest first</item>
+	<item>Price highest first</item>
   </string-array>
+  <string name="title_activity_category">CategoryActivity</string>
+  <string name="title_activity_home">HomeActivity</string>
+  <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</string>
 
 </resources>
