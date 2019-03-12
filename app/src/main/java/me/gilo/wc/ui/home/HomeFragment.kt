@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
 import me.gilo.wc.R
 import me.gilo.wc.adapter.HomeProductAdapter
@@ -52,6 +53,10 @@ class HomeFragment : Fragment() {
         setUpProducts()
         setUpHoodies()
 
+        Picasso
+            .with(activity)
+            .load("http://157.230.131.179/wp-content/uploads/2019/01/T_6_front.jpg")
+            .into(ivIntro)
     }
 
     private fun setUpProducts() {

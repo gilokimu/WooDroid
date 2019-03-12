@@ -1,89 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg"
-        android:orientation="vertical"
-        tools:ignore="MissingPrefix"
-        >
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/bg"
+  android:orientation="vertical"
+  tools:ignore="MissingPrefix"
+  >
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
-        <TextView
-          fontPath="@string/font_medium"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:gravity="left"
-          android:layout_marginLeft="16dp"
-          android:layout_marginTop="16dp"
-          android:layout_marginRight="16dp"
-          android:text="Some of our popular products"
-          android:textColor="@color/text_black_2"
-          android:textSize="20sp"/>
-
-        <TextView
-          fontPath="@string/font_regular"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:gravity="left"
-          android:layout_marginLeft="16dp"
-          android:layout_marginRight="16dp"
-          android:text="We have a feeling you will like these"
-          android:maxLines="6"
-          android:lineSpacingMultiplier="1.2"
-          android:textColor="@color/text_black_9"
-          android:textSize="16sp"/>
+  <LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	>
 
 
-        <android.support.v7.widget.RecyclerView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/rvShop"
-          android:layout_marginTop="16dp"
-          ></android.support.v7.widget.RecyclerView>
+	<LinearLayout
+	  android:layout_width="match_parent"
+	  android:layout_height="wrap_content"
+	  android:background="@drawable/rect_white"
+	  android:elevation="4dp"
+	  android:orientation="vertical"
+	  android:layout_marginTop="16dp"
+	  android:layout_margin="16dp"
+	  >
 
 
-        <TextView
-          fontPath="@string/font_medium"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:gravity="left"
-          android:layout_marginLeft="16dp"
-          android:layout_marginRight="16dp"
-          android:layout_marginTop="16dp"
-          android:text="Check out our hoodies"
-          android:textColor="@color/text_black_2"
-          android:textSize="20sp"/>
+	  <ImageView
+		android:layout_width="match_parent"
+		android:layout_height="160dp"
+		android:id="@+id/ivIntro"
+		android:scaleType="centerCrop"
+		/>
 
-        <TextView
-          fontPath="@string/font_regular"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:gravity="left"
-          android:layout_marginLeft="16dp"
-          android:text="Classic pullover silhouette in a durable reverse weave cotton fleece"
-          android:layout_marginRight="16dp"
-          android:maxLines="6"
-          android:lineSpacingMultiplier="1.2"
-          android:textColor="@color/text_black_9"
-          android:textSize="16sp"/>
+	  <TextView
+		fontPath="@string/font_medium"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:gravity="left"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:text="Original Sales, Free delivery"
+		android:textColor="@color/text"
+		android:textSize="20sp"/>
+
+	  <TextView
+		fontPath="@string/font_regular"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:gravity="left"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:lineSpacingMultiplier="1.4"
+		android:text="New exclusive styles, the best items out there, delivered free worldwide to your doorstep"
+		android:textColor="@color/text_black_5"
+		android:textSize="16sp"/>
+
+	  <TextView
+		fontPath="@string/font_regular"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="right"
+		android:gravity="left"
+		android:layout_marginTop="16dp"
+		android:text="Dismiss"
+		android:textColor="#1c5c9a"
+		android:padding="16dp"
+		android:textSize="16sp"/>
 
 
-        <android.support.v7.widget.RecyclerView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/rvHoodies"
-          android:layout_marginTop="16dp"
-          ></android.support.v7.widget.RecyclerView>
+	</LinearLayout>
 
 
+	<TextView
+	  fontPath="@string/font_medium"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:gravity="left"
+	  android:layout_marginLeft="16dp"
+	  android:layout_marginTop="16dp"
+	  android:layout_marginRight="16dp"
+	  android:text="Some of our popular products"
+	  android:textColor="@color/text_black_2"
+	  android:textSize="20sp"/>
 
-    </LinearLayout>
+	<TextView
+	  fontPath="@string/font_regular"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:gravity="left"
+	  android:layout_marginLeft="16dp"
+	  android:layout_marginRight="16dp"
+	  android:text="We have a feeling you will like these"
+	  android:maxLines="6"
+	  android:lineSpacingMultiplier="1.2"
+	  android:textColor="@color/text_black_9"
+	  android:textSize="16sp"/>
+
+
+	<android.support.v7.widget.RecyclerView
+	  android:layout_width="match_parent"
+	  android:layout_height="wrap_content"
+	  android:id="@+id/rvShop"
+	  android:layout_marginTop="16dp"
+	  ></android.support.v7.widget.RecyclerView>
+
+
+	<TextView
+	  fontPath="@string/font_medium"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:gravity="left"
+	  android:layout_marginLeft="16dp"
+	  android:layout_marginRight="16dp"
+	  android:layout_marginTop="16dp"
+	  android:text="Check out our hoodies"
+	  android:textColor="@color/text_black_2"
+	  android:textSize="20sp"/>
+
+	<TextView
+	  fontPath="@string/font_regular"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:gravity="left"
+	  android:layout_marginLeft="16dp"
+	  android:text="Classic pullover silhouette in a durable reverse weave cotton fleece"
+	  android:layout_marginRight="16dp"
+	  android:maxLines="6"
+	  android:lineSpacingMultiplier="1.2"
+	  android:textColor="@color/text_black_9"
+	  android:textSize="16sp"/>
+
+
+	<android.support.v7.widget.RecyclerView
+	  android:layout_width="match_parent"
+	  android:layout_height="wrap_content"
+	  android:id="@+id/rvHoodies"
+	  android:layout_marginTop="16dp"
+	  ></android.support.v7.widget.RecyclerView>
+
+
+  </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
