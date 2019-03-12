@@ -59,6 +59,8 @@ class CategoryFragment : Fragment() {
     }
 
     private fun categories() {
+
+        //TODO ('Exclude the uncategorized category')
         viewModel.categories().observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {

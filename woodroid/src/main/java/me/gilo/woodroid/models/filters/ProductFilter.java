@@ -1,8 +1,5 @@
 package me.gilo.woodroid.models.filters;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ProductFilter extends ListFilter{
     private int[] parent;
     private int[] parent_exclude;
@@ -11,7 +8,7 @@ public class ProductFilter extends ListFilter{
     private String type;
     private String sku;
     private boolean featured;
-    private String category;
+    private int category;
     private String tag;
     private String shipping_class;
     private String attribute;
@@ -96,11 +93,11 @@ public class ProductFilter extends ListFilter{
         addFilter("featured", featured);
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
 
         addFilter("category", category);

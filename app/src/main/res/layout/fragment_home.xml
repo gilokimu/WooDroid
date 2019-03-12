@@ -12,59 +12,77 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
+            android:orientation="vertical"
             >
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rect_white"
-                android:orientation="vertical"
-                >
+        <TextView
+          fontPath="@string/font_medium"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="left"
+          android:layout_marginLeft="16dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginRight="16dp"
+          android:text="Some of our popular products"
+          android:textColor="@color/text_black_2"
+          android:textSize="20sp"/>
 
-            <TextView
-                    android:id="@+id/tvTitle"
-                    fontPath="@string/font_medium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:gravity="left"
-                    android:text="This is an example of a title"
-                    android:textColor="@color/text"
-                    android:textSize="18sp"/>
+        <TextView
+          fontPath="@string/font_regular"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="left"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:text="We have a feeling you will like these"
+          android:maxLines="6"
+          android:lineSpacingMultiplier="1.2"
+          android:textColor="@color/text_black_9"
+          android:textSize="16sp"/>
 
-            <TextView
-                    android:id="@+id/tvDescription"
-                    fontPath="@string/font_regular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="16dp"
-                    android:gravity="left"
-                    android:text="@string/lorem"
-                    android:maxLines="6"
-                    android:lineSpacingMultiplier="1.2"
-                    android:textColor="@color/text_black_5"
-                    android:textSize="14sp"/>
 
-            <TextView
-                    android:id="@+id/tvCallToAction"
-                    fontPath="@string/font_regular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="0dp"
-                    android:layout_marginBottom="0dp"
-                    android:gravity="left"
-                    android:padding="16dp"
-                    android:text="Call to Action"
-                    android:textColor="#1c5c9a"
-                    android:textSize="14sp"/>
+        <android.support.v7.widget.RecyclerView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/rvShop"
+          android:layout_marginTop="16dp"
+          ></android.support.v7.widget.RecyclerView>
 
-        </LinearLayout>
+
+        <TextView
+          fontPath="@string/font_medium"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="left"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:layout_marginTop="16dp"
+          android:text="Check out our hoodies"
+          android:textColor="@color/text_black_2"
+          android:textSize="20sp"/>
+
+        <TextView
+          fontPath="@string/font_regular"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="left"
+          android:layout_marginLeft="16dp"
+          android:text="Classic pullover silhouette in a durable reverse weave cotton fleece"
+          android:layout_marginRight="16dp"
+          android:maxLines="6"
+          android:lineSpacingMultiplier="1.2"
+          android:textColor="@color/text_black_9"
+          android:textSize="16sp"/>
+
+
+        <android.support.v7.widget.RecyclerView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/rvHoodies"
+          android:layout_marginTop="16dp"
+          ></android.support.v7.widget.RecyclerView>
+
+
 
     </LinearLayout>
 

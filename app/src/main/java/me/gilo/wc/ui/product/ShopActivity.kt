@@ -3,13 +3,11 @@ package me.gilo.wc.ui.product
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
-import android.support.v7.widget.GridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_shop.*
-import kotlinx.android.synthetic.main.content_shop.*
 import kotlinx.android.synthetic.main.drawer_filter.*
 import me.gilo.wc.R
 import me.gilo.wc.adapter.ProductAdapter
@@ -43,19 +41,22 @@ class ShopActivity : BaseActivity() {
 
         title = "Shop"
 
-        val layoutManager = GridLayoutManager(baseContext, 2)
-        rvShop.layoutManager = layoutManager
-        rvShop.isNestedScrollingEnabled = false
 
-        products = ArrayList()
 
-        adapter = ProductAdapter(products)
-        rvShop.adapter = adapter
 
-        products()
         cart()
 
         bFilter.setOnClickListener{filter()}
+
+        if(intent.hasExtra("categoryId")){
+            val filter = ProductFilter()
+            filter.category = intent.getIntExtra("categoryId", 0)
+            products(filter)
+
+            title = intent.getStringExtra("name")
+        }else{
+            products()
+        }
     }
 
     private fun filter() {
@@ -125,7 +126,6 @@ class ShopActivity : BaseActivity() {
 
                 Status.SUCCESS -> {
                     val cartResponse = response.data()
-                    toast("Cart items are " + cartResponse.size)
                 }
 
                 Status.ERROR -> {
