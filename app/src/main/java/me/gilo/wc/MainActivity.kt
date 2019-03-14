@@ -14,6 +14,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         startActivity(Intent(baseContext, HomeActivity::class.java))
+
+//        val intent = Intent(baseContext, ProductActivity::class.java)
+//        intent.putExtra("productId", 63)
+//
+//        startActivity(intent)
+
         finish()
 
     }

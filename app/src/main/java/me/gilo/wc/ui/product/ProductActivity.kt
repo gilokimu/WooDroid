@@ -3,10 +3,10 @@ package me.gilo.wc.ui.product
 import android.os.Bundle
 import android.text.Html
 import android.view.View
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.content_product.*
 import me.gilo.wc.R
+import me.gilo.wc.adapter.ImagePagerAdapter
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
 import me.gilo.wc.ui.state.ProgressDialogFragment
@@ -93,7 +93,10 @@ class ProductActivity : BaseActivity() {
         tvDescription.text = Html.fromHtml(product.description)
 
         if (product.images != null && product.images.isNotEmpty()){
-            Picasso.with(baseContext).load(product.images[0].src).into(ivImage)
+            vpImages.offscreenPageLimit = product.images.size
+            vpImages.adapter = ImagePagerAdapter(baseContext, product.images)
+
+            indicator.setViewPager(vpImages)
         }
 
         if (product.isOn_sale) {
@@ -101,7 +104,7 @@ class ProductActivity : BaseActivity() {
 
             tvOnSale.visibility = View.VISIBLE
         }else{
-            tvCallToAction.text = Html.fromHtml(product.price_html)
+            tvCallToAction.text = Html.fromHtml(product.price_html).trim()
             tvOnSale.visibility = View.GONE
         }
     }

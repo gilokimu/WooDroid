@@ -85,5 +85,7 @@ dependencies {
 
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
 
+    implementation 'me.relex:circleindicator:1.2.2@aar'
+
 
 }
