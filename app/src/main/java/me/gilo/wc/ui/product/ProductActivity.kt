@@ -1,17 +1,20 @@
 package me.gilo.wc.ui.product
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
 import android.view.View
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.content_product.*
 import me.gilo.wc.R
+import me.gilo.wc.adapter.HomeProductAdapter
 import me.gilo.wc.adapter.ImagePagerAdapter
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
 import me.gilo.wc.ui.state.ProgressDialogFragment
 import me.gilo.wc.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
+import java.util.ArrayList
 
 class ProductActivity : BaseActivity() {
 
@@ -31,10 +34,55 @@ class ProductActivity : BaseActivity() {
 
         if (productId != 0){
             product(productId)
+            similarProducts()
         }
 
         fab.setOnClickListener{addToCart(productId)}
 
+    }
+
+
+    lateinit var adapter: HomeProductAdapter
+    private lateinit var products: ArrayList<Product>
+
+    //TODO(Use the include product filter to get related products from API)
+    private fun similarProducts() {
+        val layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
+        rvShop.layoutManager = layoutManager
+        rvShop.isNestedScrollingEnabled = false
+
+        products = ArrayList()
+
+        adapter = HomeProductAdapter(products)
+        rvShop.adapter = adapter
+
+        viewModel.products().observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                    products.clear()
+                    val productsResponse = response.data()
+                    for (product in productsResponse) {
+                        products.add(product)
+                    }
+
+                    adapter.notifyDataSetChanged()
+
+                }
+
+                Status.ERROR -> {
+
+                }
+
+                Status.EMPTY -> {
+
+                }
+            }
+
+        })
     }
 
     private fun addToCart(productId: Int) {
@@ -61,6 +109,7 @@ class ProductActivity : BaseActivity() {
 
         })
     }
+
 
     private fun product(productId : Int) {
         viewModel.product(productId).observe(this, android.arch.lifecycle.Observer { response ->

@@ -104,6 +104,27 @@
 
 
 	</LinearLayout>
+
+
+	<TextView
+	  fontPath="@string/font_medium"
+	  android:layout_width="wrap_content"
+	  android:layout_height="30dp"
+	  android:gravity="left"
+	  android:layout_marginLeft="16dp"
+	  android:layout_marginTop="16dp"
+	  android:layout_marginRight="16dp"
+	  android:text="More Like this"
+	  android:textColor="@color/text_black_2"
+	  android:textSize="20sp"/>
+
+	<android.support.v7.widget.RecyclerView
+	  android:layout_width="match_parent"
+	  android:layout_height="wrap_content"
+	  android:id="@+id/rvShop"
+	  android:layout_marginTop="16dp"
+	  ></android.support.v7.widget.RecyclerView>
+
   </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
 
