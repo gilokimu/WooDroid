@@ -3,6 +3,7 @@ package me.gilo.wc.ui.product
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
+import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.content_product.*
@@ -14,12 +15,15 @@ import me.gilo.wc.common.Status
 import me.gilo.wc.ui.state.ProgressDialogFragment
 import me.gilo.wc.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
+import me.gilo.woodroid.models.filters.ProductFilter
 import java.util.ArrayList
 
 class ProductActivity : BaseActivity() {
 
     lateinit var viewModel: ProductViewModel
-    val TAG = this::getLocalClassName
+    val TAG = this::getLocalClassName.toString()
+
+    var related_ids : IntArray = intArrayOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +38,7 @@ class ProductActivity : BaseActivity() {
 
         if (productId != 0){
             product(productId)
-            similarProducts()
+
         }
 
         fab.setOnClickListener{addToCart(productId)}
@@ -46,7 +50,7 @@ class ProductActivity : BaseActivity() {
     private lateinit var products: ArrayList<Product>
 
     //TODO(Use the include product filter to get related products from API)
-    private fun similarProducts() {
+    private fun similarProducts(product: Product) {
         val layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.HORIZONTAL, false)
         rvShop.layoutManager = layoutManager
         rvShop.isNestedScrollingEnabled = false
@@ -56,7 +60,14 @@ class ProductActivity : BaseActivity() {
         adapter = HomeProductAdapter(products)
         rvShop.adapter = adapter
 
-        viewModel.products().observe(this, android.arch.lifecycle.Observer { response ->
+        val filter = ProductFilter()
+        filter.include = product.related_ids.toIntArray()
+
+        for (id in product.related_ids){
+            Log.d("Related ids", "" + id)
+        }
+
+        viewModel.products(filter).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
@@ -121,6 +132,7 @@ class ProductActivity : BaseActivity() {
                 Status.SUCCESS -> {
                     val product = response.data()
                     setUpPage(product)
+                    similarProducts(product)
 
                 }
 

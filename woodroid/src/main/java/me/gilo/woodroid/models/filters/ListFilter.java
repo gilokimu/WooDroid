@@ -1,10 +1,9 @@
 package me.gilo.woodroid.models.filters;
 
+import android.util.Log;
 import me.gilo.woodroid.utils.Converter;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ListFilter {
 
@@ -146,7 +145,25 @@ public class ListFilter {
     }
 
     public void addFilter(String filter, Object value){
-        filters.put(filter, value.toString());
+        if (value.getClass().isArray()){
+            if (value instanceof int[]) {
+                String values = "";
+                int[] items = (int[]) value;
+                for (int item : items){
+                    values += item + ",";
+                }
+
+                filters.put(filter, ""+values.substring(0, values.length() - 1));
+
+            }else {
+                List list = Arrays.asList(value);
+                for (Object item : list) {
+                    filters.put(filter, item.toString());
+                }
+            }
+        }else {
+            filters.put(filter, value.toString());
+        }
     }
 
     public Map<String, String> getFilters() {
