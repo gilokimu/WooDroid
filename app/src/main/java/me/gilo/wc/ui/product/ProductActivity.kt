@@ -10,11 +10,13 @@ import kotlinx.android.synthetic.main.content_product.*
 import me.gilo.wc.R
 import me.gilo.wc.adapter.HomeProductAdapter
 import me.gilo.wc.adapter.ImagePagerAdapter
+import me.gilo.wc.adapter.ProductReviewAdapter
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
 import me.gilo.wc.ui.state.ProgressDialogFragment
 import me.gilo.wc.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
+import me.gilo.woodroid.models.ProductReview
 import me.gilo.woodroid.models.filters.ProductFilter
 import java.util.ArrayList
 
@@ -38,6 +40,7 @@ class ProductActivity : BaseActivity() {
 
         if (productId != 0){
             product(productId)
+            reviews(productId)
 
         }
 
@@ -62,10 +65,6 @@ class ProductActivity : BaseActivity() {
 
         val filter = ProductFilter()
         filter.include = product.related_ids.toIntArray()
-
-        for (id in product.related_ids){
-            Log.d("Related ids", "" + id)
-        }
 
         viewModel.products(filter).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
@@ -138,6 +137,50 @@ class ProductActivity : BaseActivity() {
 
                 Status.ERROR -> {
 
+                }
+
+                Status.EMPTY -> {
+
+                }
+            }
+
+        })
+
+    }
+
+
+    private fun reviews(productId : Int) {
+
+        val layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
+        rvReviews.layoutManager = layoutManager
+        rvReviews.isNestedScrollingEnabled = false
+
+        var reviews = ArrayList<ProductReview>()
+
+        var productReviewAdapter = ProductReviewAdapter(reviews)
+        rvReviews.adapter = productReviewAdapter
+
+
+        viewModel.reviews(productId).observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                   reviews.clear()
+
+                    val reviewsResponse = response.data()
+                    for (review in reviewsResponse) {
+                        reviews.add(review)
+                    }
+
+                    productReviewAdapter.notifyDataSetChanged()
+
+                }
+
+                Status.ERROR -> {
+                    Log.d("Error", response.error().message)
                 }
 
                 Status.EMPTY -> {

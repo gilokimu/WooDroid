@@ -1,5 +1,7 @@
 package me.gilo.woodroid.repo;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import me.gilo.woodroid.data.auth.AuthIntercepter;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -17,6 +19,11 @@ public class WooRepository {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                .create();
+
+
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new AuthIntercepter(consumerKey, consumerSecret))
                 .addInterceptor(loggingInterceptor)
@@ -27,7 +34,7 @@ public class WooRepository {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
     }

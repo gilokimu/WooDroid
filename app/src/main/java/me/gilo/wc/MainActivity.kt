@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import me.gilo.wc.ui.home.HomeActivity
+import me.gilo.wc.ui.product.ProductActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,10 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         startActivity(Intent(baseContext, HomeActivity::class.java))
 
-//        val intent = Intent(baseContext, ProductActivity::class.java)
-//        intent.putExtra("productId", 63)
-//
-//        startActivity(intent)
+        val intent = Intent(baseContext, ProductActivity::class.java)
+        intent.putExtra("productId", 63)
+
+        startActivity(intent)
 
         finish()
 

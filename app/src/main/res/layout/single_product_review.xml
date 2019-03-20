@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:tools="http://schemas.android.com/tools"
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:orientation="vertical"
+			  android:paddingLeft="16dp"
+			  android:paddingRight="16dp"
+			  android:paddingTop="16dp"
+			  android:background="#ffffff"
+			  tools:ignore="MissingPrefix">
+
+  <LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:background="#ffffff"
+	tools:ignore="MissingPrefix">
+
+	<LinearLayout
+	  android:layout_width="match_parent"
+	  android:layout_height="match_parent"
+	  android:orientation="vertical"
+	  android:layout_weight="1"
+	  android:layout_marginRight="8dp"
+	  >
+
+	  <TextView
+		android:id="@+id/tvName"
+		fontPath="@string/font_medium"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="left"
+		android:maxLines="1"
+		android:text="Gilbert Kimutai"
+		android:textColor="@color/text_black_4"
+		android:textSize="16sp"/>
+
+	  <android.support.v7.widget.AppCompatRatingBar
+		android:id="@+id/rbRating"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:numStars="5"
+		android:rating="4"
+		android:layout_marginTop="4dp"
+		style="?android:attr/ratingBarStyleSmall"
+		/>
+
+	</LinearLayout>
+
+	<LinearLayout
+	  android:layout_width="wrap_content"
+	  android:layout_height="match_parent"
+	  android:orientation="vertical"
+	  android:gravity="right"
+
+	  >
+
+	  <TextView
+		android:id="@+id/tvDate"
+		fontPath="@string/font_regular"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="left"
+		android:text="Jan 7, 2018"
+		android:maxLines="2"
+		android:lineSpacingMultiplier="1.2"
+		android:textColor="@color/text_black_5"
+		android:textSize="14sp"/>
+
+	</LinearLayout>
+
+
+  </LinearLayout>
+
+  <TextView
+	android:id="@+id/tvMessage"
+	fontPath="@string/font_regular"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:gravity="left"
+	android:text="@string/lorem"
+	android:maxLines="4"
+	android:layout_marginTop="8dp"
+	android:lineSpacingMultiplier="1.2"
+	android:textColor="@color/text_black_5"
+	android:textSize="16sp"/>
+
+  <View
+	android:layout_width="match_parent"
+	android:layout_height="1dp"
+	android:layout_marginTop="16dp"
+	android:background="@color/bg"
+
+	/>
+
+</LinearLayout>
+
+

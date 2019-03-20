@@ -1,6 +1,5 @@
 package me.gilo.woodroid.models.filters;
 
-import android.util.Log;
 import me.gilo.woodroid.utils.Converter;
 
 import java.util.*;

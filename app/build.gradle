@@ -12,6 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -86,6 +87,8 @@ dependencies {
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
 
     implementation 'me.relex:circleindicator:1.2.2@aar'
+
+    implementation 'net.danlew:android.joda:2.9.9.4'
 
 
 }

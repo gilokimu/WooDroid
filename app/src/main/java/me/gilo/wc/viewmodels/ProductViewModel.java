@@ -8,6 +8,7 @@ import me.gilo.wc.repo.OrderRepository;
 import me.gilo.wc.repo.ProductRepository;
 import me.gilo.woodroid.models.LineItem;
 import me.gilo.woodroid.models.Product;
+import me.gilo.woodroid.models.ProductReview;
 import me.gilo.woodroid.models.filters.ProductFilter;
 
 import javax.inject.Inject;
@@ -48,6 +49,11 @@ public final class ProductViewModel extends ViewModel {
 
     public WooLiveData<Product> product(int productId) {
         return productRepository.product(productId);
+    }
+
+
+    public WooLiveData<List<ProductReview>> reviews(int productId) {
+        return productRepository.reviews(productId);
     }
 
     public WooLiveData<List<Product>> search(String term) {

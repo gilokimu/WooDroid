@@ -27,6 +27,8 @@ public class Woocommerce {
     final OrderRepository orderRepository;
     final ProductRepository productRepository;
 
+    final ReviewRepository reviewRepository;
+
     final ReportsRepository reportsRepository;
 
     final CartRepository cartRepository;
@@ -74,6 +76,8 @@ public class Woocommerce {
         reportsRepository = new ReportsRepository(baseUrl, consumerKey, consumerSecret);
 
         cartRepository = new CartRepository(cartBaseUrl, consumerKey, consumerSecret);
+
+        reviewRepository = new ReviewRepository(baseUrl, consumerKey, consumerSecret);
 
     }
 
@@ -160,6 +164,10 @@ public class Woocommerce {
 
     public ProductRepository ProductRepository() {
         return productRepository;
+    }
+
+    public ReviewRepository ReviewRepository() {
+        return reviewRepository;
     }
 
     public ReportsRepository ReportsRepository() {
