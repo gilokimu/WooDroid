@@ -90,5 +90,7 @@ dependencies {
 
     implementation 'net.danlew:android.joda:2.9.9.4'
 
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
 
 }

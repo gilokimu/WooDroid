@@ -12,8 +12,6 @@ import java.util.HashSet;
 public class AddCookiesInterceptor implements Interceptor {
 
     public static final String PREF_COOKIES = "PREF_COOKIES";
-    // We're storing our stuff in a database made just for cookies called PREF_COOKIES.
-    // I reccomend you do this, and don't change this default value.
     private Context context;
 
     public AddCookiesInterceptor(Context context) {
