@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:minWidth="360dp"
+              android:id="@+id/llLoading"
+              android:gravity="center"
+              android:background="@drawable/rect_white"
+              android:orientation="vertical"
+              tools:ignore="MissingPrefix"
+  >
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorPrimary"
+      android:padding="16dp"
+      android:orientation="horizontal"
+      android:gravity="center_vertical"
+      >
+
+        <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+
+          android:tint="#ffffff"
+          android:layout_marginRight="16dp"
+
+          />
+
+        <TextView
+          android:id="@+id/tvTitle"
+          fontPath="@string/font_medium"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+
+          android:gravity="left"
+          android:text="Add a review"
+          android:textColor="#ffffff"
+          android:textSize="18sp"
+          />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:orientation="vertical"
+      android:padding="16dp"
+      >
+
+        <RatingBar
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/rbRating"
+          />
+
+
+        <android.support.design.widget.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColorHint="#9e9e9e"
+          android:layout_marginTop="16dp"
+          android:visibility="visible">
+
+            <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Your review"
+              android:gravity="top"
+              android:id="@+id/etReview"
+              android:paddingBottom="16dp"
+              android:textColor="#5f6368"
+              android:textColorHint="#9e9e9e"
+              android:textSize="16sp"
+
+              />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColorHint="#9e9e9e"
+          android:id="@+id/tilName"
+          android:layout_marginTop="16dp"
+          android:visibility="visible">
+
+            <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Name"
+              android:id="@+id/etName"
+              android:inputType="textPersonName"
+              android:paddingBottom="16dp"
+              android:textColor="#5f6368"
+              android:textColorHint="#9e9e9e"
+              android:textSize="16sp"
+
+              />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColorHint="#9e9e9e"
+          android:layout_marginTop="16dp"
+          android:visibility="visible">
+
+            <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Email"
+              android:id="@+id/etEmail"
+              android:inputType="textEmailAddress"
+              android:paddingBottom="16dp"
+              android:textColor="#5f6368"
+              android:textColorHint="#9e9e9e"
+              android:textSize="16sp"
+
+              />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorPrimary"
+      android:padding="16dp"
+      android:id="@+id/llSave"
+      >
+
+        <TextView
+          fontPath="@string/font_regular"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+
+          android:gravity="center"
+          android:text="Save"
+          android:textColor="#ffffff"
+          android:textSize="18sp"
+          />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

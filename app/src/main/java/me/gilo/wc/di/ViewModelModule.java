@@ -8,6 +8,7 @@ import dagger.multibindings.IntoMap;
 import me.gilo.wc.utils.ViewModelFactory;
 import me.gilo.wc.viewmodels.CategoryViewModel;
 import me.gilo.wc.viewmodels.ProductViewModel;
+import me.gilo.wc.viewmodels.ReviewViewModel;
 
 
 @SuppressWarnings("WeakerAccess")
@@ -23,6 +24,12 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CategoryViewModel.class)
     abstract ViewModel bindCategoryViewModel(CategoryViewModel viewModel);
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ReviewViewModel.class)
+    abstract ViewModel bindRevuewViewModel(ReviewViewModel viewModel);
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelFactory factory);

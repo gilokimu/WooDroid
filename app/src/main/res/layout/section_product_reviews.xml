@@ -8,17 +8,41 @@
   tools:ignore="MissingPrefix"
   >
 
-  <TextView
-	fontPath="@string/font_medium"
-	android:layout_width="wrap_content"
+
+  <FrameLayout
+	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:gravity="left"
 	android:layout_marginLeft="16dp"
 	android:layout_marginTop="16dp"
-	android:layout_marginRight="16dp"
-	android:text="Reviews"
-	android:textColor="@color/text_black_2"
-	android:textSize="20sp"/>
+	android:orientation="horizontal"
+	android:gravity="bottom"
+	>
+
+	<TextView
+	  fontPath="@string/font_medium"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:gravity="left"
+	  android:text="Reviews"
+	  android:layout_gravity="center_vertical"
+	  android:textColor="@color/text_black_2"
+	  android:textSize="20sp"/>
+
+	<TextView
+	  android:id="@+id/tvAddAReview"
+	  fontPath="@string/font_regular"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:layout_gravity="right"
+	  android:gravity="left"
+	  android:padding="16dp"
+	  android:text="Add Review"
+	  android:textColor="#1c5c9a"
+	  android:textSize="16sp"/>
+
+
+  </FrameLayout>
+
 
   <android.support.v7.widget.RecyclerView
 	android:layout_width="match_parent"
