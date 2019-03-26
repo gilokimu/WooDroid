@@ -70,8 +70,11 @@ class CategoryFragment : Fragment() {
                     categories.clear()
 
                     val categoriesResponse = response.data()
+
                     for (category in categoriesResponse) {
-                        categories.add(category)
+                        if (category.name != "Uncategorized") {
+                            categories.add(category)
+                        }
                     }
 
                     adapter.notifyDataSetChanged()

@@ -15,10 +15,8 @@ class CategoryViewHolder(val context: Context, itemView: View) :
 
     fun renderView(category: Category) {
         val tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
-        val tvDescription = itemView.findViewById<TextView>(R.id.tvDescription)
 
         tvTitle.text = category.name
-        tvDescription.text = Html.fromHtml(category.description)
 
         itemView.setOnClickListener{
             val intent = Intent(context, ShopActivity::class.java)

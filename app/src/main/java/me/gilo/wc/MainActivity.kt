@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         startActivity(Intent(baseContext, HomeActivity::class.java))
 
-        val intent = Intent(baseContext, ProductActivity::class.java)
-        intent.putExtra("productId", 63)
-
-        startActivity(intent)
+//        val intent = Intent(baseContext, ProductActivity::class.java)
+//        intent.putExtra("productId", 63)
+//
+//        startActivity(intent)
 
         finish()
 

@@ -3,13 +3,17 @@ package me.gilo.wc.ui.product
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_shop.*
+import kotlinx.android.synthetic.main.content_shop.*
 import kotlinx.android.synthetic.main.drawer_filter.*
 import me.gilo.wc.R
+import me.gilo.wc.adapter.HomeProductAdapter
 import me.gilo.wc.adapter.ProductAdapter
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
@@ -23,7 +27,7 @@ import java.util.*
 class ShopActivity : BaseActivity() {
 
     lateinit var adapter: ProductAdapter
-    private lateinit var products: ArrayList<Product>
+    var products : ArrayList<Product> = ArrayList()
 
     private lateinit var viewModel: ProductViewModel
     val TAG = this::getLocalClassName
@@ -42,6 +46,8 @@ class ShopActivity : BaseActivity() {
         title = "Shop"
 
 
+        setUpPage()
+
 
 
         cart()
@@ -57,6 +63,17 @@ class ShopActivity : BaseActivity() {
         }else{
             products()
         }
+    }
+
+    private fun setUpPage() {
+        val layoutManager = GridLayoutManager(baseContext, 2)
+        rvShop.layoutManager = layoutManager
+        rvShop.isNestedScrollingEnabled = false
+
+        products = ArrayList()
+
+        adapter = ProductAdapter(products)
+        rvShop.adapter = adapter
     }
 
     private fun filter() {
