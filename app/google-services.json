@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "159460744011",
+    "firebase_url": "https://api-project-159460744011.firebaseio.com",
+    "project_id": "api-project-159460744011",
+    "storage_bucket": "api-project-159460744011.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159460744011:android:6480f4108da5caac",
+        "android_client_info": {
+          "package_name": "me.gilo.wc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159460744011-nbbmft1vofqfrkmt88fub6u8jumt4f7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoViVbbgVc_-NOPwSwHIfutH6ZK8nbn-k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

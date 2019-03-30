@@ -11,8 +11,13 @@
 	android:label="@string/app_name"
 	android:roundIcon="@mipmap/ic_launcher_round"
 	android:supportsRtl="true"
-	android:usesCleartextTraffic="true"
-	android:theme="@style/AppTheme">
+	android:theme="@style/AppTheme"
+	android:usesCleartextTraffic="true">
+	<activity
+	  android:name=".ui.order.MyOrdersActivity"
+	  android:label="@string/title_activity_my_orders"
+	  android:theme="@style/AppTheme.NoActionBar">
+	</activity>
 	<activity
 	  android:name=".ui.home.HomeActivity"
 	  android:label="@string/title_activity_home"
@@ -23,6 +28,19 @@
 	  android:label="@string/title_activity_category"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
+
+	<activity
+	  android:name="me.gilo.raison.ui.user.onboarding.SignUpActivity"
+	  android:label="@string/title_activity_category"
+	  android:theme="@style/AppTheme.NoActionBar">
+	</activity>
+
+	<activity
+	  android:name="me.gilo.raison.ui.user.onboarding.SignInActivity"
+	  android:label="@string/title_activity_category"
+	  android:theme="@style/AppTheme.NoActionBar">
+	</activity>
+
 	<activity
 	  android:name=".ui.product.NavigatioDrawerActivity"
 	  android:label="@string/title_activity_navigatio_drawer"

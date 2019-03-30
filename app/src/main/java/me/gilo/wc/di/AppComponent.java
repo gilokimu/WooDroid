@@ -14,6 +14,7 @@ import javax.inject.Singleton;
 @Component(modules = {
         AndroidSupportInjectionModule.class,
         ViewModelModule.class,
+        FirebaseModule.class,
         ActivitiesModule.class,
         AppModule.class
 })
