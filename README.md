@@ -1,6 +1,6 @@
 # Woocommerce Android SDK
 
-This is an android sdk for woocommerce 
+This is an woocommerce api client for android
 
 <img src="https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1553916911644.jpg" width="285"/> <img src="https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1553916952806.jpg" width="285"/> <img src="https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1553916959446.jpg" width="285"/> <img src="https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1553916965766.jpg" width="285"/> <img src="https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1553916980710.jpg" width="285"/> <img src="https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1553916989454.jpg" width="285"/> <img src="https://github.com/gilokimu/woocommerce-android-sdk/raw/master/screens/screenshot-1553917011606.jpg" width="285"/>
 
