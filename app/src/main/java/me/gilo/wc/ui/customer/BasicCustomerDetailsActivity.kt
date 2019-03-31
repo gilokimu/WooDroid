@@ -1,19 +1,20 @@
 package me.gilo.wc.ui.customer
 
+import android.arch.lifecycle.Observer
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
+import kotlinx.android.synthetic.main.customer_basic_details.*
 import me.gilo.wc.R
-
-import kotlinx.android.synthetic.main.activity_basic_customer_details.*
-import me.gilo.raison.ui.user.onboarding.SignInActivity
-import me.gilo.wc.common.BaseActivity
+import me.gilo.wc.common.Status
+import me.gilo.wc.models.User
 import me.gilo.wc.ui.WooDroidActivity
-import me.gilo.wc.ui.state.ProgressDialogFragment
+import me.gilo.wc.ui.home.HomeActivity
 import me.gilo.wc.viewmodels.CustomerViewModel
-import me.gilo.wc.viewmodels.UserViewModel
+import me.gilo.woodroid.models.Customer
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -21,6 +22,8 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
 
 
     override lateinit var viewModel : CustomerViewModel
+    private val pattern = Pattern.compile(EMAIL_PATTERN)
+    private var matcher: Matcher? = null
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
@@ -33,6 +36,96 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
         viewModel = getViewModel(CustomerViewModel::class.java)
         title = "Basic Details"
 
+        etEmail.setText(FirebaseAuth.getInstance().currentUser!!.email)
+
+        flSave.setOnClickListener{save()}
+
+    }
+
+    private fun save() {
+        if (validates()) {
+            val email = etEmail.text.toString()
+            val firstName =  etFirstName.text.toString()
+            val lastName = etLastName.text.toString()
+            val username = etUsername.text.toString()
+
+            var customer = Customer()
+            customer.email = email
+            customer.firstName = firstName
+            customer.lastName = lastName
+            customer.username = username
+
+            viewModel.create(customer).observe(this, Observer {
+                    response->
+                when (response!!.status()){
+                    Status.LOADING ->{
+                        showLoading("Uploading account details", "This will only take a short while")
+                    }
+
+                    Status.SUCCESS ->{
+                        stopShowingLoading()
+                        startActivity(Intent(baseContext, BillingAddressActivity::class.java))
+                    }
+
+                    Status.ERROR ->{
+                        stopShowingLoading()
+                        Toast.makeText(baseContext, response.error().message.toString(), Toast.LENGTH_LONG).show()
+                    }
+
+                    Status.EMPTY ->{
+
+                    }
+
+                }
+            })
+
+
+
+        } else {
+            Toast.makeText(this, "Please correct the information entered", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun validates(): Boolean {
+        tilEmail.isErrorEnabled = false
+        tilFirstName.isErrorEnabled = false
+        tilLastName.isErrorEnabled = false
+        tilUsername.isErrorEnabled = false
+
+        var validation = true
+
+        val email = tilEmail.editText!!.text.toString()
+        val firstName =  etFirstName.text.toString()
+        val lastName = etLastName.text.toString()
+      val username = etUsername.text.toString()
+
+
+
+        if (!validateEmail(email)) {
+            tilEmail.error = "Not a valid email address!"
+            validation = false
+        }
+
+        if (firstName.isEmpty()) {
+            tilFirstName.error = "Please fill this"
+            validation = false
+        }
+
+        if (lastName.isEmpty()) {
+            tilLastName.error = "Please fill this"
+            validation = false
+        }
+
+        return validation
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        matcher = pattern.matcher(email)
+        return matcher!!.matches()
+    }
+
+    companion object {
+        private const val EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$"
     }
 
 }

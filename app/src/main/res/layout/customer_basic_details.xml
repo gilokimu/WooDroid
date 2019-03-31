@@ -147,7 +147,7 @@
 		  android:layout_height="wrap_content"
 		  android:layout_marginTop="16dp"
 		  android:textColorHint="#9e9e9e"
-		  android:id="@+id/tilPassword"
+		  android:id="@+id/tilUsername"
 		  android:theme="@style/OnboardingTextLabel"
 		  android:visibility="visible">
 
@@ -155,7 +155,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:hint="Username"
-			android:id="@+id/etPassword"
+			android:id="@+id/etUsername"
 			android:inputType="textPassword"
 			android:paddingBottom="16dp"
 			android:textColor="#5f6368"
@@ -187,7 +187,7 @@
 	android:layout_margin="16dp"
 	android:gravity="center"
 	android:elevation="2dp"
-	android:id="@+id/flSignup"
+	android:id="@+id/flSave"
 	>
 
 	<TextView

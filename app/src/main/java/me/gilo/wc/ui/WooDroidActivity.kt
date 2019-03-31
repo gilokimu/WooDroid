@@ -27,14 +27,14 @@ abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
     }
 
-    private fun showLoading(title: String, message: String) {
+    fun showLoading(title: String, message: String) {
         val manager = supportFragmentManager
         progressDialog = ProgressDialogFragment.newInstance(title, message)
         progressDialog.isCancelable = false
         progressDialog.show(manager, "progress")
     }
 
-    private fun stopShowingLoading() {
+    fun stopShowingLoading() {
         progressDialog.dismiss()
     }
 
