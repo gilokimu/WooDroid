@@ -14,6 +14,11 @@
 	android:theme="@style/AppTheme"
 	android:usesCleartextTraffic="true">
 	<activity
+	  android:name=".ui.onboarding.UserDetailsActivity"
+	  android:label="@string/title_activity_user_details"
+	  android:theme="@style/AppTheme.NoActionBar">
+	</activity>
+	<activity
 	  android:name=".ui.order.MyOrdersActivity"
 	  android:label="@string/title_activity_my_orders"
 	  android:theme="@style/AppTheme.NoActionBar">
@@ -28,19 +33,16 @@
 	  android:label="@string/title_activity_category"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
-
 	<activity
 	  android:name="me.gilo.raison.ui.user.onboarding.SignUpActivity"
 	  android:label="@string/title_activity_category"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
-
 	<activity
 	  android:name="me.gilo.raison.ui.user.onboarding.SignInActivity"
 	  android:label="@string/title_activity_category"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
-
 	<activity
 	  android:name=".ui.product.NavigatioDrawerActivity"
 	  android:label="@string/title_activity_navigatio_drawer"
