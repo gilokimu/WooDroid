@@ -5,6 +5,10 @@ import dagger.android.ContributesAndroidInjector;
 import me.gilo.raison.ui.user.onboarding.SignInActivity;
 import me.gilo.raison.ui.user.onboarding.SignUpActivity;
 import me.gilo.wc.MainActivity;
+import me.gilo.wc.ui.WooDroidActivity;
+import me.gilo.wc.ui.customer.BasicCustomerDetailsActivity;
+import me.gilo.wc.ui.customer.BillingAddressActivity;
+import me.gilo.wc.ui.customer.ShippingAddressActivity;
 import me.gilo.wc.ui.home.HomeActivity;
 import me.gilo.wc.ui.product.ProductActivity;
 import me.gilo.wc.ui.product.ShopActivity;
@@ -29,5 +33,14 @@ abstract class ActivitiesModule {
 
     @ContributesAndroidInjector
     abstract SignUpActivity contributesSignUpActivity();
+
+    @ContributesAndroidInjector
+    abstract BasicCustomerDetailsActivity contributesBasicCustomerDetailsActivity();
+
+    @ContributesAndroidInjector
+    abstract BillingAddressActivity contributesBillingAddressActivity();
+
+    @ContributesAndroidInjector
+    abstract ShippingAddressActivity contributesShippingAddressActivity();
 
 }

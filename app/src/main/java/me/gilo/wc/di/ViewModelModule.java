@@ -8,10 +8,7 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoMap;
 import me.gilo.wc.utils.ViewModelFactory;
-import me.gilo.wc.viewmodels.CategoryViewModel;
-import me.gilo.wc.viewmodels.ProductViewModel;
-import me.gilo.wc.viewmodels.ReviewViewModel;
-import me.gilo.wc.viewmodels.UserViewModel;
+import me.gilo.wc.viewmodels.*;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -36,6 +33,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CategoryViewModel.class)
     abstract ViewModel bindCategoryViewModel(CategoryViewModel viewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CustomerViewModel.class)
+    abstract ViewModel bindCustomerViewModel(CustomerViewModel viewModel);
 
 
     @Binds

@@ -33,5 +33,8 @@
   <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</string>
   <string name="title_activity_my_orders">MyOrdersActivity</string>
   <string name="title_activity_user_details">UserDetailsActivity</string>
+  <string name="title_activity_basic_customer_details">BasicCustomerDetailsActivity</string>
+  <string name="title_activity_billing_address">BillingAddressActivity</string>
+  <string name="title_activity_shipping_address">ShippingAddressActivity</string>
 
 </resources>
