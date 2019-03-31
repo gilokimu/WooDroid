@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.customer_billing_address.*
 import kotlinx.android.synthetic.main.drawer_filter.view.*
@@ -106,6 +107,8 @@ class BillingAddressActivity : WooDroidActivity<CustomerViewModel>() {
             customer.billingAddress.postcode = zipcode
             customer.billingAddress.country = country
             customer.billingAddress.phone = phone
+
+            customer.billingAddress.email = FirebaseAuth.getInstance().currentUser!!.email
 
             viewModel.update(customer.id, customer).observe(this, Observer {
                     response->

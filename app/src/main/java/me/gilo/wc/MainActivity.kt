@@ -7,6 +7,7 @@ import me.gilo.raison.ui.user.onboarding.SignInActivity
 import me.gilo.raison.ui.user.onboarding.SignUpActivity
 import me.gilo.wc.ui.customer.BasicCustomerDetailsActivity
 import me.gilo.wc.ui.customer.BillingAddressActivity
+import me.gilo.wc.ui.customer.ShippingAddressActivity
 import me.gilo.wc.ui.home.HomeActivity
 import me.gilo.wc.ui.product.ProductActivity
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivity(Intent(baseContext, BillingAddressActivity::class.java))
+        startActivity(Intent(baseContext, ShippingAddressActivity::class.java))
 
 //        val intent = Intent(baseContext, ProductActivity::class.java)
 //        intent.putExtra("productId", 63)
