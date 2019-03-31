@@ -27,9 +27,9 @@ public class Customer implements Serializable{
     public String totalSpent;
     @SerializedName("avatar_url")
     public String avatarUrl;
-    @SerializedName("billing_address")
+    @SerializedName("billing")
     public BillingAddress billingAddress;
-    @SerializedName("shipping_address")
+    @SerializedName("shipping")
     public ShippingAddress shippingAddress;
 
     public String getPassword() {

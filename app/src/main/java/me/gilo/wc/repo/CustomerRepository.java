@@ -1,6 +1,7 @@
 package me.gilo.wc.repo;
 
 
+import com.google.firebase.auth.FirebaseAuth;
 import me.gilo.wc.common.WooLiveData;
 import me.gilo.woodroid.Woocommerce;
 import me.gilo.woodroid.models.Customer;
@@ -24,6 +25,15 @@ public class CustomerRepository {
     public WooLiveData<Customer> create(Customer customer) {
         final WooLiveData<Customer> callBack = new WooLiveData();
         woocommerce.CustomerRepository().create(customer).enqueue(callBack);
+        return callBack;
+    }
+
+    public WooLiveData<List<Customer>> currentCustomer() {
+        final WooLiveData<List<Customer>> callBack = new WooLiveData();
+        CustomerFilter customerFilter = new CustomerFilter();
+        customerFilter.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+        woocommerce.CustomerRepository().customers(customerFilter).enqueue(callBack);
         return callBack;
     }
     

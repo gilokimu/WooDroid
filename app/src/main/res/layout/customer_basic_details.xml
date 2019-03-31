@@ -156,7 +156,7 @@
 			android:layout_height="wrap_content"
 			android:hint="Username"
 			android:id="@+id/etUsername"
-			android:inputType="textPassword"
+			android:inputType="text"
 			android:paddingBottom="16dp"
 			android:textColor="#5f6368"
 			android:textColorHint="#9e9e9e"

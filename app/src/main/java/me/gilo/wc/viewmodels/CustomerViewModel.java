@@ -1,6 +1,7 @@
 package me.gilo.wc.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
+import com.google.firebase.auth.FirebaseAuth;
 import me.gilo.wc.common.WooLiveData;
 import me.gilo.wc.repo.CustomerRepository;
 import me.gilo.woodroid.models.Customer;
@@ -26,6 +27,10 @@ public final class CustomerViewModel extends ViewModel {
 
     public WooLiveData<Customer> customer(int id) {
         return customerRepository.customer(id);
+    }
+
+    public WooLiveData<List<Customer>> currentCustomer() {
+        return customerRepository.currentCustomer();
     }
 
     public WooLiveData<List<Customer>> customers() {

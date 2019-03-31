@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
@@ -36,9 +37,43 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
         viewModel = getViewModel(CustomerViewModel::class.java)
         title = "Basic Details"
 
-        etEmail.setText(FirebaseAuth.getInstance().currentUser!!.email)
+       customer()
 
         flSave.setOnClickListener{save()}
+
+    }
+
+
+    private fun customer() {
+        viewModel.currentCustomer().observe(this, Observer {
+                response->
+            when (response!!.status()){
+                Status.LOADING ->{
+                    showLoading("Retrieve customer details", "This will only take a short while")
+                }
+
+                Status.SUCCESS ->{
+                    stopShowingLoading()
+                    var customer = response.data()[0]
+
+                    etEmail.setText(customer.email)
+                    etFirstName.setText(customer.firstName)
+                    etLastName.setText(customer.lastName)
+                    etUsername.setText(customer.username)
+
+                }
+
+                Status.ERROR ->{
+                    stopShowingLoading()
+                    Toast.makeText(baseContext, response.error().message.toString(), Toast.LENGTH_LONG).show()
+                }
+
+                Status.EMPTY ->{
+                    stopShowingLoading()
+                }
+
+            }
+        })
 
     }
 
