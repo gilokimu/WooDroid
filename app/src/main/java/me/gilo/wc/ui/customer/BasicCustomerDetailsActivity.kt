@@ -25,6 +25,7 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
     override lateinit var viewModel : CustomerViewModel
     private val pattern = Pattern.compile(EMAIL_PATTERN)
     private var matcher: Matcher? = null
+    lateinit var customer: Customer
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
@@ -54,7 +55,7 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
 
                 Status.SUCCESS ->{
                     stopShowingLoading()
-                    var customer = response.data()[0]
+                    customer = response.data()[0]
 
                     etEmail.setText(customer.email)
                     etFirstName.setText(customer.firstName)
@@ -84,13 +85,12 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
             val lastName = etLastName.text.toString()
             val username = etUsername.text.toString()
 
-            var customer = Customer()
             customer.email = email
             customer.firstName = firstName
             customer.lastName = lastName
             customer.username = username
 
-            viewModel.create(customer).observe(this, Observer {
+            viewModel.update(customer.id, customer).observe(this, Observer {
                     response->
                 when (response!!.status()){
                     Status.LOADING ->{
@@ -99,7 +99,7 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
 
                     Status.SUCCESS ->{
                         stopShowingLoading()
-                        startActivity(Intent(baseContext, BillingAddressActivity::class.java))
+                        finish()
                     }
 
                     Status.ERROR ->{

@@ -151,4 +151,6 @@ public class Customer implements Serializable{
     public void setBillingAddress(BillingAddress billingAddress) {
         this.billingAddress = billingAddress;
     }
+
+
 }

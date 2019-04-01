@@ -54,6 +54,7 @@
 	  android:padding="16dp">
 
 	  <TextView
+		android:id="@+id/tvBasicDetailsName"
 		fontPath="@string/font_regular"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -64,15 +65,41 @@
 		android:textColor="@color/text_black_2"
 		android:textSize="16sp"/>
 	  <TextView
+		android:id="@+id/tvEmail"
 		fontPath="@string/font_regular"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:gravity="left"
-		android:text="@string/dummy_address"
+		android:text="Email : john@mail.com"
 		android:maxLines="6"
 		android:lineSpacingMultiplier="1.2"
 		android:textColor="@color/text_black_5"
 		android:textSize="16sp"/>
+	  <TextView
+		android:id="@+id/tvUsername"
+		fontPath="@string/font_regular"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="left"
+		android:text="Username : john"
+		android:maxLines="6"
+		android:lineSpacingMultiplier="1.2"
+		android:textColor="@color/text_black_5"
+		android:textSize="16sp"/>
+	  <TextView
+		android:id="@+id/tvBasicDetailsEdit"
+		fontPath="@string/font_regular"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="right"
+		android:text="Edit"
+		android:paddingLeft="16dp"
+		android:paddingTop="16dp"
+		android:layout_gravity="right"
+		android:lineSpacingMultiplier="1.2"
+		android:textColor="@color/colorPrimary"
+		android:textSize="16sp"/>
+
 
 	</LinearLayout>
 
@@ -115,25 +142,32 @@
 	  android:padding="16dp">
 
 	  <TextView
+		android:id="@+id/tvBillingAddress"
 		fontPath="@string/font_regular"
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="left"
-		android:text="Gilbert Kimutai"
-		android:maxLines="6"
-		android:lineSpacingMultiplier="1.2"
-		android:textColor="@color/text_black_2"
-		android:textSize="16sp"/>
-	  <TextView
-		fontPath="@string/font_regular"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:gravity="left"
+		android:layout_weight="1"
 		android:text="@string/dummy_address"
 		android:maxLines="6"
 		android:lineSpacingMultiplier="1.2"
 		android:textColor="@color/text_black_5"
 		android:textSize="16sp"/>
+
+	  <TextView
+		android:id="@+id/tvBillingAddressEdit"
+		fontPath="@string/font_regular"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="right"
+		android:text="Edit"
+		android:paddingLeft="16dp"
+		android:paddingTop="16dp"
+		android:layout_gravity="right"
+		android:lineSpacingMultiplier="1.2"
+		android:textColor="@color/colorPrimary"
+		android:textSize="16sp"/>
+
 
 	</LinearLayout>
 
@@ -175,16 +209,7 @@
 	  android:padding="16dp">
 
 	  <TextView
-		fontPath="@string/font_regular"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:gravity="left"
-		android:text="Gilbert Kimutai"
-		android:maxLines="6"
-		android:lineSpacingMultiplier="1.2"
-		android:textColor="@color/text_black_2"
-		android:textSize="16sp"/>
-	  <TextView
+		android:id="@+id/tvShippingAddress"
 		fontPath="@string/font_regular"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -195,6 +220,20 @@
 		android:textColor="@color/text_black_5"
 		android:textSize="16sp"/>
 
+
+	  <TextView
+		android:id="@+id/tvShippingAddressEdit"
+		fontPath="@string/font_regular"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="right"
+		android:text="Edit"
+		android:paddingLeft="16dp"
+		android:paddingTop="16dp"
+		android:layout_gravity="right"
+		android:lineSpacingMultiplier="1.2"
+		android:textColor="@color/colorPrimary"
+		android:textSize="16sp"/>
 
 
 

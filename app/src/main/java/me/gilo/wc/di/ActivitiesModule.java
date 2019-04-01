@@ -8,6 +8,7 @@ import me.gilo.wc.MainActivity;
 import me.gilo.wc.ui.WooDroidActivity;
 import me.gilo.wc.ui.customer.BasicCustomerDetailsActivity;
 import me.gilo.wc.ui.customer.BillingAddressActivity;
+import me.gilo.wc.ui.customer.ProfileActivity;
 import me.gilo.wc.ui.customer.ShippingAddressActivity;
 import me.gilo.wc.ui.home.HomeActivity;
 import me.gilo.wc.ui.product.ProductActivity;
@@ -42,5 +43,8 @@ abstract class ActivitiesModule {
 
     @ContributesAndroidInjector
     abstract ShippingAddressActivity contributesShippingAddressActivity();
+
+    @ContributesAndroidInjector
+    abstract ProfileActivity contributesProfileActivity();
 
 }

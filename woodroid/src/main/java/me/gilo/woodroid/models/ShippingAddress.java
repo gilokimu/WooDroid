@@ -97,4 +97,12 @@ public class ShippingAddress {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + "\n" +
+                address1 + " " + address2 + "\n"
+                + city + ", " + state + " " + postcode + "\n"
+                + country;
+    }
 }

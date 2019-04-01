@@ -117,4 +117,14 @@ public class BillingAddress implements Serializable{
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + "\n"
+                + address1 + " " + address2 + "\n"
+                + city + ", " + state + " " + postcode + "\n"
+                + country + "\n"
+                + phone
+                ;
+    }
 }

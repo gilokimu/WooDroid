@@ -2,20 +2,16 @@ package me.gilo.wc.ui.customer
 
 import android.arch.lifecycle.Observer
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
-import me.gilo.wc.R
-
 import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.customer_basic_details.*
+import kotlinx.android.synthetic.main.content_profile.*
+import me.gilo.wc.R
 import me.gilo.wc.common.Status
 import me.gilo.wc.ui.WooDroidActivity
 import me.gilo.wc.viewmodels.CustomerViewModel
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 class ProfileActivity : WooDroidActivity<CustomerViewModel>() {
 
@@ -29,12 +25,21 @@ class ProfileActivity : WooDroidActivity<CustomerViewModel>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        viewModel = getViewModel(CustomerViewModel::class.java)
+        setSupportActionBar(toolbar)
+
         title = "Profile"
 
+        tvBasicDetailsEdit.setOnClickListener{startActivity(Intent(baseContext, BasicCustomerDetailsActivity::class.java))}
+        tvBillingAddressEdit.setOnClickListener{startActivity(Intent(baseContext, BillingAddressActivity::class.java))}
+        tvShippingAddressEdit.setOnClickListener{startActivity(Intent(baseContext, ShippingAddressActivity::class.java))}
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel = getViewModel(CustomerViewModel::class.java)
         customer()
-
-
     }
 
 
@@ -50,6 +55,13 @@ class ProfileActivity : WooDroidActivity<CustomerViewModel>() {
                     stopShowingLoading()
                     var customer = response.data()[0]
 
+                    tvBasicDetailsName.text = customer.firstName + " " + customer.lastName
+
+                    tvEmail.text = "Email : " + customer.email
+                    tvUsername.text = "Username : " + customer.username
+
+                    tvShippingAddress.text = customer.shippingAddress.toString()
+                    tvBillingAddress.text = customer.billingAddress.toString()
 
                 }
 

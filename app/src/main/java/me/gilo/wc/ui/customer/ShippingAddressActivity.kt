@@ -112,7 +112,7 @@ class ShippingAddressActivity : WooDroidActivity<CustomerViewModel>() {
 
                     Status.SUCCESS ->{
                         stopShowingLoading()
-                        startActivity(Intent(baseContext, BillingAddressActivity::class.java))
+                        finish()
                     }
 
                     Status.ERROR ->{
