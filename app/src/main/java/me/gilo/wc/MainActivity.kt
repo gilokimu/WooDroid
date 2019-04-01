@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivity(Intent(baseContext, ShippingAddressActivity::class.java))
+        startActivity(Intent(baseContext, HomeActivity::class.java))
 
 //        val intent = Intent(baseContext, ProductActivity::class.java)
 //        intent.putExtra("productId", 63)

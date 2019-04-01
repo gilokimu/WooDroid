@@ -36,5 +36,12 @@
   <string name="title_activity_basic_customer_details">BasicCustomerDetailsActivity</string>
   <string name="title_activity_billing_address">BillingAddressActivity</string>
   <string name="title_activity_shipping_address">ShippingAddressActivity</string>
+  <string name="title_activity_profile">ProfileActivity</string>
+  <string name="dummy_address">
+    953 Market\n
+    San Fransisco, CA 90248 \n
+    United States \n
+    (555) 555 555
+  </string>
 
 </resources>
