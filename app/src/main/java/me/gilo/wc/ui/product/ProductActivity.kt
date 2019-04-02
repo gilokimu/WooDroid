@@ -1,35 +1,43 @@
 package me.gilo.wc.ui.product
 
+import android.content.res.ColorStateList
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v4.content.ContextCompat
+import android.support.v4.view.GravityCompat
 import android.text.Html
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.content_product.*
-import kotlinx.android.synthetic.main.section_product_reviews.*
 import me.gilo.wc.R
-import me.gilo.wc.adapter.HomeProductAdapter
 import me.gilo.wc.adapter.ImagePagerAdapter
-import me.gilo.wc.adapter.ProductReviewAdapter
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
 import me.gilo.wc.events.ProductEvent
+import me.gilo.wc.models.CartLineItem
 import me.gilo.wc.ui.state.ProgressDialogFragment
 import me.gilo.wc.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
-import me.gilo.woodroid.models.ProductReview
 import org.greenrobot.eventbus.EventBus
-import java.util.*
+import java.security.AccessController.getContext
+
 
 class ProductActivity : BaseActivity() {
+
+    var productInCart = false;
+    lateinit var currentCartItem : CartLineItem
 
     lateinit var viewModel: ProductViewModel
     val TAG = this::getLocalClassName.toString()
 
     var related_ids : IntArray = intArrayOf()
+
+    var cartItems : ArrayList<CartLineItem> = ArrayList()
+    var productId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +48,14 @@ class ProductActivity : BaseActivity() {
 
         title = "Product"
 
-        val productId = intent.getIntExtra("productId", 0)
+        productId = intent.getIntExtra("productId", 0)
 
         if (productId != 0){
             product(productId)
+
         }
 
+        cart()
 
 
     }
@@ -75,6 +85,31 @@ class ProductActivity : BaseActivity() {
         })
     }
 
+    private fun removeFromCart(cartLineItem: CartLineItem) {
+
+        viewModel.deleteItem(cartLineItem).observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+
+
+                }
+
+                Status.ERROR -> {
+                    toast("error : " + response.error().message)
+                }
+
+                Status.EMPTY -> {
+
+                }
+            }
+
+        })
+    }
+
 
     private fun product(productId : Int) {
         viewModel.product(productId).observe(this, android.arch.lifecycle.Observer { response ->
@@ -88,7 +123,7 @@ class ProductActivity : BaseActivity() {
                     setUpPage(product)
                     //similarProducts(product)
 
-                    fab.setOnClickListener{addToCart(productId, product.price.toFloat())}
+
 
                     EventBus.getDefault().post(ProductEvent(product))
 
@@ -105,6 +140,73 @@ class ProductActivity : BaseActivity() {
 
         })
 
+    }
+
+
+    private fun cart() {
+        viewModel.cart().observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                    cartItems.clear()
+                    productInCart = false
+
+                    for (cartItem in response.data()){
+                        cartItems.add(cartItem)
+
+                        if(cartItem.productId == productId){
+                            productInCart = true
+                            currentCartItem = cartItem
+
+
+                        }
+                    }
+
+                    toggleFab()
+
+                    if (cartItems.size == 0 && tvCartCounter != null){
+                        tvCartCounter?.visibility = View.GONE
+                    }else{
+                        tvCartCounter?.visibility = View.VISIBLE
+                        tvCartCounter?.text = cartItems.size.toString()
+                    }
+
+
+                }
+
+                Status.ERROR -> {
+
+                }
+
+                Status.EMPTY -> {
+                    productInCart = false
+                    cartItems.clear()
+                    toggleFab()
+
+                    if (cartItems.size == 0 && tvCartCounter != null){
+                        tvCartCounter?.visibility = View.GONE
+                    }else{
+                        tvCartCounter?.visibility = View.VISIBLE
+                        tvCartCounter?.text = cartItems.size.toString()
+                    }
+                }
+            }
+
+        })
+
+    }
+
+    private fun toggleFab() {
+        if (productInCart) {
+            fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.carnation_red))
+            fab.setImageDrawable(ContextCompat.getDrawable(baseContext, R.drawable.baseline_remove_shopping_cart_24))
+        }else{
+            fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            fab.setImageDrawable(ContextCompat.getDrawable(baseContext, R.drawable.baseline_add_shopping_cart_24))
+        }
     }
 
 
@@ -127,6 +229,18 @@ class ProductActivity : BaseActivity() {
             tvCallToAction.text = Html.fromHtml(product.price_html).trim()
             tvOnSale.visibility = View.GONE
         }
+
+        fab.setOnClickListener{
+            if (productInCart){
+                removeFromCart(currentCartItem)
+            }else {
+                addToCart(productId, product.price.toFloat())
+            }
+        }
+    }
+
+    fun toast(text : String){
+        Toast.makeText(baseContext, text, Toast.LENGTH_LONG).show()
     }
 
     private lateinit var progressDialog: ProgressDialogFragment
@@ -146,20 +260,26 @@ class ProductActivity : BaseActivity() {
         progressDialog.dismiss()
     }
 
+    var tvCartCounter : TextView? = null
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.home, menu)
+        menuInflater.inflate(me.gilo.wc.R.menu.home, menu)
+
+        val item = menu.findItem(me.gilo.wc.R.id.menu_cart)
+        val rootView = item.actionView as FrameLayout
+        tvCartCounter = rootView.findViewById<TextView>(me.gilo.wc.R.id.tvCart_counter)
 
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_filter -> {
+            me.gilo.wc.R.id.action_filter -> {
 
                 true
             }
 
-            R.id.action_search -> {
+            me.gilo.wc.R.id.action_search -> {
 
                 true
             }

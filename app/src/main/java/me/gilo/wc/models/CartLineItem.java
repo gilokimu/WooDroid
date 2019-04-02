@@ -9,18 +9,9 @@ import java.util.List;
 
 public class CartLineItem extends Model{
 
-    String id;
     public float price;
     public int quantity;
     public int productId;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public float getPrice() {
         return price;
