@@ -2,7 +2,11 @@ package me.gilo.wc.viewmodels;
 
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
+import com.google.firebase.firestore.DocumentReference;
+import me.gilo.wc.common.CompletionGenericLiveData;
+import me.gilo.wc.common.QueryLiveData;
 import me.gilo.wc.common.WooLiveData;
+import me.gilo.wc.models.CartLineItem;
 import me.gilo.wc.repo.CartRepository;
 import me.gilo.wc.repo.OrderRepository;
 import me.gilo.wc.repo.ProductRepository;
@@ -35,8 +39,24 @@ public final class ProductViewModel extends ViewModel {
         return productRepository.products();
     }
 
-    public WooLiveData<Map<String, LineItem>> addToCart(Context context, int productId) {
-        return cartRepository.addToCart(context, productId);
+    public CompletionGenericLiveData<DocumentReference> addToCart(int productId, float price) {
+        return cartRepository.addToCart(productId, price);
+    }
+
+    public QueryLiveData<CartLineItem> cart() {
+        return cartRepository.cart();
+    }
+
+    public CompletionGenericLiveData<Void> deleteItem(CartLineItem cartLineItem) {
+        return cartRepository.deleteItem(cartLineItem);
+    }
+
+    public CompletionGenericLiveData<Void> deleteAllCartItems() {
+        return cartRepository.deleteItems();
+    }
+
+    public CompletionGenericLiveData<Void> setQuantity(CartLineItem cartLineItem, int quantity) {
+        return cartRepository.setQuantity(cartLineItem, quantity);
     }
 
     public WooLiveData<Map<String, LineItem>> cart(Context context) {

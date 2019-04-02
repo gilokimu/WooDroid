@@ -44,20 +44,19 @@ class ProductActivity : BaseActivity() {
             product(productId)
         }
 
-        fab.setOnClickListener{addToCart(productId)}
+
 
     }
 
 
-    private fun addToCart(productId: Int) {
-        viewModel.addToCart(baseContext, productId).observe(this, android.arch.lifecycle.Observer { response ->
+    private fun addToCart(productId: Int, price : Float) {
+        viewModel.addToCart(productId, price).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
                 }
 
                 Status.SUCCESS -> {
-                    val order = response.data()
 
 
                 }
@@ -86,6 +85,8 @@ class ProductActivity : BaseActivity() {
                     val product = response.data()
                     setUpPage(product)
                     //similarProducts(product)
+
+                    fab.setOnClickListener{addToCart(productId, product.price.toFloat())}
 
                     EventBus.getDefault().post(ProductEvent(product))
 

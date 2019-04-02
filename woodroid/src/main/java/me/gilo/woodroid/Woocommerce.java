@@ -1,10 +1,13 @@
 package me.gilo.woodroid;
 
 import android.content.Context;
+import android.util.Log;
 import me.gilo.woodroid.repo.*;
 import me.gilo.woodroid.repo.order.OrderNoteRepository;
 import me.gilo.woodroid.repo.order.RefundRepository;
 import me.gilo.woodroid.repo.product.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Woocommerce {
 
