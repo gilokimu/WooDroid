@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.content_product.*
@@ -142,6 +144,27 @@ class ProductActivity : BaseActivity() {
 
     fun stopShowingLoading() {
         progressDialog.dismiss()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.home, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_filter -> {
+
+                true
+            }
+
+            R.id.action_search -> {
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

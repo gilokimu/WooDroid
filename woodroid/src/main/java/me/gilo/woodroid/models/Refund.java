@@ -9,7 +9,7 @@ public class Refund {
     private Metadata[] meta_data;
     private String date_created_gmt;
     private String id;
-    private Line_item[] line_items;
+    private LineItem[] line_items;
     private String refunded_payment;
 
     public String getRefunded_by() {
@@ -77,11 +77,11 @@ public class Refund {
         this.refunded_payment = refunded_payment;
     }
 
-    public Line_item[] getLine_items() {
+    public LineItem[] getLine_items() {
         return line_items;
     }
 
-    public void setLine_items(Line_item[] line_items) {
+    public void setLine_items(LineItem[] line_items) {
         this.line_items = line_items;
     }
 }
