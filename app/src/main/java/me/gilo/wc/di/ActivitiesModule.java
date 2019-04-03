@@ -11,6 +11,7 @@ import me.gilo.wc.ui.customer.BillingAddressActivity;
 import me.gilo.wc.ui.customer.ProfileActivity;
 import me.gilo.wc.ui.customer.ShippingAddressActivity;
 import me.gilo.wc.ui.home.HomeActivity;
+import me.gilo.wc.ui.product.CartActivity;
 import me.gilo.wc.ui.product.ProductActivity;
 import me.gilo.wc.ui.product.ShopActivity;
 
@@ -43,6 +44,9 @@ abstract class ActivitiesModule {
 
     @ContributesAndroidInjector
     abstract ShippingAddressActivity contributesShippingAddressActivity();
+
+    @ContributesAndroidInjector
+    abstract CartActivity contributesCartActivity();
 
     @ContributesAndroidInjector
     abstract ProfileActivity contributesProfileActivity();

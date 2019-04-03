@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:background="@color/bg"
+  android:orientation="vertical"
+  tools:ignore="MissingPrefix"
+  app:layout_behavior="@string/appbar_scrolling_view_behavior"
+  >
+
+  <TextView
+	fontPath="@string/font_medium"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:gravity="left"
+	android:layout_marginLeft="16dp"
+	android:layout_marginTop="16dp"
+	android:layout_marginRight="16dp"
+	android:text="Your cart items"
+	android:textColor="@color/text_black_2"
+	android:textSize="20sp"
+	/>
+
+  <TextView
+	fontPath="@string/font_regular"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:gravity="left"
+	android:layout_marginLeft="16dp"
+	android:layout_marginRight="16dp"
+	android:layout_marginTop="4dp"
+	android:text="Review and edit"
+	android:maxLines="6"
+	android:lineSpacingMultiplier="1.2"
+	android:textColor="@color/text_black_9"
+	android:textSize="16sp"/>
+
+  <LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_weight="1"
+	>
+
+	<android.support.v7.widget.RecyclerView
+	  android:layout_width="match_parent"
+	  android:layout_height="wrap_content"
+	  android:layout_margin="16dp"
+	  android:id="@+id/rvCart"
+	  android:elevation="2dp"
+	  android:background="@drawable/rect_white"
+	  >
+
+	</android.support.v7.widget.RecyclerView>
+
+  </LinearLayout>
+
+  <FrameLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/colorPrimary"
+	android:orientation="horizontal"
+	android:paddingTop="4dp"
+	android:paddingBottom="4dp"
+	android:paddingRight="16dp"
+	android:layout_margin="16dp"
+	android:gravity="center"
+	android:elevation="2dp"
+	android:id="@+id/flSave"
+	>
+
+	<TextView
+	  android:id="@+id/bNext"
+	  fontPath="@string/font_regular"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:layout_gravity="center_horizontal"
+	  android:background="@color/colorPrimary"
+	  android:text="Proceed to checkout"
+	  android:padding="12dp"
+	  android:gravity="center"
+	  android:textAllCaps="false"
+	  android:textColor="#ffffff"
+	  android:textSize="16sp"
+	  tools:ignore="MissingPrefix"/>
+
+	<ImageView
+	  android:layout_width="32dp"
+	  android:layout_height="32dp"
+	  android:src="@drawable/ic_action_navigation_arrow_back_inverted"
+	  android:tint="#ffffff"
+	  android:layout_gravity="right|center"
+	  android:rotation="180"
+	  />
+
+  </FrameLayout>
+
+
+</LinearLayout>

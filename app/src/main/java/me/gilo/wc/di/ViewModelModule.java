@@ -39,6 +39,12 @@ public abstract class ViewModelModule {
     @ViewModelKey(CustomerViewModel.class)
     abstract ViewModel bindCustomerViewModel(CustomerViewModel viewModel);
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(CartViewModel.class)
+    abstract ViewModel bindCartViewModel(CartViewModel viewModel);
+
+
 
     @Binds
     @IntoMap

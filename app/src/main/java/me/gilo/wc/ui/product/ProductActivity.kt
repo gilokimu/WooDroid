@@ -1,9 +1,9 @@
 package me.gilo.wc.ui.product
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
-import android.support.v4.view.GravityCompat
 import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
@@ -23,7 +23,6 @@ import me.gilo.wc.ui.state.ProgressDialogFragment
 import me.gilo.wc.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
 import org.greenrobot.eventbus.EventBus
-import java.security.AccessController.getContext
 
 
 class ProductActivity : BaseActivity() {
@@ -263,26 +262,24 @@ class ProductActivity : BaseActivity() {
     var tvCartCounter : TextView? = null
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(me.gilo.wc.R.menu.home, menu)
+        menuInflater.inflate(me.gilo.wc.R.menu.product, menu)
 
         val item = menu.findItem(me.gilo.wc.R.id.menu_cart)
         val rootView = item.actionView as FrameLayout
         tvCartCounter = rootView.findViewById<TextView>(me.gilo.wc.R.id.tvCart_counter)
+
+        rootView.setOnClickListener{startActivity(Intent(baseContext, CartActivity::class.java))}
 
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            me.gilo.wc.R.id.action_filter -> {
+            R.id.menu_cart -> {
 
                 true
             }
 
-            me.gilo.wc.R.id.action_search -> {
-
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }

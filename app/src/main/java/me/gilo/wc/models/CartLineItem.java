@@ -13,6 +13,10 @@ public class CartLineItem extends Model{
     public int quantity;
     public int productId;
 
+    String name;
+    String imageUrl;
+    String priceString;
+
     public float getPrice() {
         return price;
     }
@@ -35,5 +39,29 @@ public class CartLineItem extends Model{
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getPriceString() {
+        return priceString;
+    }
+
+    public void setPriceString(String priceString) {
+        this.priceString = priceString;
     }
 }
