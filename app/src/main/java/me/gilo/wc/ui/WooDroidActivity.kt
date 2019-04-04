@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import me.gilo.wc.R
 
@@ -27,6 +28,10 @@ abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
     }
 
+    fun showLoading() {
+        showLoading("Please wait", "This will only take a second")
+    }
+
     fun showLoading(title: String, message: String) {
         val manager = supportFragmentManager
         progressDialog = ProgressDialogFragment.newInstance(title, message)
@@ -36,6 +41,10 @@ abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
 
     fun stopShowingLoading() {
         progressDialog.dismiss()
+    }
+
+    fun toast(text : String){
+        Toast.makeText(baseContext, text, Toast.LENGTH_LONG).show()
     }
 
 }

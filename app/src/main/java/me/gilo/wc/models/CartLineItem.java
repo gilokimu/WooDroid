@@ -2,6 +2,7 @@ package me.gilo.wc.models;
 
 import com.google.gson.annotations.SerializedName;
 import me.gilo.woodroid.models.Metum;
+import me.gilo.woodroid.models.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,8 @@ public class CartLineItem extends Model{
     public float price;
     public int quantity;
     public int productId;
+
+    Product product;
 
     String name;
     String imageUrl;
@@ -63,5 +66,13 @@ public class CartLineItem extends Model{
 
     public void setPriceString(String priceString) {
         this.priceString = priceString;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 }

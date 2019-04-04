@@ -21,6 +21,7 @@ import me.gilo.wc.models.CartLineItem;
 import me.gilo.wc.utils.AppUtils;
 import me.gilo.woodroid.Woocommerce;
 import me.gilo.woodroid.models.LineItem;
+import me.gilo.woodroid.models.Product;
 
 import javax.inject.Inject;
 import java.io.ByteArrayOutputStream;
@@ -88,12 +89,12 @@ public class CartRepository {
     }
 
 
-    public CompletionGenericLiveData<DocumentReference> addToCart(int productId, float price) {
+    public CompletionGenericLiveData<DocumentReference> addToCart(Product product) {
         final CompletionGenericLiveData<DocumentReference> completion = new CompletionGenericLiveData();
 
         CartLineItem lineItem = new CartLineItem();
-        lineItem.setProductId(productId);
-        lineItem.setPrice(price);
+        lineItem.setProductId(product.getId());
+        lineItem.setProduct(product);
         lineItem.setQuantity(1);
 
         cart.add(lineItem).addOnCompleteListener(completion);

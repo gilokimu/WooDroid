@@ -39,8 +39,8 @@ public final class ProductViewModel extends ViewModel {
         return productRepository.products();
     }
 
-    public CompletionGenericLiveData<DocumentReference> addToCart(int productId, float price) {
-        return cartRepository.addToCart(productId, price);
+    public CompletionGenericLiveData<DocumentReference> addToCart(Product product) {
+        return cartRepository.addToCart(product);
     }
 
     public QueryLiveData<CartLineItem> cart() {

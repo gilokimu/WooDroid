@@ -60,8 +60,8 @@ class ProductActivity : BaseActivity() {
     }
 
 
-    private fun addToCart(productId: Int, price : Float) {
-        viewModel.addToCart(productId, price).observe(this, android.arch.lifecycle.Observer { response ->
+    private fun addToCart(product: Product) {
+        viewModel.addToCart(product).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
@@ -233,7 +233,7 @@ class ProductActivity : BaseActivity() {
             if (productInCart){
                 removeFromCart(currentCartItem)
             }else {
-                addToCart(productId, product.price.toFloat())
+                addToCart(product)
             }
         }
     }
