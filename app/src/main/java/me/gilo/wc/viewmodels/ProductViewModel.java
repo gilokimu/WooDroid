@@ -1,5 +1,6 @@
 package me.gilo.wc.viewmodels;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import com.google.firebase.firestore.DocumentReference;
@@ -10,6 +11,7 @@ import me.gilo.wc.models.CartLineItem;
 import me.gilo.wc.repo.CartRepository;
 import me.gilo.wc.repo.OrderRepository;
 import me.gilo.wc.repo.ProductRepository;
+import me.gilo.wc.repo.ReviewRepository;
 import me.gilo.woodroid.models.LineItem;
 import me.gilo.woodroid.models.Product;
 import me.gilo.woodroid.models.ProductReview;
@@ -25,14 +27,23 @@ public final class ProductViewModel extends ViewModel {
     private final OrderRepository orderRepository;
     private final CartRepository cartRepository;
 
+    private final MutableLiveData<Integer> selectedProductId = new MutableLiveData();
+
     @Inject
     ProductViewModel(ProductRepository productRepository,
                      OrderRepository orderRepository,
-                     CartRepository cartRepository
-    ) {
+                     CartRepository cartRepository) {
         this.productRepository = productRepository;
         this.orderRepository = orderRepository;
         this.cartRepository =  cartRepository;
+    }
+
+    public MutableLiveData<Integer> getSelectedProduct() {
+        return selectedProductId;
+    }
+
+    public void selectProduct(int productId) {
+        selectedProductId.setValue(productId);
     }
 
     public WooLiveData<List<Product>> products() {

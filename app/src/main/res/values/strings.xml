@@ -44,5 +44,6 @@
     (555) 555 555
   </string>
   <string name="title_activity_cart">CartActivity</string>
+  <string name="title_activity_checkout">CheckoutActivity</string>
 
 </resources>
