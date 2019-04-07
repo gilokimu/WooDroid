@@ -2,6 +2,7 @@ package me.gilo.woodroid;
 
 import android.content.Context;
 import android.util.Log;
+import me.gilo.woodroid.models.PaymentGateway;
 import me.gilo.woodroid.repo.*;
 import me.gilo.woodroid.repo.order.OrderNoteRepository;
 import me.gilo.woodroid.repo.order.RefundRepository;
@@ -35,6 +36,10 @@ public class Woocommerce {
     final ReportsRepository reportsRepository;
 
     final CartRepository cartRepository;
+
+    final PaymentGatewayRepository paymentGatewayRepository;
+    final SettingsRepository settingsRepository;
+    final ShippingMethodRepository shippingMethodRepository;
 
 
     enum ApiVersion {
@@ -81,6 +86,9 @@ public class Woocommerce {
         cartRepository = new CartRepository(cartBaseUrl, consumerKey, consumerSecret);
 
         reviewRepository = new ReviewRepository(baseUrl, consumerKey, consumerSecret);
+        paymentGatewayRepository = new PaymentGatewayRepository(baseUrl, consumerKey, consumerSecret);
+        settingsRepository = new SettingsRepository(baseUrl, consumerKey, consumerSecret);
+        shippingMethodRepository = new ShippingMethodRepository(baseUrl, consumerKey, consumerSecret);
 
     }
 
@@ -175,6 +183,18 @@ public class Woocommerce {
 
     public ReportsRepository ReportsRepository() {
         return reportsRepository;
+    }
+
+    public PaymentGatewayRepository PaymentGatewayRepository() {
+        return paymentGatewayRepository;
+    }
+
+    public SettingsRepository SettingsRepository() {
+        return settingsRepository;
+    }
+
+    public ShippingMethodRepository ShippingMethodRepository() {
+        return shippingMethodRepository;
     }
 
     public CartRepository CartRepository(Context context) {
