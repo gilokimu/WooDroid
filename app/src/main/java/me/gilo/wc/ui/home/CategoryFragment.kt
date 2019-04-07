@@ -12,6 +12,7 @@ import me.gilo.wc.adapter.CategoryAdapter
 import me.gilo.wc.common.Status
 import me.gilo.wc.viewmodels.CategoryViewModel
 import me.gilo.woodroid.models.Category
+import me.gilo.woodroid.models.filters.ProductCategoryFilter
 import java.util.*
 
 
@@ -60,8 +61,10 @@ class CategoryFragment : Fragment() {
 
     private fun categories() {
 
-        //TODO ('Exclude the uncategorized category')
-        viewModel.categories().observe(this, android.arch.lifecycle.Observer { response ->
+        val filter = ProductCategoryFilter()
+        filter.per_page = 50
+
+        viewModel.categories(filter).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                 }

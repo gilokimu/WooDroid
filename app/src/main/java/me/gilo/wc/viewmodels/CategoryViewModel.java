@@ -33,7 +33,7 @@ public final class CategoryViewModel extends ViewModel {
     }
 
     public WooLiveData<List<Category>> categories(ProductCategoryFilter productCategoryFilter) {
-        return categoryRepository.categories();
+        return categoryRepository.categories(productCategoryFilter);
     }
 
     public WooLiveData<Category> update(int id, Category category) {

@@ -21,22 +21,16 @@ public class Woocommerce {
     final AttributeRepository attributeRepository;
     final AttributeTermRepository attributeTermRepository;
     final CategoryRepository categoryRepository;
-
     final ShippingClassRepository shippingClassRepository;
     final TagRepository tagRepository;
     final VariationRepository variationRepository;
     final CouponRepository couponRepository;
     final CustomerRepository customerRepository;
-
     final OrderRepository orderRepository;
     final ProductRepository productRepository;
-
     final ReviewRepository reviewRepository;
-
     final ReportsRepository reportsRepository;
-
     final CartRepository cartRepository;
-
     final PaymentGatewayRepository paymentGatewayRepository;
     final SettingsRepository settingsRepository;
     final ShippingMethodRepository shippingMethodRepository;

@@ -14,13 +14,15 @@
 
   <FrameLayout
 	android:layout_width="match_parent"
-	android:layout_height="160dp">
+	android:layout_height="180dp"
+	android:layout_marginTop="8dp"
+	>
 
 	<ImageView
 	  android:id="@+id/ivImage"
 	  android:layout_width="match_parent"
 	  android:layout_height="match_parent"
-	  android:scaleType="centerCrop"
+	  android:scaleType="center"
 	  />
 
 	<TextView
@@ -46,6 +48,7 @@
 	android:layout_marginTop="16dp"
 	android:layout_marginRight="16dp"
 	android:gravity="left"
+	android:lines="2"
 	android:textColor="@color/text"
 	android:textSize="18sp"/>
 
@@ -59,6 +62,7 @@
 	android:layout_marginRight="16dp"
 	android:gravity="left"
 	android:maxLines="2"
+	android:lines="2"
 	android:lineSpacingMultiplier="1.2"
 	android:textColor="@color/text_black_5"
 	android:textSize="14sp"/>
