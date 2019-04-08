@@ -15,14 +15,15 @@
   <FrameLayout
 	android:layout_width="match_parent"
 	android:layout_height="180dp"
-	android:layout_marginTop="8dp"
+	android:padding="16dp"
+	android:background="#ffffff"
 	>
 
 	<ImageView
 	  android:id="@+id/ivImage"
 	  android:layout_width="match_parent"
 	  android:layout_height="match_parent"
-	  android:scaleType="center"
+	  android:scaleType="fitCenter"
 	  />
 
 	<TextView
@@ -45,12 +46,12 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:layout_marginLeft="16dp"
-	android:layout_marginTop="16dp"
+	android:layout_marginTop="0dp"
 	android:layout_marginRight="16dp"
 	android:gravity="left"
 	android:lines="2"
 	android:textColor="@color/text"
-	android:textSize="18sp"/>
+	android:textSize="16sp"/>
 
   <TextView
 	android:id="@+id/tvDescription"
@@ -61,7 +62,6 @@
 	android:layout_marginTop="8dp"
 	android:layout_marginRight="16dp"
 	android:gravity="left"
-	android:maxLines="2"
 	android:lines="2"
 	android:lineSpacingMultiplier="1.2"
 	android:textColor="@color/text_black_5"
@@ -69,7 +69,7 @@
 
   <TextView
 	android:id="@+id/tvCallToAction"
-	fontPath="@string/font_regular"
+	fontPath="@string/font_medium"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:layout_gravity="right"
@@ -77,8 +77,8 @@
 	android:layout_marginBottom="0dp"
 	android:gravity="left"
 	android:padding="16dp"
-	android:textColor="#1c5c9a"
-	android:textSize="14sp"/>
+	android:textColor="@color/colorPrimary"
+	android:textSize="16sp"/>
 
 
 </LinearLayout>
