@@ -38,6 +38,17 @@ public class FirebaseUserRepository extends FirebaseRepository {
 
     }
 
+
+    public CompletionGenericLiveData<AuthResult> anonymousSignIn() {
+        final CompletionGenericLiveData<AuthResult> completion = new CompletionGenericLiveData();
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signInAnonymously().addOnCompleteListener(completion);
+
+        return completion;
+
+    }
+
     public CompletionGenericLiveData<AuthResult> signUp(String email, String password) {
         final CompletionGenericLiveData<AuthResult> completion = new CompletionGenericLiveData();
 

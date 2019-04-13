@@ -45,5 +45,6 @@
   </string>
   <string name="title_activity_cart">CartActivity</string>
   <string name="title_activity_checkout">CheckoutActivity</string>
+  <string name="title_activity_anonymous_sign_in">AnonymousSignInActivity</string>
 
 </resources>

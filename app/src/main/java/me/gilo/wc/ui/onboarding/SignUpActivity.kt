@@ -13,15 +13,16 @@ import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
 
 import me.gilo.wc.models.User
+import me.gilo.wc.ui.WooDroidActivity
 import me.gilo.wc.ui.home.HomeActivity
 import me.gilo.wc.ui.state.ProgressDialogFragment
 import me.gilo.wc.viewmodels.UserViewModel
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-class SignUpActivity : BaseActivity() {
+class SignUpActivity : WooDroidActivity<UserViewModel>() {
 
-    lateinit var viewModel : UserViewModel
+    override lateinit var viewModel : UserViewModel
     val TAG = this::getLocalClassName
 
     private lateinit var progressDialog: ProgressDialogFragment
@@ -184,17 +185,6 @@ class SignUpActivity : BaseActivity() {
     private fun validateEmail(email: String): Boolean {
         matcher = pattern.matcher(email)
         return matcher!!.matches()
-    }
-
-    private fun showLoading(title: String, message: String) {
-        val manager = supportFragmentManager
-        progressDialog = ProgressDialogFragment.newInstance(title, message)
-        progressDialog.isCancelable = false
-        progressDialog.show(manager, "progress")
-    }
-
-    private fun stopShowingLoading() {
-        progressDialog.dismiss()
     }
 
     companion object {

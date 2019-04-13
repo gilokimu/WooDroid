@@ -11,19 +11,20 @@ import kotlinx.android.synthetic.main.content_sign_in.*
 import me.gilo.wc.R
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
+import me.gilo.wc.ui.WooDroidActivity
 import me.gilo.wc.ui.home.HomeActivity
 import me.gilo.wc.ui.state.ProgressDialogFragment
+import me.gilo.wc.viewmodels.CustomerViewModel
 import me.gilo.wc.viewmodels.UserViewModel
 import org.json.JSONObject
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
-class SignInActivity : BaseActivity() {
+class SignInActivity : WooDroidActivity<UserViewModel>() {
 
 
-    lateinit var viewModel : UserViewModel
-    val TAG = this::getLocalClassName
+    override lateinit var viewModel : UserViewModel
 
     private lateinit var progressDialog: ProgressDialogFragment
     private val pattern = Pattern.compile(EMAIL_PATTERN)
@@ -105,17 +106,6 @@ class SignInActivity : BaseActivity() {
     private fun validateEmail(email: String): Boolean {
         matcher = pattern.matcher(email)
         return matcher!!.matches()
-    }
-
-    private fun showLoading(title: String, message: String) {
-        val manager = supportFragmentManager
-        progressDialog = ProgressDialogFragment.newInstance(title, message)
-        progressDialog.isCancelable = false
-        progressDialog.show(manager, "progress")
-    }
-
-    private fun stopShowingLoading() {
-        progressDialog.dismiss()
     }
 
     companion object {
