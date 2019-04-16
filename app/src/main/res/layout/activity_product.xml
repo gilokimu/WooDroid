@@ -23,6 +23,23 @@
 
   <include layout="@layout/content_product"/>
 
+  <FrameLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/bg"
+	android:elevation="2dp"
+	android:id="@+id/flLoading"
+	>
+
+	<include
+	  layout="@layout/loading_view"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:layout_gravity="center"
+	  />
+
+  </FrameLayout>
+
 
 	<android.support.design.widget.FloatingActionButton
 	  android:id="@+id/fab"

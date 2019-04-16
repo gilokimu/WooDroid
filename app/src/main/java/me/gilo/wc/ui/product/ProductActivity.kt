@@ -114,14 +114,14 @@ class ProductActivity : BaseActivity() {
         viewModel.product(productId).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
-
+                    flLoading.visibility = View.VISIBLE
                 }
 
                 Status.SUCCESS -> {
                     val product = response.data()
                     setUpPage(product)
                     //similarProducts(product)
-
+                    flLoading.visibility = View.GONE
 
 
                     EventBus.getDefault().post(ProductEvent(product))
@@ -129,11 +129,10 @@ class ProductActivity : BaseActivity() {
                 }
 
                 Status.ERROR -> {
-
+                    flLoading.visibility = View.GONE
                 }
 
                 Status.EMPTY -> {
-
                 }
             }
 

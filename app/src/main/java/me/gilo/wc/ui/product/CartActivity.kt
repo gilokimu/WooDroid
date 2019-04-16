@@ -4,10 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.SpannableString
+import android.view.View
+import com.google.common.primitives.UnsignedBytes.toInt
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.content_cart.*
 import kotlinx.android.synthetic.main.single_cart_item.*
+import kotlinx.android.synthetic.main.state_empty.*
 import me.gilo.wc.R
 import me.gilo.wc.adapter.CartAdapter
 import me.gilo.wc.common.Status
@@ -53,6 +56,7 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
 
         cart()
 
+        llEmptyState_layout.visibility = View.GONE
 
 
     }
@@ -84,6 +88,8 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
 
                 Status.EMPTY -> {
                     stopShowingLoading()
+
+                    llEmptyState_layout.visibility = View.VISIBLE
                 }
             }
 
@@ -97,9 +103,9 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
 
         for (cartitem in cartItems){
             var price = if (cartitem.product.isOn_sale) {
-                cartitem.product.sale_price.toInt()
+                cartitem.product.sale_price.replace(",","").toInt()
             }else{
-                cartitem.product.regular_price.toInt()
+                cartitem.product.regular_price.replace(",","").toInt()
             }
 
             var qty = cartitem.quantity

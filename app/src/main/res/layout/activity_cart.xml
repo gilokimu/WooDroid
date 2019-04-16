@@ -23,6 +23,8 @@
 
   <include layout="@layout/content_cart"/>
 
+  <include layout="@layout/state_empty"/>
+
   <FrameLayout
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"

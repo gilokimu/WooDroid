@@ -56,9 +56,9 @@ class CartViewHolder(val context: Context, itemView: View) :
         val salePrice = product.sale_price
 
         if (product.isOn_sale) {
-            tvPrice.text = SpannableString("$$salePrice")
+            tvPrice.text = SpannableString("Ksh$salePrice")
         }else{
-            tvPrice.text = SpannableString("$$regularPrice")
+            tvPrice.text = SpannableString("Ksh$regularPrice")
         }
 
 
