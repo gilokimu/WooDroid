@@ -2,6 +2,7 @@ package me.gilo.woodroid;
 
 import android.content.Context;
 import android.util.Log;
+import me.gilo.woodroid.data.ApiVersion;
 import me.gilo.woodroid.models.PaymentGateway;
 import me.gilo.woodroid.repo.*;
 import me.gilo.woodroid.repo.order.OrderNoteRepository;
@@ -35,31 +36,12 @@ public class Woocommerce {
     final SettingsRepository settingsRepository;
     final ShippingMethodRepository shippingMethodRepository;
 
-
-    enum ApiVersion {
-        API_VERSION1{
-            @Override
-            public String toString() {
-                return "1";
-            }
-        },
-        API_VERSION2{
-            @Override
-            public String toString() {
-                return "2";
-            }
-        },
-        API_VERSION3{
-            @Override
-            public String toString() {
-                return "3";
-            }
-        },
+    public static Builder Builder(){
+        return new Builder();
     }
 
     public Woocommerce(String siteUrl, ApiVersion apiVerion, String consumerKey, String consumerSecret) {
         String baseUrl = siteUrl + "/wp-json/wc/v" + apiVerion + "/";
-
         String cartBaseUrl = siteUrl + "/wp-json/wc/v" + 2 + "/";
 
         orderNoteRepository = new OrderNoteRepository(baseUrl, consumerKey, consumerSecret);
@@ -74,53 +56,13 @@ public class Woocommerce {
         customerRepository = new CustomerRepository(baseUrl, consumerKey, consumerSecret);
         orderRepository = new OrderRepository(baseUrl, consumerKey, consumerSecret);
         productRepository = new ProductRepository(baseUrl, consumerKey, consumerSecret);
-
         reportsRepository = new ReportsRepository(baseUrl, consumerKey, consumerSecret);
-
         cartRepository = new CartRepository(cartBaseUrl, consumerKey, consumerSecret);
-
         reviewRepository = new ReviewRepository(baseUrl, consumerKey, consumerSecret);
         paymentGatewayRepository = new PaymentGatewayRepository(baseUrl, consumerKey, consumerSecret);
         settingsRepository = new SettingsRepository(baseUrl, consumerKey, consumerSecret);
         shippingMethodRepository = new ShippingMethodRepository(baseUrl, consumerKey, consumerSecret);
 
-    }
-
-
-    public static class Builder {
-        private String siteUrl;
-        private ApiVersion apiVerion;
-        private String consumerKey;
-        private String consumerSecret;
-
-
-        public Builder() {
-        }
-
-        public Builder setSiteUrl(String siteUrl) {
-            this.siteUrl = siteUrl;
-            return this;
-        }
-
-        public Builder setApiVersion(ApiVersion apiVerion) {
-            this.apiVerion = apiVerion;
-            return this;
-        }
-
-        public Builder setConsumerKey(String consumerKey) {
-            this.consumerKey = consumerKey;
-            return this;
-        }
-
-        public Builder setConsumerSecret(String consumerSecret) {
-            this.consumerSecret = consumerSecret;
-            return this;
-        }
-
-
-        public Woocommerce build() {
-            return new Woocommerce(siteUrl, apiVerion, consumerKey, consumerSecret);
-        }
     }
 
     public OrderNoteRepository OrderNoteRepository() {

@@ -25,7 +25,7 @@ public class AppModule {
     @Provides
     @Singleton
     Woocommerce providesWoocommerce() {
-        Woocommerce woocommerce = new Woocommerce.Builder()
+        Woocommerce woocommerce = Woocommerce.Builder()
                 .setSiteUrl("http://157.230.131.179")
                 .setApiVersion(Woocommerce.API_V3)
                 .setConsumerKey("ck_26c61abd7eeff238d87dc56585bf26cb2d1a1ec3")
