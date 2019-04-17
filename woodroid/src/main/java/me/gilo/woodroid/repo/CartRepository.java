@@ -3,14 +3,13 @@ package me.gilo.woodroid.repo;
 import android.content.Context;
 import me.gilo.woodroid.data.api.CartAPI;
 import me.gilo.woodroid.data.cookie.AddCookiesInterceptor;
-import me.gilo.woodroid.data.cookie.DemoCookieInterceptor;
 import me.gilo.woodroid.data.cookie.ReceivedCookiesInterceptor;
 import me.gilo.woodroid.models.LineItem;
 import me.gilo.woodroid.models.filters.CartFilter;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.Call;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.Map;

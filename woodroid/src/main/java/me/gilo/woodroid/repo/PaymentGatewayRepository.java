@@ -1,6 +1,7 @@
 package me.gilo.woodroid.repo;
 
-import me.gilo.woodroid.callback.WooCall;
+import retrofit2.Call;
+
 import me.gilo.woodroid.data.api.PaymentGatewayAPI;
 import me.gilo.woodroid.models.PaymentGateway;
 
@@ -15,15 +16,15 @@ public class PaymentGatewayRepository extends WooRepository{
        apiService = retrofit.create(PaymentGatewayAPI.class);
     }
 
-    public WooCall<PaymentGateway> paymentGateway(int id) {
+    public Call<PaymentGateway> paymentGateway(int id) {
         return apiService.view(id);
     }
 
-    public WooCall<List<PaymentGateway>> paymentGateways() {
+    public Call<List<PaymentGateway>> paymentGateways() {
         return apiService.list();
     }
 
-    public WooCall<PaymentGateway> update(String id, PaymentGateway paymentGateway) {
+    public Call<PaymentGateway> update(String id, PaymentGateway paymentGateway) {
         return apiService.update(id, paymentGateway);
     }
 

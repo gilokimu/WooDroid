@@ -1,6 +1,7 @@
 package me.gilo.woodroid.repo;
 
-import me.gilo.woodroid.models.Coupon;
+
+
 import retrofit2.Call;
 
 import java.util.List;

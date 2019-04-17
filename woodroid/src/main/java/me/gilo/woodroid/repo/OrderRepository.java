@@ -9,8 +9,6 @@ import me.gilo.woodroid.repo.order.OrderNoteRepository;
 import me.gilo.woodroid.repo.order.RefundRepository;
 import retrofit2.Call;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepository extends WooRepository {

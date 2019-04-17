@@ -1,9 +1,7 @@
 package me.gilo.woodroid.repo;
 
-import me.gilo.woodroid.callback.WooCall;
-import me.gilo.woodroid.data.api.PaymentGatewayAPI;
+import retrofit2.Call;
 import me.gilo.woodroid.data.api.ShippingMethodAPI;
-import me.gilo.woodroid.models.PaymentGateway;
 import me.gilo.woodroid.models.ShippingMethod;
 
 import java.util.List;
@@ -17,11 +15,11 @@ public class ShippingMethodRepository extends WooRepository{
        apiService = retrofit.create(ShippingMethodAPI.class);
     }
 
-    public WooCall<ShippingMethod> shippingMethod(String id) {
+    public Call<ShippingMethod> shippingMethod(String id) {
         return apiService.view(id);
     }
 
-    public WooCall<List<ShippingMethod>> shippingMethods() {
+    public Call<List<ShippingMethod>> shippingMethods() {
         return apiService.list();
     }
 

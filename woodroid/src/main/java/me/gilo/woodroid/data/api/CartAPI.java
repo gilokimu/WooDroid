@@ -1,13 +1,11 @@
 package me.gilo.woodroid.data.api;
 
 
-import me.gilo.woodroid.models.Coupon;
+import retrofit2.Call;
 import me.gilo.woodroid.models.LineItem;
 import me.gilo.woodroid.models.filters.CartFilter;
-import retrofit2.Call;
 import retrofit2.http.*;
 
-import java.util.List;
 import java.util.Map;
 
 public interface CartAPI {

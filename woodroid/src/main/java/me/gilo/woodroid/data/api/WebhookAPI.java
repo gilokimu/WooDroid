@@ -1,7 +1,8 @@
 package me.gilo.woodroid.data.api;
 
 
-import me.gilo.woodroid.models.*;
+import me.gilo.woodroid.models.Webhook;
+import me.gilo.woodroid.models.WebhookDelivery;
 import retrofit2.Call;
 import retrofit2.http.*;
 

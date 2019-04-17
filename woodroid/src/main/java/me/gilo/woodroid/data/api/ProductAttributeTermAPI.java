@@ -5,7 +5,6 @@ import me.gilo.woodroid.models.AttributeTerm;
 import retrofit2.Call;
 import retrofit2.http.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

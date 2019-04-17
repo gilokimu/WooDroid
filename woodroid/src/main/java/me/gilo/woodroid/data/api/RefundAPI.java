@@ -1,13 +1,10 @@
 package me.gilo.woodroid.data.api;
 
 
-import me.gilo.woodroid.models.Coupon;
-import me.gilo.woodroid.models.OrderNote;
 import me.gilo.woodroid.models.Refund;
 import retrofit2.Call;
 import retrofit2.http.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

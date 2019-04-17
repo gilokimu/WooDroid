@@ -3,7 +3,8 @@ package me.gilo.woodroid.data.api;
 
 import me.gilo.woodroid.models.report.*;
 import retrofit2.Call;
-import retrofit2.http.*;
+import retrofit2.http.GET;
+import retrofit2.http.QueryMap;
 
 import java.util.List;
 import java.util.Map;

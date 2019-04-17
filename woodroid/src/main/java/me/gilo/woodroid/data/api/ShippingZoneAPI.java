@@ -1,7 +1,6 @@
 package me.gilo.woodroid.data.api;
 
 
-import me.gilo.woodroid.models.Coupon;
 import me.gilo.woodroid.models.ShippingZone;
 import retrofit2.Call;
 import retrofit2.http.*;
