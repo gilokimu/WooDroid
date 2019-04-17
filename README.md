@@ -27,7 +27,7 @@ Step 2. Add the dependency
 <dependency>
 	<groupId>com.github.gilokimu</groupId>
 	<artifactId>woodroid</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 </dependency>
 ```
 
@@ -46,7 +46,7 @@ allprojects {
 Step 2. Add the dependency
 ```gradle
 dependencies {
-	implementation 'com.github.gilokimu:woodroid:0.1.0'
+	implementation 'com.github.gilokimu:woodroid:0.2.0'
 }
 ```
 
