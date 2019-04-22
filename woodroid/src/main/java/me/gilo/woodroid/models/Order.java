@@ -36,9 +36,9 @@ public class Order {
     public String shippingMethods;
     @SerializedName("payment_details")
     public PaymentDetails paymentDetails;
-    @SerializedName("billing_address")
+    @SerializedName("billing")
     public BillingAddress billingAddress;
-    @SerializedName("shipping_address")
+    @SerializedName("shipping")
     public ShippingAddress shippingAddress;
     public String note;
     @SerializedName("customer_ip")
