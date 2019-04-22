@@ -1,16 +1,21 @@
 package me.gilo.wc.ui.product
 
+import android.arch.lifecycle.Observer
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.SpannableString
 import android.view.View
+import android.widget.Toast
 import com.google.common.primitives.UnsignedBytes.toInt
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.content_cart.*
+import kotlinx.android.synthetic.main.content_profile.*
 import kotlinx.android.synthetic.main.single_cart_item.*
 import kotlinx.android.synthetic.main.state_empty.*
+import me.gilo.raison.ui.user.onboarding.SignUpActivity
 import me.gilo.wc.R
 import me.gilo.wc.adapter.CartAdapter
 import me.gilo.wc.common.Status
@@ -20,6 +25,9 @@ import me.gilo.wc.events.ProductEvent
 import me.gilo.wc.models.CartLineItem
 import me.gilo.wc.ui.WooDroidActivity
 import me.gilo.wc.viewmodels.CartViewModel
+import me.gilo.woodroid.models.Customer
+import me.gilo.woodroid.models.LineItem
+import me.gilo.woodroid.models.Order
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -31,6 +39,7 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
     var cartItems: ArrayList<CartLineItem> = ArrayList()
 
     lateinit var adapter: CartAdapter
+    lateinit var customer: Customer
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
@@ -55,8 +64,11 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
         rvCart.adapter = adapter
 
         cart()
+        customer()
 
         llEmptyState_layout.visibility = View.GONE
+
+
 
 
     }
@@ -97,6 +109,33 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
 
     }
 
+
+    private fun createOrder(order : Order) {
+        viewModel.createOrder(order).observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+                    showLoading()
+                }
+
+                Status.SUCCESS -> {
+                    finish()
+                }
+
+                Status.ERROR -> {
+                    stopShowingLoading()
+
+                    toast("Something went wrong!")
+                }
+
+                Status.EMPTY -> {
+                    stopShowingLoading()
+                }
+            }
+
+        })
+
+    }
+
     private fun setUpPage() {
         var itemCount = cartItems.size
         var total = 0
@@ -120,8 +159,34 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
             tvTotalItemCountTitle.text = "Items ($itemCount)"
         }
 
-        tvTotalItemCost.text = "$$total"
-        tvTotal.text = "$$total"
+        tvTotalItemCost.text = "Ksh$total"
+        tvTotal.text = "Ksh$total"
+
+        flSave.setOnClickListener{
+            prepOrder()
+        }
+    }
+
+    private fun prepOrder() {
+        var order = Order()
+
+        var lineitems  = ArrayList<LineItem>()
+
+        for (cartitem in cartItems){
+           var lineItem = LineItem()
+            lineItem.price = cartitem.getPrice().toString()
+            lineItem.productId = cartitem.productId
+            lineItem.quantity = cartitem.quantity
+
+            lineitems.add(lineItem);
+        }
+
+        order.setLineItems(lineitems);
+        order.setBillingAddress(customer.billingAddress)
+        order.setShippingAddress(customer.shippingAddress)
+        order.setCustomer(customer)
+
+        createOrder(order)
     }
 
 
@@ -201,6 +266,33 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
                 }
             }
 
+        })
+
+    }
+
+    private fun customer() {
+        viewModel.currentCustomer().observe(this, Observer {
+                response->
+            when (response!!.status()){
+                Status.LOADING ->{
+
+                }
+
+                Status.SUCCESS ->{
+                    customer = response.data()[0]
+
+                }
+
+                Status.ERROR ->{
+                    Toast.makeText(baseContext, response.error().message.toString(), Toast.LENGTH_LONG).show()
+                }
+
+                Status.EMPTY ->{
+                    startActivity(Intent(baseContext, SignUpActivity::class.java))
+                    finish()
+                }
+
+            }
         })
 
     }

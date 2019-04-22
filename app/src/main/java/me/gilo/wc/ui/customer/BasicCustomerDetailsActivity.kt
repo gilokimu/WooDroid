@@ -22,10 +22,12 @@ import java.util.regex.Pattern
 class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
 
 
-    override lateinit var viewModel : CustomerViewModel
+    override lateinit var viewModel: CustomerViewModel
     private val pattern = Pattern.compile(EMAIL_PATTERN)
     private var matcher: Matcher? = null
     lateinit var customer: Customer
+
+    var newCustomer = false
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
@@ -38,22 +40,27 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
         viewModel = getViewModel(CustomerViewModel::class.java)
         title = "Basic Details"
 
-       customer()
+        customer()
 
-        flSave.setOnClickListener{save()}
+        flSave.setOnClickListener {
+            if (newCustomer) {
+                create()
+            } else {
+                save()
+            }
+        }
 
     }
 
 
     private fun customer() {
-        viewModel.currentCustomer().observe(this, Observer {
-                response->
-            when (response!!.status()){
-                Status.LOADING ->{
+        viewModel.currentCustomer().observe(this, Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
                     showLoading("Retrieve customer details", "This will only take a short while")
                 }
 
-                Status.SUCCESS ->{
+                Status.SUCCESS -> {
                     stopShowingLoading()
                     customer = response.data()[0]
 
@@ -62,15 +69,18 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
                     etLastName.setText(customer.lastName)
                     etUsername.setText(customer.username)
 
+                    newCustomer = false
                 }
 
-                Status.ERROR ->{
+                Status.ERROR -> {
                     stopShowingLoading()
                     Toast.makeText(baseContext, response.error().message.toString(), Toast.LENGTH_LONG).show()
                 }
 
-                Status.EMPTY ->{
+                Status.EMPTY -> {
                     stopShowingLoading()
+
+                    newCustomer = true
                 }
 
             }
@@ -81,7 +91,7 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
     private fun save() {
         if (validates()) {
             val email = etEmail.text.toString()
-            val firstName =  etFirstName.text.toString()
+            val firstName = etFirstName.text.toString()
             val lastName = etLastName.text.toString()
             val username = etUsername.text.toString()
 
@@ -90,30 +100,70 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
             customer.lastName = lastName
             customer.username = username
 
-            viewModel.update(customer.id, customer).observe(this, Observer {
-                    response->
-                when (response!!.status()){
-                    Status.LOADING ->{
+            viewModel.update(customer.id, customer).observe(this, Observer { response ->
+                when (response!!.status()) {
+                    Status.LOADING -> {
                         showLoading("Uploading account details", "This will only take a short while")
                     }
 
-                    Status.SUCCESS ->{
+                    Status.SUCCESS -> {
                         stopShowingLoading()
                         finish()
                     }
 
-                    Status.ERROR ->{
+                    Status.ERROR -> {
                         stopShowingLoading()
                         Toast.makeText(baseContext, response.error().message.toString(), Toast.LENGTH_LONG).show()
                     }
 
-                    Status.EMPTY ->{
+                    Status.EMPTY -> {
 
                     }
 
                 }
             })
 
+
+        } else {
+            Toast.makeText(this, "Please correct the information entered", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun create() {
+        if (validates()) {
+            val email = etEmail.text.toString()
+            val firstName = etFirstName.text.toString()
+            val lastName = etLastName.text.toString()
+            val username = etUsername.text.toString()
+
+            var customer = Customer()
+            customer.email = email
+            customer.firstName = firstName
+            customer.lastName = lastName
+            customer.username = username
+
+            viewModel.create(customer).observe(this, Observer { response ->
+                when (response!!.status()) {
+                    Status.LOADING -> {
+                        showLoading("Uploading account details", "This will only take a short while")
+                    }
+
+                    Status.SUCCESS -> {
+                        stopShowingLoading()
+                        finish()
+                    }
+
+                    Status.ERROR -> {
+                        stopShowingLoading()
+                        Toast.makeText(baseContext, response.error().message.toString(), Toast.LENGTH_LONG).show()
+                    }
+
+                    Status.EMPTY -> {
+
+                    }
+
+                }
+            })
 
 
         } else {
@@ -130,9 +180,9 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
         var validation = true
 
         val email = tilEmail.editText!!.text.toString()
-        val firstName =  etFirstName.text.toString()
+        val firstName = etFirstName.text.toString()
         val lastName = etLastName.text.toString()
-      val username = etUsername.text.toString()
+        val username = etUsername.text.toString()
 
 
 
@@ -160,7 +210,8 @@ class BasicCustomerDetailsActivity : WooDroidActivity<CustomerViewModel>() {
     }
 
     companion object {
-        private const val EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$"
+        private const val EMAIL_PATTERN =
+            "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$"
     }
 
 }

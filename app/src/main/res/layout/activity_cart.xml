@@ -47,7 +47,7 @@
 	  android:layout_height="wrap_content"
 	  android:layout_gravity="center_horizontal"
 	  android:background="@color/colorPrimary"
-	  android:text="Proceed to checkout"
+	  android:text="Place Order"
 	  android:padding="12dp"
 	  android:gravity="center"
 	  android:textAllCaps="false"

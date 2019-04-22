@@ -12,12 +12,13 @@ import me.gilo.raison.ui.user.onboarding.SignUpActivity
 import me.gilo.wc.R
 import me.gilo.wc.ui.customer.ProfileActivity
 import me.gilo.wc.viewmodels.ProductViewModel
+import me.gilo.wc.viewmodels.UserViewModel
 
 
 class ProfileFragment : Fragment() {
 
 
-    lateinit var viewModel: ProductViewModel
+    lateinit var viewModel: UserViewModel
     val TAG = "ProfileFragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,12 +38,19 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = (activity as HomeActivity).getViewModel(UserViewModel::class.java)
+
         llMyProfile.setOnClickListener{
             if (FirebaseAuth.getInstance().currentUser != null) {
                 startActivity(Intent(activity, ProfileActivity::class.java))
             }else{
                 startActivity(Intent(activity, SignUpActivity::class.java))
             }
+        }
+
+        llLogout.setOnClickListener{
+           viewModel.logout()
+            startActivity(Intent(activity, SignUpActivity::class.java))
         }
 
 

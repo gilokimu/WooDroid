@@ -8,11 +8,10 @@ import me.gilo.wc.common.QueryLiveData;
 import me.gilo.wc.common.WooLiveData;
 import me.gilo.wc.models.CartLineItem;
 import me.gilo.wc.repo.CartRepository;
+import me.gilo.wc.repo.CustomerRepository;
 import me.gilo.wc.repo.OrderRepository;
 import me.gilo.wc.repo.ProductRepository;
-import me.gilo.woodroid.models.LineItem;
-import me.gilo.woodroid.models.Product;
-import me.gilo.woodroid.models.ProductReview;
+import me.gilo.woodroid.models.*;
 import me.gilo.woodroid.models.filters.ProductFilter;
 
 import javax.inject.Inject;
@@ -23,10 +22,14 @@ import java.util.Map;
 public final class CartViewModel extends ViewModel {
 
     private final CartRepository cartRepository;
+    private final OrderRepository orderRepository;
+    private final CustomerRepository customerRepository;
 
     @Inject
-    CartViewModel(CartRepository cartRepository) {
+    CartViewModel(CartRepository cartRepository, OrderRepository orderRepository, CustomerRepository customerRepository) {
         this.cartRepository =  cartRepository;
+        this.orderRepository = orderRepository;
+        this.customerRepository = customerRepository;
     }
 
     public CompletionGenericLiveData<DocumentReference> addToCart(Product product) {
@@ -51,6 +54,14 @@ public final class CartViewModel extends ViewModel {
 
     public WooLiveData<Map<String, LineItem>> cart(Context context) {
         return cartRepository.cart(context);
+    }
+
+    public WooLiveData<Order> createOrder(Order order) {
+        return orderRepository.create(order);
+    }
+
+    public WooLiveData<List<Customer>> currentCustomer() {
+        return customerRepository.currentCustomer();
     }
 
 }

@@ -38,6 +38,11 @@ public class FirebaseUserRepository extends FirebaseRepository {
 
     }
 
+    public void logout() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signOut();
+    }
+
 
     public CompletionGenericLiveData<AuthResult> anonymousSignIn() {
         final CompletionGenericLiveData<AuthResult> completion = new CompletionGenericLiveData();

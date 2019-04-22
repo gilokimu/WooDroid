@@ -29,6 +29,10 @@ public final class UserViewModel extends ViewModel {
         return firebaseUserRepository.login(username, password);
     }
 
+    public void logout() {
+        firebaseUserRepository.logout();
+    }
+
     public CompletionGenericLiveData<AuthResult> anonymousSignIn() {
         return firebaseUserRepository.anonymousSignIn();
     }
