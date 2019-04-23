@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import me.gilo.raison.ui.user.onboarding.SignUpActivity
 import me.gilo.wc.R
 import me.gilo.wc.ui.customer.ProfileActivity
+import me.gilo.wc.ui.order.MyOrdersActivity
 import me.gilo.wc.viewmodels.ProductViewModel
 import me.gilo.wc.viewmodels.UserViewModel
 
@@ -51,6 +52,10 @@ class ProfileFragment : Fragment() {
         llLogout.setOnClickListener{
            viewModel.logout()
             startActivity(Intent(activity, SignUpActivity::class.java))
+        }
+
+        llMyOrders.setOnClickListener{
+            startActivity(Intent(activity, MyOrdersActivity::class.java))
         }
 
 

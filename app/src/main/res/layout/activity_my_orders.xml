@@ -23,12 +23,48 @@
 
   <include layout="@layout/content_my_orders"/>
 
-  <android.support.design.widget.FloatingActionButton
-	android:id="@+id/fab"
-	android:layout_width="wrap_content"
+  <include layout="@layout/state_empty"/>
+
+  <FrameLayout
+	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:layout_gravity="bottom|end"
-	android:layout_margin="@dimen/fab_margin"
-	app:srcCompat="@android:drawable/ic_dialog_email"/>
+	android:background="@color/colorPrimary"
+	android:orientation="horizontal"
+	android:paddingTop="4dp"
+	android:paddingBottom="4dp"
+	android:paddingRight="16dp"
+	android:layout_margin="16dp"
+	android:gravity="center"
+	android:layout_gravity="bottom"
+	android:elevation="2dp"
+	android:id="@+id/flSave"
+	>
+
+	<TextView
+	  android:id="@+id/bNext"
+	  fontPath="@string/font_regular"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:layout_gravity="center_horizontal"
+	  android:background="@color/colorPrimary"
+	  android:text="Done"
+	  android:padding="12dp"
+	  android:gravity="center"
+	  android:textAllCaps="false"
+	  android:textColor="#ffffff"
+	  android:textSize="16sp"
+	  tools:ignore="MissingPrefix"/>
+
+	<ImageView
+	  android:layout_width="32dp"
+	  android:layout_height="32dp"
+	  android:src="@drawable/ic_action_navigation_arrow_back_inverted"
+	  android:tint="#ffffff"
+	  android:layout_gravity="right|center"
+	  android:rotation="180"
+	  />
+
+  </FrameLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

@@ -7,6 +7,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoMap;
+import me.gilo.wc.ui.order.MyOrdersActivity;
 import me.gilo.wc.utils.ViewModelFactory;
 import me.gilo.wc.viewmodels.*;
 
@@ -44,7 +45,10 @@ public abstract class ViewModelModule {
     @ViewModelKey(CartViewModel.class)
     abstract ViewModel bindCartViewModel(CartViewModel viewModel);
 
-
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrderViewModel.class)
+    abstract ViewModel bindOrderViewModel(OrderViewModel viewModel);
 
     @Binds
     @IntoMap

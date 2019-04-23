@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Order {
     public int id;
-    @SerializedName("order_number")
+    @SerializedName("number")
     public String orderNumber;
     @SerializedName("created_at")
     public String createdAt;

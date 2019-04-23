@@ -16,7 +16,7 @@ class OrderViewHolder(val context: Context, itemView: View) :
 
     fun renderView(order: Order) {
         val tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
-        tvTitle.text = order.orderNumber
+        tvTitle.text = "#" + order.orderNumber
 
     }
 
