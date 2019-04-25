@@ -3,6 +3,7 @@ package me.gilo.woodroid.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -12,6 +13,10 @@ public class Order {
     public String orderNumber;
     @SerializedName("created_at")
     public String createdAt;
+
+    @SerializedName("date_created")
+    public Date dateCreated;
+
     @SerializedName("updated_at")
     public String updatedAt;
     @SerializedName("completed_at")
@@ -304,5 +309,13 @@ public class Order {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
 }

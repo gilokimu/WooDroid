@@ -2,21 +2,23 @@ package me.gilo.wc.ui
 
 import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import me.gilo.wc.R
-
-import kotlinx.android.synthetic.main.activity_basic_customer_details.*
-import me.gilo.raison.ui.user.onboarding.SignInActivity
 import me.gilo.wc.common.BaseActivity
+import me.gilo.wc.common.Status
+import me.gilo.wc.ui.product.CartActivity
 import me.gilo.wc.ui.state.ProgressDialogFragment
-import me.gilo.wc.viewmodels.CustomerViewModel
-import me.gilo.wc.viewmodels.UserViewModel
-import java.util.regex.Matcher
-import java.util.regex.Pattern
+import me.gilo.wc.viewmodels.CartViewModel
+import me.gilo.wc.viewmodels.ProductViewModel
 
 abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
 
@@ -26,6 +28,13 @@ abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        cart()
     }
 
     fun showLoading() {
@@ -45,6 +54,73 @@ abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
 
     fun toast(text : String){
         Toast.makeText(baseContext, text, Toast.LENGTH_LONG).show()
+    }
+
+    var tvCartCounter : TextView? = null
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.product, menu)
+
+        val item = menu.findItem(me.gilo.wc.R.id.menu_cart)
+        val rootView = item.actionView as FrameLayout
+        tvCartCounter = rootView.findViewById<TextView>(R.id.tvCart_counter)
+
+        rootView.setOnClickListener{startActivity(Intent(baseContext, CartActivity::class.java))}
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_cart -> {
+
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    open fun cart() {
+        var viewModel = getViewModel(CartViewModel::class.java)
+
+        viewModel.cart().observe(this, android.arch.lifecycle.Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                    for (cartItem in response.data()){
+
+                    }
+
+                    if ( response.data().size == 0 && tvCartCounter != null){
+                        tvCartCounter?.visibility = View.GONE
+                    }else{
+                        tvCartCounter?.visibility = View.VISIBLE
+                        tvCartCounter?.text =  response.data().size.toString()
+                    }
+
+
+                }
+
+                Status.ERROR -> {
+
+                }
+
+                Status.EMPTY -> {
+                    if ( response.data().size == 0 && tvCartCounter != null){
+                        tvCartCounter?.visibility = View.GONE
+                    }else{
+                        tvCartCounter?.visibility = View.VISIBLE
+                        tvCartCounter?.text =  response.data().size.toString()
+                    }
+                }
+            }
+
+        })
+
     }
 
 }

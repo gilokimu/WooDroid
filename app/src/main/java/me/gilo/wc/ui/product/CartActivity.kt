@@ -73,7 +73,7 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
 
     }
 
-    private fun cart() {
+    override fun cart() {
         viewModel.cart().observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
