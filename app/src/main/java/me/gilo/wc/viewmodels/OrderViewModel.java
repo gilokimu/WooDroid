@@ -3,10 +3,13 @@ package me.gilo.wc.viewmodels;
 import android.arch.lifecycle.ViewModel;
 import me.gilo.wc.common.WooLiveData;
 import me.gilo.wc.repo.OrderRepository;
+import me.gilo.wc.repo.ProductRepository;
 import me.gilo.wc.repo.ReviewRepository;
 import me.gilo.woodroid.models.Order;
+import me.gilo.woodroid.models.Product;
 import me.gilo.woodroid.models.ProductReview;
 import me.gilo.woodroid.models.filters.OrderFilter;
+import me.gilo.woodroid.models.filters.ProductFilter;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -14,10 +17,12 @@ import java.util.List;
 
 public final class OrderViewModel extends ViewModel {
     private final OrderRepository orderRepository;
+    private final ProductRepository productRepository;
 
     @Inject
-    OrderViewModel(OrderRepository orderRepository) {
+    OrderViewModel(OrderRepository orderRepository, ProductRepository productRepository) {
         this.orderRepository =  orderRepository;
+        this.productRepository = productRepository;
     }
 
     public WooLiveData<Order> addToCart(int productId) {
@@ -32,6 +37,10 @@ public final class OrderViewModel extends ViewModel {
     public WooLiveData<Order> order(int id) {
 
         return orderRepository.order(id);
+    }
+
+    public WooLiveData<List<Product>> products(ProductFilter filter) {
+        return productRepository.products(filter);
     }
 
     public WooLiveData<List<Order>> orders() {

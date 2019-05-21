@@ -44,9 +44,9 @@ class OrderViewHolder(val context: Context, itemView: View) :
         tvDescription.text = description
 
         itemView.setOnClickListener{
-            var intent = Intent(context, OrderActivity::class.java);
-            intent.putExtra("orderId", order.id);
-            context.startActivity(intent);
+            var intent = Intent(context, OrderActivity::class.java)
+            intent.putExtra("orderId", order.id)
+            context.startActivity(intent)
         }
 
     }
