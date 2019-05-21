@@ -11,6 +11,7 @@ import me.gilo.wc.ui.customer.BillingAddressActivity
 import me.gilo.wc.ui.customer.ShippingAddressActivity
 import me.gilo.wc.ui.home.HomeActivity
 import me.gilo.wc.ui.onboarding.AnonymousSignInActivity
+import me.gilo.wc.ui.order.MyOrdersActivity
 import me.gilo.wc.ui.product.ProductActivity
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
 
         if(FirebaseAuth.getInstance().currentUser != null) {
-            startActivity(Intent(baseContext, HomeActivity::class.java))
+            startActivity(Intent(baseContext, MyOrdersActivity::class.java))
         }else{
             startActivity(Intent(baseContext, AnonymousSignInActivity::class.java))
         }

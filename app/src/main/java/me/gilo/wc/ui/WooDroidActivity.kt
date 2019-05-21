@@ -11,7 +11,9 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
+import me.gilo.raison.ui.user.onboarding.SignInActivity
 import me.gilo.wc.R
 import me.gilo.wc.common.BaseActivity
 import me.gilo.wc.common.Status
@@ -33,6 +35,11 @@ abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        if(FirebaseAuth.getInstance().currentUser == null){
+            startActivity(Intent(baseContext, SignInActivity::class.java))
+            finish()
+        }
 
         cart()
     }
