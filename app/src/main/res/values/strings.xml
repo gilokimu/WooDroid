@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">wc-app</string>
+  <string name="app_name">WooDroid</string>
   <string name="title_activity_shop">ShopActivity</string>
   <string name="title_activity_coupon">CouponActivity</string>
   <string name="title_activity_menu">MenuActivity</string>
