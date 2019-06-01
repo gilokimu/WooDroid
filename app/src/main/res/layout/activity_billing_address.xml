@@ -5,7 +5,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".ui.customer.BillingAddressActivity">
+  tools:context=".app.ui.customer.BillingAddressActivity">
 
   <include layout="@layout/customer_billing_address"/>
 

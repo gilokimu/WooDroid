@@ -8,6 +8,6 @@
   android:background="@color/bg"
   app:layout_behavior="@string/appbar_scrolling_view_behavior"
   tools:showIn="@layout/activity_anonymous_sign_in"
-  tools:context=".ui.onboarding.AnonymousSignInActivity">
+  tools:context=".app.ui.onboarding.AnonymousSignInActivity">
 
 </android.support.constraint.ConstraintLayout>

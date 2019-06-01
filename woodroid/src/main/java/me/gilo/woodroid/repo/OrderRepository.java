@@ -30,16 +30,29 @@ public class OrderRepository extends WooRepository {
         return apiService.create(order);
     }
 
-    public Call<Order> addToCart(int productId) {
-        Order order = new Order();
-
+    public Call<Order> addToCart(int productId, Order cartOrder) {
         LineItem lineItem = new LineItem();
         lineItem.setProductId(productId);
         lineItem.setQuantity(1);
 
-        order.addLineItem(lineItem);
+        if (cartOrder != null) {
+            cartOrder.addLineItem(lineItem);
+            return apiService.update(cartOrder.getId(), cartOrder);
+        }else {
+            cartOrder = new Order();
+            cartOrder.setOrderNumber("Cart");
+            cartOrder.setStatus("on-hold");
+            cartOrder.addLineItem(lineItem);
+            return apiService.create(cartOrder);
+        }
 
-        return apiService.create(order);
+    }
+
+    public Call<List<Order>> cart() {
+        OrderFilter orderFilter = new OrderFilter();
+        orderFilter.setStatus("on-hold");
+
+        return apiService.filter(orderFilter.getFilters());
     }
 
     public Call<Order> order(int id) {

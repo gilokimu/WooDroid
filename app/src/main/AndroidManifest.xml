@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 		  xmlns:tools="http://schemas.android.com/tools"
-		  package="me.gilo.wc">
+		  package="me.gilo.woodroid.app">
 
   <uses-permission android:name="android.permission.INTERNET"/>
 
   <application
-	android:name=".WcApp"
+	android:name="me.gilo.woodroid.app.WcApp"
 	android:allowBackup="true"
 	android:icon="@mipmap/ic_launcher"
 	android:label="@string/app_name"
@@ -16,57 +16,57 @@
 	android:usesCleartextTraffic="true"
 	tools:ignore="GoogleAppIndexingWarning">
 	<activity
-	  android:name=".ui.order.OrderActivity"
+	  android:name="me.gilo.woodroid.app.ui.order.OrderActivity"
 	  android:label="@string/title_activity_order"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.onboarding.AnonymousSignInActivity"
+	  android:name="me.gilo.woodroid.app.ui.onboarding.AnonymousSignInActivity"
 	  android:label="@string/title_activity_anonymous_sign_in"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.checkout.CheckoutActivity"
+	  android:name="me.gilo.woodroid.app.ui.checkout.CheckoutActivity"
 	  android:label="@string/title_activity_checkout"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.product.CartActivity"
+	  android:name="me.gilo.woodroid.app.ui.product.CartActivity"
 	  android:label="@string/title_activity_cart"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.customer.ProfileActivity"
+	  android:name="me.gilo.woodroid.app.ui.customer.ProfileActivity"
 	  android:label="@string/title_activity_profile"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.customer.ShippingAddressActivity"
+	  android:name="me.gilo.woodroid.app.ui.customer.ShippingAddressActivity"
 	  android:label="@string/title_activity_shipping_address"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.customer.BillingAddressActivity"
+	  android:name="me.gilo.woodroid.app.ui.customer.BillingAddressActivity"
 	  android:label="@string/title_activity_billing_address"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.customer.BasicCustomerDetailsActivity"
+	  android:name="me.gilo.woodroid.app.ui.customer.BasicCustomerDetailsActivity"
 	  android:label="@string/title_activity_basic_customer_details"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.onboarding.UserDetailsActivity"
+	  android:name="me.gilo.woodroid.app.ui.onboarding.UserDetailsActivity"
 	  android:label="@string/title_activity_user_details"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.order.MyOrdersActivity"
+	  android:name="me.gilo.woodroid.app.ui.order.MyOrdersActivity"
 	  android:label="@string/title_activity_my_orders"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.home.HomeActivity"
+	  android:name="me.gilo.woodroid.app.ui.home.HomeActivity"
 	  android:label="@string/title_activity_home"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
@@ -91,12 +91,12 @@
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.product.ProductActivity"
+	  android:name="me.gilo.woodroid.app.ui.product.ProductActivity"
 	  android:label="@string/title_activity_product"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.product.ProductSearchActivity"
+	  android:name="me.gilo.woodroid.app.ui.product.ProductSearchActivity"
 	  android:label="@string/title_activity_product_search"
 	  android:theme="@style/AppTheme.NoActionBar">
 	  <intent-filter>
@@ -104,34 +104,34 @@
 	  </intent-filter>
 	</activity>
 	<activity
-	  android:name=".ui.coupon.CouponActivity"
+	  android:name="me.gilo.woodroid.app.ui.coupon.CouponActivity"
 	  android:label="@string/title_activity_coupon"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.coupon.CouponsActivity"
+	  android:name="me.gilo.woodroid.app.ui.coupon.CouponsActivity"
 	  android:label="@string/title_activity_coupons"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.coupon.AddCouponActivity"
+	  android:name="me.gilo.woodroid.app.ui.coupon.AddCouponActivity"
 	  android:label="@string/title_activity_add_coupon"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.MenuActivity"
+	  android:name="me.gilo.woodroid.app.ui.MenuActivity"
 	  android:label="@string/title_activity_menu"
 	  android:theme="@style/AppTheme.NoActionBar">
 	</activity>
 	<activity
-	  android:name=".ui.product.ShopActivity"
+	  android:name="me.gilo.woodroid.app.ui.product.ShopActivity"
 	  android:label="@string/title_activity_shop"
 	  android:theme="@style/AppTheme.NoActionBar">
 	  <meta-data
 		android:name="android.app.searchable"
 		android:resource="@xml/searchable"/>
 	</activity>
-	<activity android:name=".MainActivity">
+	<activity android:name="me.gilo.woodroid.app.MainActivity">
 	  <intent-filter>
 		<action android:name="android.intent.action.MAIN"/>
 

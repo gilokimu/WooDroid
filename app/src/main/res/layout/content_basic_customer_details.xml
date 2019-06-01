@@ -7,6 +7,6 @@
   android:layout_height="match_parent"
   app:layout_behavior="@string/appbar_scrolling_view_behavior"
   tools:showIn="@layout/activity_basic_customer_details"
-  tools:context=".ui.customer.BasicCustomerDetailsActivity">
+  tools:context=".app.ui.customer.BasicCustomerDetailsActivity">
 
 </android.support.constraint.ConstraintLayout>

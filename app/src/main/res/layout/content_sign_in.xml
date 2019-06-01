@@ -65,7 +65,7 @@
 		android:theme="@style/OnboardingTextLabel"
 		android:visibility="visible">
 
-		<EditText
+		<android.support.design.widget.TextInputEditText
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:hint="Email or Phone"
@@ -90,7 +90,7 @@
 		android:theme="@style/OnboardingTextLabel"
 		android:visibility="visible">
 
-		<EditText
+		<android.support.design.widget.TextInputEditText
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:hint="Password"

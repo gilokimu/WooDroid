@@ -7,6 +7,6 @@
   android:layout_height="match_parent"
   app:layout_behavior="@string/appbar_scrolling_view_behavior"
   tools:showIn="@layout/activity_shipping_address"
-  tools:context=".ui.customer.ShippingAddressActivity">
+  tools:context=".app.ui.customer.ShippingAddressActivity">
 
 </android.support.constraint.ConstraintLayout>

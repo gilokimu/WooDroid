@@ -7,7 +7,7 @@
 			  android:background="@color/bg"
 			  android:orientation="vertical"
 			  tools:showIn="@layout/activity_add_coupon"
-			  tools:context=".ui.coupon.AddCouponActivity"
+			  tools:context=".app.ui.coupon.AddCouponActivity"
 			  app:layout_behavior="@string/appbar_scrolling_view_behavior"
 	>
 

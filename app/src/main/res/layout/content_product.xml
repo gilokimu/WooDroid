@@ -118,13 +118,13 @@
 
 
 	<fragment
-	  android:name="me.gilo.wc.ui.product.section.RelatedProductsFragment"
+	  android:name="me.gilo.woodroid.app.ui.product.section.RelatedProductsFragment"
 	  android:id="@+id/fRelatedProducts"
 	  android:layout_width="match_parent"
 	  android:layout_height="wrap_content"/>
 
 	<fragment
-	  android:name="me.gilo.wc.ui.product.section.ProductReviewsFragment"
+	  android:name="me.gilo.woodroid.app.ui.product.section.ProductReviewsFragment"
 	  android:id="@+id/fProductReviews"
 	  android:layout_width="match_parent"
 	  android:layout_height="wrap_content"/>

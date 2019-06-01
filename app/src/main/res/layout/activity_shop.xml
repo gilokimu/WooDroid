@@ -6,7 +6,7 @@
   android:id="@+id/drawer_layout"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".ui.product.ShopActivity"
+  tools:context=".app.ui.product.ShopActivity"
   tools:openDrawer="end">
 
   <android.support.design.widget.CoordinatorLayout
