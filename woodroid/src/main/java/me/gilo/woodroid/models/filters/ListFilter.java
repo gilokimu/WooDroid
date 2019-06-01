@@ -76,11 +76,11 @@ public class ListFilter {
     }
 
     public void setAfter(Date date) {
-        setAfter(Converter.getDateString(date));
+        setAfter(Converter.INSTANCE.getDateString(date));
     }
 
     public void setBefore(Date date) {
-        setBefore(Converter.getDateString(date));
+        setBefore(Converter.INSTANCE.getDateString(date));
     }
 
     public void setBefore(String before) {

@@ -17,24 +17,24 @@ public class Woocommerce {
     public static final ApiVersion API_V2 = ApiVersion.API_VERSION2;
     public static final ApiVersion API_V3 = ApiVersion.API_VERSION3;
 
-    final OrderNoteRepository orderNoteRepository;
-    final RefundRepository refundRepository;
-    final AttributeRepository attributeRepository;
-    final AttributeTermRepository attributeTermRepository;
-    final CategoryRepository categoryRepository;
-    final ShippingClassRepository shippingClassRepository;
-    final TagRepository tagRepository;
-    final VariationRepository variationRepository;
-    final CouponRepository couponRepository;
-    final CustomerRepository customerRepository;
-    final OrderRepository orderRepository;
-    final ProductRepository productRepository;
-    final ReviewRepository reviewRepository;
-    final ReportsRepository reportsRepository;
-    final CartRepository cartRepository;
-    final PaymentGatewayRepository paymentGatewayRepository;
-    final SettingsRepository settingsRepository;
-    final ShippingMethodRepository shippingMethodRepository;
+    private final OrderNoteRepository orderNoteRepository;
+    private final RefundRepository refundRepository;
+    private final AttributeRepository attributeRepository;
+    private final AttributeTermRepository attributeTermRepository;
+    private final CategoryRepository categoryRepository;
+    private final ShippingClassRepository shippingClassRepository;
+    private final TagRepository tagRepository;
+    private final VariationRepository variationRepository;
+    private final CouponRepository couponRepository;
+    private final CustomerRepository customerRepository;
+    private final OrderRepository orderRepository;
+    private final ProductRepository productRepository;
+    private final ReviewRepository reviewRepository;
+    private final ReportsRepository reportsRepository;
+    private final CartRepository cartRepository;
+    private final PaymentGatewayRepository paymentGatewayRepository;
+    private final SettingsRepository settingsRepository;
+    private final ShippingMethodRepository shippingMethodRepository;
 
     public static Builder Builder(){
         return new Builder();

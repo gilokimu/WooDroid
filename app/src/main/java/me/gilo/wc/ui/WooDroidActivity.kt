@@ -40,7 +40,6 @@ abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
             startActivity(Intent(baseContext, SignInActivity::class.java))
             finish()
         }
-
         cart()
     }
 
