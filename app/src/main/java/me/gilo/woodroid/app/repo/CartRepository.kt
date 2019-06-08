@@ -25,7 +25,7 @@ constructor() {
 
     private val cart: CollectionReference = FirebaseFirestore.getInstance()
         .collection("users")
-        .document(FirebaseAuth.getInstance().currentUser!!.uid)
+        .document(FirebaseAuth.getInstance().currentUser?.uid ?: "0")
         .collection("cart")
 
     fun cart(): QueryLiveData<CartLineItem> {

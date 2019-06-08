@@ -26,7 +26,7 @@ class OrderViewHolder(val context: Context, itemView: View) :
         tvTitle.text = "#" + order.orderNumber
         tvStatus.text = order.status
 
-        tvDate.text = DateUtils.getDateString_shortAndSmart(order.getDateCreated())
+        tvDate.text = DateUtils.getDateString_shortAndSmart(order.dateCreated)
 
         tvPrice.text = SpannableString("Ksh${order.total}")
 

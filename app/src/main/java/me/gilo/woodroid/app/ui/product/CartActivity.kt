@@ -177,9 +177,9 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
         }
 
         order.setLineItems(lineitems);
-        order.setBillingAddress(customer.billingAddress)
-        order.setShippingAddress(customer.shippingAddress)
-        order.setCustomer(customer)
+        order.billingAddress = customer.billingAddress
+        order.shippingAddress = customer.shippingAddress
+        order.customer = customer
 
         createOrder(order)
     }
