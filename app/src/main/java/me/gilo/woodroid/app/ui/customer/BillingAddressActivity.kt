@@ -106,7 +106,7 @@ class BillingAddressActivity : WooDroidActivity<CustomerViewModel>() {
             customer.billingAddress.country = country
             customer.billingAddress.phone = phone
 
-            customer.billingAddress.email = FirebaseAuth.getInstance().currentUser!!.email
+            customer.billingAddress.email = FirebaseAuth.getInstance().currentUser!!.email!!
 
             viewModel.update(customer.id, customer).observe(this, Observer {
                     response->

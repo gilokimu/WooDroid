@@ -78,7 +78,7 @@ class ShopActivity : BaseActivity() {
         val filter = ProductFilter()
 
         if (etSearch.text.toString().isNotEmpty()){
-            filter.search = etSearch.text.toString()
+            filter.setSearch(etSearch.text.toString())
         }
 
         if (etMinPrice.text.toString().isNotEmpty()){

@@ -50,7 +50,7 @@ class CouponActivity : BaseActivity() {
             override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
                 val coupon = response.body()!!
 
-                etCode.setText(coupon.code.toUpperCase())
+                etCode.setText(coupon.code?.toUpperCase())
                 etDescription.setText(coupon.description)
 
                 stopShowingLoading()
@@ -70,7 +70,7 @@ class CouponActivity : BaseActivity() {
                 if (response.isSuccessful) {
                     val coupon = response.body()!!
 
-                    etCode.setText(coupon.code.toUpperCase())
+                    etCode.setText(coupon.code?.toUpperCase())
                     etDescription.setText(coupon.description)
 
                     finish()
@@ -95,7 +95,7 @@ class CouponActivity : BaseActivity() {
             override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
                 val coupon = response.body()!!
 
-                etCode.setText(coupon.code.toUpperCase())
+                etCode.setText(coupon.code?.toUpperCase())
                 etDescription.setText(coupon.description)
 
                 stopShowingLoading()
