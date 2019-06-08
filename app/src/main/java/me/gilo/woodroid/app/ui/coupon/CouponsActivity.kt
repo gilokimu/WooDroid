@@ -48,7 +48,7 @@ class CouponsActivity : BaseActivity() {
     //Not best practise, but works for purposes of demo
     private fun coupons() {
         val filter = CouponFilter()
-        filter.search = "FEB"
+        filter.setSearch("FEB")
 
         woocommerce.CouponRepository().coupons(filter).enqueue(object : Callback<List<Coupon>> {
             override fun onResponse(call: Call<List<Coupon>>, response: Response<List<Coupon>>) {

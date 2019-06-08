@@ -4,7 +4,7 @@ import java.io.Serializable
 
 class Metadata : Serializable {
     var id: Int = 0
-    var key: String
+    lateinit var key: String
 
 
 }

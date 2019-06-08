@@ -67,7 +67,7 @@ class RelatedProductsFragment : Fragment() {
         rvShop.adapter = adapter
 
         val filter = ProductFilter()
-        filter.include = product.related_ids.toIntArray()
+        filter.setInclude(product.related_ids.toIntArray())
 
         viewModel.products(filter).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {

@@ -17,7 +17,7 @@ class CouponViewHolder(val context: Context, itemView: View) :
         val tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
         val tvDescription = itemView.findViewById<TextView>(R.id.tvDescription)
 
-        tvTitle.text = coupon.code.toUpperCase()
+        tvTitle.text = coupon.code?.toUpperCase()
         tvDescription.text = Html.fromHtml(coupon.description)
 
         itemView.setOnClickListener{

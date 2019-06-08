@@ -2,8 +2,8 @@ package me.gilo.woodroid.models.filters
 
 class CustomerFilter : ListFilter() {
 
-    internal lateinit var email: String
-    internal lateinit var role: String
+    private lateinit var email: String
+    private lateinit var role: String
 
     //all, administrator, editor, author, contributor, subscriber, customer and shop_manager
 

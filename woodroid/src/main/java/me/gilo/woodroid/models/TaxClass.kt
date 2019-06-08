@@ -1,6 +1,6 @@
 package me.gilo.woodroid.models
 
 class TaxClass {
-    var slug: String
-    var name: String
+    lateinit var slug: String
+    lateinit var name: String
 }

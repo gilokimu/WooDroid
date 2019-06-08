@@ -1,5 +1,5 @@
 package me.gilo.woodroid.models
 
 class OrderData {
-    var order: Order
+    lateinit var order: Order
 }

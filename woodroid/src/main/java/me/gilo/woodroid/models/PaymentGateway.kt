@@ -2,13 +2,13 @@ package me.gilo.woodroid.models
 
 class PaymentGateway {
 
-    var id: String
-    var title: String
-    var description: String
+    lateinit var id: String
+    lateinit var title: String
+    lateinit var description: String
     var order: Int = 0
     var isEnabled: Boolean = false
-    var method_title: String
-    var method_description: String
-    var method_supports: Array<String>
-    var settings: Map<String, PaymentGatewaySetting>
+    lateinit var method_title: String
+    lateinit var method_description: String
+    lateinit var method_supports: Array<String>
+    lateinit var settings: Map<String, PaymentGatewaySetting>
 }

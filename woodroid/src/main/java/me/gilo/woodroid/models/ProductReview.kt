@@ -9,10 +9,10 @@ class ProductReview : Serializable {
     var date_created: Date? = null
     var date_created_gmt: Date? = null
     var product_id: Int = 0
-    var reviewer: String
-    var reviewer_email: String
+    lateinit var reviewer: String
+    lateinit var reviewer_email: String
 
-    var reviewer_avatar_urls: Map<String, String>
+    lateinit var reviewer_avatar_urls: Map<String, String>
 
     var review: String? = null
     var rating: Int = 0

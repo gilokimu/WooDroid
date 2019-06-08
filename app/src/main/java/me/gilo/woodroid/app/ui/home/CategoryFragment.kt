@@ -62,7 +62,7 @@ class CategoryFragment : Fragment() {
     private fun categories() {
 
         val filter = ProductCategoryFilter()
-        filter.per_page = 50
+        filter.setPer_page(50)
 
         viewModel.categories(filter).observe(this, android.arch.lifecycle.Observer { response ->
             when (response!!.status()) {

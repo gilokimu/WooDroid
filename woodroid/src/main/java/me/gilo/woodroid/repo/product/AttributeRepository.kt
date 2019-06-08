@@ -9,11 +9,7 @@ import retrofit2.Call
 class AttributeRepository(baseUrl: String, consumerKey: String, consumerSecret: String) :
     WooRepository(baseUrl, consumerKey, consumerSecret) {
 
-    private val apiService: ProductAttributeAPI
-
-    init {
-        apiService = retrofit.create(ProductAttributeAPI::class.java)
-    }
+    private val apiService: ProductAttributeAPI = retrofit.create(ProductAttributeAPI::class.java)
 
     fun create(attribute: Attribute): Call<Attribute> {
         return apiService.create(attribute)

@@ -17,57 +17,57 @@ constructor() {
 
     fun create(customer: Customer): WooLiveData<Customer> {
         val callBack = WooLiveData<Customer>()
-        woocommerce!!.CustomerRepository().create(customer).enqueue(callBack)
+        woocommerce.CustomerRepository().create(customer).enqueue(callBack)
         return callBack
     }
 
     fun currentCustomer(): WooLiveData<List<Customer>> {
         val callBack = WooLiveData<List<Customer>>()
         val customerFilter = CustomerFilter()
-        customerFilter.email = FirebaseAuth.getInstance().currentUser!!.email
+        customerFilter.setEmail(FirebaseAuth.getInstance().currentUser!!.email!!)
 
-        woocommerce!!.CustomerRepository().customers(customerFilter).enqueue(callBack)
+        woocommerce.CustomerRepository().customers(customerFilter).enqueue(callBack)
         return callBack
     }
 
 
     fun customer(id: Int): WooLiveData<Customer> {
         val callBack = WooLiveData<Customer>()
-        woocommerce!!.CustomerRepository().customer(id).enqueue(callBack)
+        woocommerce.CustomerRepository().customer(id).enqueue(callBack)
         return callBack
     }
 
     fun customers(): WooLiveData<List<Customer>> {
         val callBack = WooLiveData<List<Customer>>()
 
-        woocommerce!!.CustomerRepository().customers().enqueue(callBack)
+        woocommerce.CustomerRepository().customers().enqueue(callBack)
 
         return callBack
     }
 
     fun customers(customerFilter: CustomerFilter): WooLiveData<List<Customer>> {
         val callBack = WooLiveData<List<Customer>>()
-        woocommerce!!.CustomerRepository().customers(customerFilter).enqueue(callBack)
+        woocommerce.CustomerRepository().customers(customerFilter).enqueue(callBack)
         return callBack
     }
 
     fun update(id: Int, customer: Customer): WooLiveData<Customer> {
         val callBack = WooLiveData<Customer>()
-        woocommerce!!.CustomerRepository().update(id, customer).enqueue(callBack)
+        woocommerce.CustomerRepository().update(id, customer).enqueue(callBack)
 
         return callBack
     }
 
     fun delete(id: Int): WooLiveData<Customer> {
         val callBack = WooLiveData<Customer>()
-        woocommerce!!.CustomerRepository().delete(id).enqueue(callBack)
+        woocommerce.CustomerRepository().delete(id).enqueue(callBack)
 
         return callBack
     }
 
     fun delete(id: Int, force: Boolean): WooLiveData<Customer> {
         val callBack = WooLiveData<Customer>()
-        woocommerce!!.CustomerRepository().delete(id, force).enqueue(callBack)
+        woocommerce.CustomerRepository().delete(id, force).enqueue(callBack)
 
         return callBack
     }

@@ -36,7 +36,7 @@ class OrderRepository(baseUrl: String, consumerKey: String, consumerSecret: Stri
 
         if (cartOrder != null) {
             cartOrder.addLineItem(lineItem)
-            return apiService.update(cartOrder.getId()!!, cartOrder)
+            return apiService.update(cartOrder.id, cartOrder)
         } else {
             cartOrder = Order()
             cartOrder.orderNumber = "Cart"

@@ -7,20 +7,20 @@ import java.util.ArrayList
 
 class LineItem {
 
-    var subtotal: String
+    lateinit var subtotal: String
     @SerializedName("subtotal_tax")
-    var subtotalTax: String
-    var total: String
-    var totalTax: String
-    var price: String
+    lateinit var subtotalTax: String
+    lateinit var total: String
+    lateinit var totalTax: String
+    lateinit var price: String
     var quantity: Int = 0
-    var taxClass: Any
-    var name: String
+    lateinit var taxClass: Any
+    lateinit var name: String
 
     @SerializedName("product_id")
     var productId: Int = 0
 
-    var sku: String
-    var variations: String
+    lateinit var sku: String
+    lateinit var variations: String
     var meta: List<Metum> = ArrayList()
 }

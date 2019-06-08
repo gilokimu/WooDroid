@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 class PaymentDetails {
     @SerializedName("method_id")
-    var methodId: String
+    lateinit var methodId: String
     @SerializedName("method_title")
-    var methodTitle: String
+    lateinit var methodTitle: String
     var paid: Boolean? = null
 }

@@ -5,15 +5,15 @@ import java.util.Date
 class WebhookDelivery {
 
     var id: Int = 0
-    var duration: String
-    var summary: String
-    var request_url: String
-    var request_headers: Map<String, String>
-    var request_body: String
-    var response_code: String
-    var response_message: String
-    var response_headers: Map<String, String>
-    var response_body: String
-    var date_created: Date
-    var date_created_gmt: Date
+    lateinit var duration: String
+    lateinit var summary: String
+    lateinit var request_url: String
+    lateinit var request_headers: Map<String, String>
+    lateinit var request_body: String
+    lateinit var response_code: String
+    lateinit var response_message: String
+    lateinit var response_headers: Map<String, String>
+    lateinit var response_body: String
+    lateinit var date_created: Date
+    lateinit var date_created_gmt: Date
 }
