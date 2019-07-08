@@ -1,15 +1,21 @@
-package me.gilo.woodroid.models
+package me.gilo.woodroid.firebasecart.models
 
 import com.google.gson.annotations.SerializedName
+import me.gilo.woodroid.core.cart.lines.FeeLine
+import me.gilo.woodroid.core.cart.lines.LineItem
+import me.gilo.woodroid.core.cart.lines.ShippingLine
+import me.gilo.woodroid.models.*
 
 import java.util.ArrayList
 import java.util.Date
 
 
-class Order {
+class Cart {
     var id: Int = 0
+
     @SerializedName("number")
     lateinit var orderNumber: String
+
     @SerializedName("created_at")
     lateinit var createdAt: String
 
@@ -18,51 +24,77 @@ class Order {
 
     @SerializedName("updated_at")
     lateinit var updatedAt: String
+
     @SerializedName("completed_at")
     lateinit var completedAt: String
+
     lateinit var status: String
+
     lateinit var currency: String
+
     lateinit var total: String
+
     lateinit var subtotal: String
+
     @SerializedName("total_line_items_quantity")
     var totalLineItemsQuantity: Int = 0
+
     @SerializedName("total_tax")
     lateinit var totalTax: String
+
     @SerializedName("total_shipping")
     lateinit var totalShipping: String
+
     @SerializedName("cart_tax")
     lateinit var cartTax: String
+
     @SerializedName("shipping_tax")
     lateinit var shippingTax: String
+
     @SerializedName("total_discount")
     lateinit var totalDiscount: String
+
     @SerializedName("shipping_methods")
     lateinit var shippingMethods: String
+
     @SerializedName("payment_details")
     lateinit var paymentDetails: PaymentDetails
+
     @SerializedName("billing")
     lateinit var billingAddress: BillingAddress
+
     @SerializedName("shipping")
     lateinit var shippingAddress: ShippingAddress
+
     lateinit var note: String
+
     @SerializedName("customer_ip")
     lateinit var customerIp: String
+
     @SerializedName("customer_user_agent")
     lateinit var customerUserAgent: String
+
     @SerializedName("customer_id")
     var customerId: Int? = null
+
     @SerializedName("view_order_url")
     lateinit var viewOrderUrl: String
+
     @SerializedName("line_items")
     var lineItems: MutableList<LineItem> = ArrayList()
+
     @SerializedName("shipping_lines")
     var shippingLines: List<ShippingLine> = ArrayList()
+
     @SerializedName("tax_lines")
     var taxLines: List<TaxLine> = ArrayList()
+
     @SerializedName("fee_lines")
     var feeLines: List<FeeLine> = ArrayList()
+
     @SerializedName("coupon_lines")
     var couponLines: List<Any> = ArrayList()
+
     lateinit var customer: Customer
 
 

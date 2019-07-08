@@ -1,7 +1,7 @@
 package me.gilo.woodroid.core.cart
 
 import android.arch.lifecycle.LiveData
-import me.gilo.woodroid.models.LineItem
+import me.gilo.woodroid.core.cart.lines.LineItem
 
 
 abstract class CartRepository{

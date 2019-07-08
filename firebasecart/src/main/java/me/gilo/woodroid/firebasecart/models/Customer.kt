@@ -1,6 +1,8 @@
-package me.gilo.woodroid.models
+package me.gilo.woodroid.firebasecart.models
 
 import com.google.gson.annotations.SerializedName
+import me.gilo.woodroid.models.BillingAddress
+import me.gilo.woodroid.models.ShippingAddress
 
 import java.io.Serializable
 

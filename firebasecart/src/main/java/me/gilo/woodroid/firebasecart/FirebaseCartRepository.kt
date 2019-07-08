@@ -6,10 +6,17 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import me.gilo.woodroid.core.cart.CartRepository
-import me.gilo.woodroid.models.LineItem
+import me.gilo.woodroid.core.cart.lines.LineItem
 
 
-open class FirebaseCartRepository : CartRepository() {
+open class FirebaseCartRepository(userId : String) : CartRepository() {
+
+    private val cart: CollectionReference = FirebaseFirestore.getInstance()
+        .collection("users")
+        .document(userId)
+        .collection("cart")
+
+
     override fun cart(): LiveData<List<LineItem>> {
         TODO("not implemented")
     }
@@ -39,9 +46,6 @@ open class FirebaseCartRepository : CartRepository() {
     }
 
 
-    private val cart: CollectionReference = FirebaseFirestore.getInstance()
-        .collection("users")
-        .document(FirebaseAuth.getInstance().currentUser?.uid ?: "0")
-        .collection("cart")
+
 
 }
