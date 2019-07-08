@@ -1,1 +1,1 @@
-include ':app', ':woodroid', ':firebasecart'
+include ':app', ':woodroid', ':firebasecart', ':core'
