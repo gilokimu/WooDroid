@@ -10,7 +10,7 @@
   android:layout_marginTop="16dp"
   >
 
-  <LinearLayout
+  <LinearLayou
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:gravity="top"
@@ -129,7 +129,7 @@
 	</LinearLayout>
 
 
-  </LinearLayout>
+  </LinearLayou>
 
   <View
 	android:layout_width="match_parent"

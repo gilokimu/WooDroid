@@ -60,6 +60,16 @@ Generate API credentials (Consumer Key & Consumer Secret) following this instruc
 
 Check out the WooCommerce API endpoints and data that can be manipulated in <https://woocommerce.github.io/woocommerce-rest-api-docs/>.
 
+## Demo
+I have left consumer key and secret within the app, for you to test the app without an installation of wordpress. To use my installation of wordpress, here are the credentials: 
+
+username: demo
+password: demo2019
+https://gilo.me/store/wp-admin
+
+PS/ Do no harm
+
+
 ## Setup
 
 Setup for the new WP REST API integration (WooCommerce 2.6 or later):
