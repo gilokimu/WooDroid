@@ -1,10 +1,10 @@
 package me.gilo.woodroid.app.ui.product
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
@@ -49,7 +49,11 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
         viewModel = getViewModel(CartViewModel::class.java)
         title = "Cart"
 
-        val layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(
+            baseContext,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
         rvCart.layoutManager = layoutManager
         rvCart.isNestedScrollingEnabled = false
 
@@ -69,7 +73,7 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
     }
 
     override fun cart() {
-        viewModel.cart().observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.cart().observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                     showLoading()
@@ -106,7 +110,7 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
 
 
     private fun createOrder(order : Order) {
-        viewModel.createOrder(order).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.createOrder(order).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                     showLoading()
@@ -217,7 +221,7 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
     }
 
     private fun updateCart(cartLineItem: CartLineItem, quantity: Int) {
-        viewModel.setQuantity(cartLineItem, quantity).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.setQuantity(cartLineItem, quantity).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
@@ -242,7 +246,7 @@ class CartActivity : WooDroidActivity<CartViewModel>() {
 
 
     private fun delete(cartLineItem: CartLineItem) {
-        viewModel.deleteItem(cartLineItem).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.deleteItem(cartLineItem).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 

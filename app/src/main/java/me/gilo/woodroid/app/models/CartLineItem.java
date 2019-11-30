@@ -1,5 +1,4 @@
 package me.gilo.woodroid.app.models;
-
 import me.gilo.woodroid.models.Product;
 
 

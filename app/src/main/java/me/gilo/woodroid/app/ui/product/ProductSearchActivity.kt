@@ -4,8 +4,8 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.GridLayoutManager
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.recyclerview.widget.GridLayoutManager
 import android.widget.Toast
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import me.gilo.woodroid.app.R
@@ -46,7 +46,8 @@ class ProductSearchActivity : BaseActivity() {
 
         title = "Search"
 
-        val layoutManager = GridLayoutManager(baseContext, 2)
+        val layoutManager =
+            GridLayoutManager(baseContext, 2)
         rvShop.layoutManager = layoutManager
         rvShop.isNestedScrollingEnabled = false
 
@@ -72,7 +73,7 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     private fun search(query : String) {
-        viewModel.search(query).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.search(query).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                     showLoading("Performing search", "This will only take a short while")

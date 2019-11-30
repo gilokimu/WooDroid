@@ -1,6 +1,6 @@
 package me.gilo.woodroid.app.viewmodels;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 import me.gilo.woodroid.app.common.WooLiveData;
 import me.gilo.woodroid.app.repo.ReviewRepository;
 import me.gilo.woodroid.models.ProductReview;

@@ -1,8 +1,8 @@
 package me.gilo.woodroid.app.ui.home
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,7 +46,11 @@ class CategoryFragment : Fragment() {
 
         viewModel = (activity as HomeActivity).getViewModel(CategoryViewModel::class.java)
 
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(
+            activity,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
         rvCategory.layoutManager = layoutManager
         rvCategory.isNestedScrollingEnabled = false
 
@@ -64,7 +68,7 @@ class CategoryFragment : Fragment() {
         val filter = ProductCategoryFilter()
         filter.setPer_page(50)
 
-        viewModel.categories(filter).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.categories(filter).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                 }

@@ -1,6 +1,6 @@
 package me.gilo.woodroid.app.ui
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import android.content.Context
 import android.content.Intent
 import android.view.Menu
@@ -87,7 +87,7 @@ abstract class WooDroidActivity<T : ViewModel> : BaseActivity() {
     open fun cart() {
         var viewModel = getViewModel(CartViewModel::class.java)
 
-        viewModel.cart().observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.cart().observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 

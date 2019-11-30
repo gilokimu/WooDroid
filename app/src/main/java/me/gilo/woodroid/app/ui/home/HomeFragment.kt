@@ -1,8 +1,8 @@
 package me.gilo.woodroid.app.ui.home
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,7 +60,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpProducts() {
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(
+            activity,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
         rvShop.layoutManager = layoutManager
         rvShop.isNestedScrollingEnabled = false
 
@@ -74,7 +78,11 @@ class HomeFragment : Fragment() {
 
 
     private fun setUpHoodies() {
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(
+            activity,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
 
         rvHoodies.layoutManager = layoutManager
         rvHoodies.isNestedScrollingEnabled = false
@@ -102,7 +110,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun products() {
-        viewModel.products().observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.products().observe(viewLifecycleOwner, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
@@ -133,7 +141,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun products(filter: ProductFilter) {
-        viewModel.products(filter).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.products(filter).observe(viewLifecycleOwner, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                 }

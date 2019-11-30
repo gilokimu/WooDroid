@@ -58,9 +58,7 @@ class Variation {
     lateinit var cross_sell_ids: ArrayList<Int>
     var parent_id: Int = 0
     lateinit var purchase_note: String
-    lateinit var categories: ArrayList<Category>
     lateinit var tags: ArrayList<Tag>
-    lateinit var productAttributes: ArrayList<ProductAttribute>
     lateinit var default_attributes: ArrayList<DefaultAttribute>
     lateinit var grouped_products: ArrayList<Int>
     var menu_order: Int = 0

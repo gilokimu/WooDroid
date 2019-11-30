@@ -1,6 +1,6 @@
 package me.gilo.woodroid.core.cart
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import me.gilo.woodroid.core.cart.lines.LineItem
 
 

@@ -1,6 +1,6 @@
 package me.gilo.woodroid.app.common;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

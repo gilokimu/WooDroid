@@ -1,6 +1,6 @@
 package me.gilo.woodroid.app.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import me.gilo.woodroid.app.R

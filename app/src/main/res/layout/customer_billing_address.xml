@@ -38,7 +38,7 @@
 	android:textSize="16sp"/>
 
 
-  <android.support.v4.widget.NestedScrollView
+  <androidx.core.widget.NestedScrollView
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:layout_weight="1"
@@ -60,7 +60,7 @@
 		android:layout_height="wrap_content"
 		android:orientation="horizontal">
 
-		<android.support.design.widget.TextInputLayout
+		<com.google.android.material.textfield.TextInputLayout
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:layout_weight="1"
@@ -82,10 +82,10 @@
 
 			/>
 
-		</android.support.design.widget.TextInputLayout>
+		</com.google.android.material.textfield.TextInputLayout>
 
 
-		<android.support.design.widget.TextInputLayout
+		<com.google.android.material.textfield.TextInputLayout
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:layout_weight="1"
@@ -107,12 +107,12 @@
 
 			/>
 
-		</android.support.design.widget.TextInputLayout>
+		</com.google.android.material.textfield.TextInputLayout>
 
 	  </LinearLayout>
 
 
-	  <android.support.design.widget.TextInputLayout
+	  <com.google.android.material.textfield.TextInputLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="16dp"
@@ -134,10 +134,10 @@
 
 		  />
 
-	  </android.support.design.widget.TextInputLayout>
+	  </com.google.android.material.textfield.TextInputLayout>
 
 
-	  <android.support.design.widget.TextInputLayout
+	  <com.google.android.material.textfield.TextInputLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="16dp"
@@ -159,9 +159,9 @@
 
 		  />
 
-	  </android.support.design.widget.TextInputLayout>
+	  </com.google.android.material.textfield.TextInputLayout>
 
-	  <android.support.design.widget.TextInputLayout
+	  <com.google.android.material.textfield.TextInputLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="16dp"
@@ -183,7 +183,7 @@
 
 		  />
 
-	  </android.support.design.widget.TextInputLayout>
+	  </com.google.android.material.textfield.TextInputLayout>
 
 	  <LinearLayout
 		android:layout_width="match_parent"
@@ -191,7 +191,7 @@
 		android:orientation="horizontal">
 
 
-		<android.support.design.widget.TextInputLayout
+		<com.google.android.material.textfield.TextInputLayout
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:layout_marginTop="16dp"
@@ -214,9 +214,9 @@
 
 			/>
 
-		</android.support.design.widget.TextInputLayout>
+		</com.google.android.material.textfield.TextInputLayout>
 
-		<android.support.design.widget.TextInputLayout
+		<com.google.android.material.textfield.TextInputLayout
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:layout_marginTop="16dp"
@@ -239,7 +239,7 @@
 
 			/>
 
-		</android.support.design.widget.TextInputLayout>
+		</com.google.android.material.textfield.TextInputLayout>
 
 
 	  </LinearLayout>
@@ -249,7 +249,7 @@
 		android:layout_height="wrap_content"
 		android:orientation="horizontal">
 
-		<android.support.design.widget.TextInputLayout
+		<com.google.android.material.textfield.TextInputLayout
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:layout_marginTop="16dp"
@@ -272,7 +272,7 @@
 
 			/>
 
-		</android.support.design.widget.TextInputLayout>
+		</com.google.android.material.textfield.TextInputLayout>
 
 
 		<View
@@ -283,7 +283,7 @@
 
 	  </LinearLayout>
 
-	  <android.support.design.widget.TextInputLayout
+	  <com.google.android.material.textfield.TextInputLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="16dp"
@@ -306,9 +306,9 @@
 
 		  />
 
-	  </android.support.design.widget.TextInputLayout>
+	  </com.google.android.material.textfield.TextInputLayout>
 
-	  <android.support.design.widget.TextInputLayout
+	  <com.google.android.material.textfield.TextInputLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="16dp"
@@ -330,11 +330,11 @@
 
 		  />
 
-	  </android.support.design.widget.TextInputLayout>
+	  </com.google.android.material.textfield.TextInputLayout>
 
 
 	</LinearLayout>
-  </android.support.v4.widget.NestedScrollView>
+  </androidx.core.widget.NestedScrollView>
 
   <FrameLayout
 	android:layout_width="match_parent"
@@ -368,7 +368,7 @@
 	<ImageView
 	  android:layout_width="32dp"
 	  android:layout_height="32dp"
-	  android:src="@drawable/ic_action_navigation_arrow_back_inverted"
+	  app:srcCompat="@drawable/baseline_arrow_back_24"
 	  android:tint="#ffffff"
 	  android:layout_gravity="right|center"
 	  android:rotation="180"

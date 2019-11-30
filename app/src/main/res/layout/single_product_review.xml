@@ -43,7 +43,7 @@
 		android:textColor="@color/text_black_4"
 		android:textSize="16sp"/>
 
-	  <android.support.v7.widget.AppCompatRatingBar
+	  <androidx.appcompat.widget.AppCompatRatingBar
 		android:id="@+id/rbRating"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

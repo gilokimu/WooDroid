@@ -1,7 +1,7 @@
 package me.gilo.woodroid.app.ui
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import me.gilo.woodroid.app.R
 
 import kotlinx.android.synthetic.main.activity_menu.*
@@ -18,7 +18,11 @@ class MenuActivity : BaseActivity() {
 
         title = "Menu"
 
-        val layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(
+            baseContext,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
         rvMenu.layoutManager = layoutManager
         rvMenu.isNestedScrollingEnabled = false
 

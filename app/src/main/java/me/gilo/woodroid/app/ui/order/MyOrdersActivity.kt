@@ -2,7 +2,7 @@ package me.gilo.woodroid.app.ui.order
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import kotlinx.android.synthetic.main.activity_my_orders.*
 import kotlinx.android.synthetic.main.content_my_orders.*
@@ -31,7 +31,11 @@ class MyOrdersActivity : WooDroidActivity<OrderViewModel>() {
         viewModel = getViewModel(OrderViewModel::class.java)
         title = "My Orders"
 
-        val layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(
+            baseContext,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
         rvOrders.layoutManager = layoutManager
         rvOrders.isNestedScrollingEnabled = false
 
@@ -58,7 +62,7 @@ class MyOrdersActivity : WooDroidActivity<OrderViewModel>() {
     }
 
     private fun orders() {
-        viewModel.orders().observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.orders().observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                     showLoading()

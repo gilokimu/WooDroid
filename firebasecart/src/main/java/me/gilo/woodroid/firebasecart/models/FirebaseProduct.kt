@@ -1,11 +1,15 @@
-package me.gilo.woodroid.models
+package me.gilo.woodroid.firebasecart.models
 
+import me.gilo.woodroid.models.DefaultAttribute
+import me.gilo.woodroid.models.Download
+import me.gilo.woodroid.models.Image
+import me.gilo.woodroid.models.Tag
 import java.io.Serializable
 import java.util.ArrayList
 import java.util.Date
 
 
-class Product : Serializable {
+class FirebaseProduct : Serializable {
 
     var id: Int = 0
     lateinit var name: String
@@ -59,9 +63,7 @@ class Product : Serializable {
     lateinit var cross_sell_ids: ArrayList<Int>
     var parent_id: Int = 0
     lateinit var purchase_note: String
-    lateinit var categories: ArrayList<Category>
     lateinit var tags: ArrayList<Tag>
-    lateinit var productAttributes: ArrayList<ProductAttribute>
     lateinit var default_attributes: ArrayList<DefaultAttribute>
     lateinit var variations: ArrayList<Int>
     lateinit var grouped_products: ArrayList<Int>

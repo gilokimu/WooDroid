@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 import android.util.Base64;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;

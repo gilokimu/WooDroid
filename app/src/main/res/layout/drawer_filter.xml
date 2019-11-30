@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
   xmlns:tools="http://schemas.android.com/tools"
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
@@ -132,7 +132,7 @@
 
 	  </LinearLayout>
 
-	  <android.support.v7.widget.AppCompatCheckBox
+	  <androidx.appcompat.widget.AppCompatCheckBox
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:text="On Sale"
@@ -144,7 +144,7 @@
 
 		/>
 
-	  <android.support.v7.widget.AppCompatCheckBox
+	  <androidx.appcompat.widget.AppCompatCheckBox
 		android:id="@+id/cbFeatured"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -171,4 +171,4 @@
 	  />
 
   </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

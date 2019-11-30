@@ -3,7 +3,6 @@ package me.gilo.woodroid.app.ui.product
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +10,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.content_product.*
 import me.gilo.woodroid.app.R
@@ -61,7 +61,7 @@ class ProductActivity : BaseActivity() {
 
 
     private fun addToCart(product: Product) {
-        viewModel.addToCart(product.id).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.addToCart(product.id).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
@@ -86,7 +86,7 @@ class ProductActivity : BaseActivity() {
 
     private fun removeFromCart(cartLineItem: CartLineItem) {
 
-        viewModel.deleteItem(cartLineItem).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.deleteItem(cartLineItem).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
@@ -111,7 +111,7 @@ class ProductActivity : BaseActivity() {
 
 
     private fun product(productId : Int) {
-        viewModel.product(productId).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.product(productId).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                     flLoading.visibility = View.VISIBLE
@@ -142,7 +142,7 @@ class ProductActivity : BaseActivity() {
 
 
     private fun cart() {
-        viewModel.cart().observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.cart().observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 

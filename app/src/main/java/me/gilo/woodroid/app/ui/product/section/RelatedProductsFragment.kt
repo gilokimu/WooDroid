@@ -1,8 +1,8 @@
 package me.gilo.woodroid.app.ui.product.section
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,7 +57,11 @@ class RelatedProductsFragment : Fragment() {
     }
 
     private fun similarProducts(product: Product) {
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(
+            activity,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
         rvShop.layoutManager = layoutManager
         rvShop.isNestedScrollingEnabled = false
 
@@ -69,7 +73,7 @@ class RelatedProductsFragment : Fragment() {
         val filter = ProductFilter()
         filter.setInclude(product.related_ids.toIntArray())
 
-        viewModel.products(filter).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.products(filter).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 

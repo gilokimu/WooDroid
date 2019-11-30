@@ -1,6 +1,6 @@
 package me.gilo.woodroid.app.viewmodels;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 import android.content.Context;
 import com.google.firebase.firestore.DocumentReference;
 import me.gilo.woodroid.app.common.CompletionGenericLiveData;
@@ -10,6 +10,7 @@ import me.gilo.woodroid.app.models.CartLineItem;
 import me.gilo.woodroid.app.repo.CartRepository;
 import me.gilo.woodroid.app.repo.CustomerRepository;
 import me.gilo.woodroid.app.repo.OrderRepository;
+
 import me.gilo.woodroid.models.*;
 
 import javax.inject.Inject;

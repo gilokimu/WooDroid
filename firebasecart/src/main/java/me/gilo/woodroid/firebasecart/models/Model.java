@@ -1,6 +1,6 @@
 package me.gilo.woodroid.firebasecart.models;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 import com.google.firebase.firestore.ServerTimestamp;
 

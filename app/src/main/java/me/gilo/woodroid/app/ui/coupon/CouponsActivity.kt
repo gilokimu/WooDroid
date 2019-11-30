@@ -2,7 +2,7 @@ package me.gilo.woodroid.app.ui.coupon
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_coupons.*
 import kotlinx.android.synthetic.main.content_coupons.*
 import me.gilo.woodroid.app.R
@@ -28,7 +28,11 @@ class CouponsActivity : BaseActivity() {
 
         title = "Coupons"
 
-        val layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(
+            baseContext,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
         rvCoupons.layoutManager = layoutManager
         rvCoupons.isNestedScrollingEnabled = false
 

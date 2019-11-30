@@ -1,8 +1,8 @@
 package me.gilo.woodroid.app.ui.product.section
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -59,7 +59,11 @@ class ProductReviewsFragment : Fragment() {
 
     private fun reviews(productId : Int) {
 
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(
+            activity,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
         rvReviews.layoutManager = layoutManager
         rvReviews.isNestedScrollingEnabled = false
 
@@ -69,7 +73,7 @@ class ProductReviewsFragment : Fragment() {
         rvReviews.adapter = productReviewAdapter
 
 
-        viewModel.reviews(productId).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.reviews(productId).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
@@ -136,7 +140,7 @@ class ProductReviewsFragment : Fragment() {
     }
 
     private fun save(review: ProductReview) {
-        viewModel.create(review).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.create(review).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 

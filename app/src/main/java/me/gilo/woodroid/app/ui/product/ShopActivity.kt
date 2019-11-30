@@ -2,8 +2,8 @@ package me.gilo.woodroid.app.ui.product
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.view.GravityCompat
-import android.support.v7.widget.GridLayoutManager
+import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -64,7 +64,8 @@ class ShopActivity : BaseActivity() {
     }
 
     private fun setUpPage() {
-        val layoutManager = GridLayoutManager(baseContext, 2)
+        val layoutManager =
+            GridLayoutManager(baseContext, 2)
         rvShop.layoutManager = layoutManager
         rvShop.isNestedScrollingEnabled = false
 
@@ -103,7 +104,7 @@ class ShopActivity : BaseActivity() {
     }
 
     private fun products(filter: ProductFilter) {
-        viewModel.products(filter).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.products(filter).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                 }
@@ -134,7 +135,7 @@ class ShopActivity : BaseActivity() {
     }
 
     private fun cart() {
-        viewModel.cart(baseContext).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.cart(baseContext).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                 }
@@ -157,7 +158,7 @@ class ShopActivity : BaseActivity() {
     }
 
     private fun search(query : String) {
-        viewModel.search(query).observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.search(query).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                 }
@@ -189,7 +190,7 @@ class ShopActivity : BaseActivity() {
     }
 
     private fun products() {
-        viewModel.products().observe(this, android.arch.lifecycle.Observer { response ->
+        viewModel.products().observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 

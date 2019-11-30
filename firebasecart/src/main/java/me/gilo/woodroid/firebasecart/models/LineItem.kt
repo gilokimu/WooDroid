@@ -1,6 +1,7 @@
 package me.gilo.woodroid.models
 
 import com.google.gson.annotations.SerializedName
+import me.gilo.woodroid.core.cart.lines.Metum
 
 import java.util.ArrayList
 

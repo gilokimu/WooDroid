@@ -2,16 +2,16 @@ package me.gilo.woodroid.app.adapter.viewholder
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
-import me.gilo.woodroid.models.Product
 import android.text.SpannableString
 import me.gilo.woodroid.app.R
 import me.gilo.woodroid.app.ui.product.ProductActivity
+import me.gilo.woodroid.models.Product
 
 
 class ProductViewHolder(val context: Context, itemView: View) :

@@ -1,7 +1,7 @@
 package me.gilo.woodroid.app.ui
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import me.gilo.woodroid.app.Config
 import me.gilo.woodroid.app.ui.state.ProgressDialogFragment

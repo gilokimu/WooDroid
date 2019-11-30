@@ -13,6 +13,7 @@ import me.gilo.woodroid.app.common.WooLiveData
 import me.gilo.woodroid.app.models.CartLineItem
 import me.gilo.woodroid.Woocommerce
 import me.gilo.woodroid.models.LineItem
+
 import me.gilo.woodroid.models.Product
 import javax.inject.Inject
 

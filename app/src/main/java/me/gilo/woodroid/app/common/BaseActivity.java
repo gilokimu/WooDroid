@@ -1,9 +1,9 @@
 package me.gilo.woodroid.app.common;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import dagger.android.support.DaggerAppCompatActivity;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;

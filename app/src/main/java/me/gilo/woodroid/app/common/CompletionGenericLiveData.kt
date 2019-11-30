@@ -1,6 +1,6 @@
 package me.gilo.woodroid.app.common
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 
