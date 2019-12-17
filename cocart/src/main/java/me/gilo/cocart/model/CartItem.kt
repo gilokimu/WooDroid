@@ -9,7 +9,9 @@ class CartItem {
     var productId: Int = 0
 
     @SerializedName("variation_id")
-    var variationId: Int = 0
+    var variationId: Int? = null
+
+    var variation: Array<Any>? = null
 
     lateinit var subtotal: String
     @SerializedName("subtotal_tax")
@@ -22,7 +24,8 @@ class CartItem {
     lateinit var name: String
 
 
-
+    lateinit var key: String
     lateinit var sku: String
     lateinit var variations: String
+    lateinit var data_hash: String
 }

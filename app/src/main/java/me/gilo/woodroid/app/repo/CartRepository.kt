@@ -7,12 +7,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import me.gilo.cocart.model.CartItem
 import me.gilo.woodroid.app.common.CompletionGenericLiveData
 import me.gilo.woodroid.app.common.QueryLiveData
 import me.gilo.woodroid.app.common.WooLiveData
 import me.gilo.woodroid.app.models.CartLineItem
 import me.gilo.woodroid.Woocommerce
-import me.gilo.woodroid.models.LineItem
 
 import me.gilo.woodroid.models.Product
 import javax.inject.Inject
@@ -87,9 +87,16 @@ constructor() {
 
     }
 
-    fun cart(context: Context): WooLiveData<Map<String, LineItem>> {
-        val callBack = WooLiveData<Map<String, LineItem>>()
-        woocommerce.CartRepository(context).cart().enqueue(callBack)
+    fun addToCart(context: Context, productId: Int, quantity: Int): WooLiveData<CartItem> {
+        val callBack = WooLiveData<CartItem>()
+        woocommerce.CartRepository(context).addToCart(productId, quantity).enqueue(callBack)
+
+        return callBack
+    }
+
+    fun cart(context: Context, customerId: String): WooLiveData<Map<String, CartItem>> {
+        val callBack = WooLiveData<Map<String, CartItem>>()
+        woocommerce.CartRepository(context).cart(customerId).enqueue(callBack)
 
         return callBack
     }

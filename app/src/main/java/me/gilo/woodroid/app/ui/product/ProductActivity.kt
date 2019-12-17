@@ -11,6 +11,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.content_product.*
 import me.gilo.woodroid.app.R
@@ -20,6 +21,7 @@ import me.gilo.woodroid.app.common.Status
 import me.gilo.woodroid.app.events.ProductEvent
 import me.gilo.woodroid.app.models.CartLineItem
 import me.gilo.woodroid.app.ui.state.ProgressDialogFragment
+import me.gilo.woodroid.app.utils.AppUtils
 import me.gilo.woodroid.app.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
 import org.greenrobot.eventbus.EventBus
@@ -55,32 +57,56 @@ class ProductActivity : BaseActivity() {
         }
 
         cart()
+        viewCart(AppUtils(baseContext).cartSession)
 
 
     }
 
 
     private fun addToCart(product: Product) {
-        viewModel.addToCart(product.id).observe(this, androidx.lifecycle.Observer { response ->
+        viewModel.addToCart(baseContext, product.id, 1).observe(this, Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
                 }
 
                 Status.SUCCESS -> {
-
-
+                    toast("success!")
+                    val cartItem = response.data()
+                    AppUtils(baseContext).saveCartSession(cartItem.key, "")
                 }
 
                 Status.ERROR -> {
-
+                    toast("error : " + response.error().message)
                 }
 
                 Status.EMPTY -> {
 
                 }
             }
+        })
+    }
 
+    private fun viewCart(customerId: String) {
+        viewModel.cart(baseContext, customerId).observe(this, Observer { response ->
+            when (response!!.status()) {
+                Status.LOADING -> {
+
+                }
+
+                Status.SUCCESS -> {
+                    toast("success!")
+
+                }
+
+                Status.ERROR -> {
+                    toast("error : " + response.error().message)
+                }
+
+                Status.EMPTY -> {
+
+                }
+            }
         })
     }
 

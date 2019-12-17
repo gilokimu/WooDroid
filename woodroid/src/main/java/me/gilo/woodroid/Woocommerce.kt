@@ -37,7 +37,7 @@ class Woocommerce(siteUrl: String, apiVerion: ApiVersion, consumerKey: String, c
 
     init {
         val baseUrl = "$siteUrl/wp-json/wc/v$apiVerion/"
-        val cartBaseUrl = "$siteUrl/wp-json/wc/v2/"
+        val cartBaseUrl = "$siteUrl/wp-json/cocart/v1/"
 
         orderNoteRepository = OrderNoteRepository(baseUrl, consumerKey, consumerSecret)
         refundRepository = RefundRepository(baseUrl, consumerKey, consumerSecret)
@@ -129,7 +129,6 @@ class Woocommerce(siteUrl: String, apiVerion: ApiVersion, consumerKey: String, c
     }
 
     fun CartRepository(context: Context): CartRepository {
-        cartRepository.turnOnCookies(context)
         return cartRepository
     }
 

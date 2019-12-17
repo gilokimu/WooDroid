@@ -16,6 +16,7 @@ import me.gilo.woodroid.app.adapter.ProductAdapter
 import me.gilo.woodroid.app.common.BaseActivity
 import me.gilo.woodroid.app.common.Status
 import me.gilo.woodroid.app.ui.state.ProgressDialogFragment
+import me.gilo.woodroid.app.utils.AppUtils
 import me.gilo.woodroid.app.viewmodels.ProductViewModel
 import me.gilo.woodroid.models.Product
 import me.gilo.woodroid.models.filters.ProductFilter
@@ -135,7 +136,8 @@ class ShopActivity : BaseActivity() {
     }
 
     private fun cart() {
-        viewModel.cart(baseContext).observe(this, androidx.lifecycle.Observer { response ->
+        val cartKey = AppUtils(baseContext).cartSession
+        viewModel.cart(baseContext, cartKey).observe(this, androidx.lifecycle.Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
                 }

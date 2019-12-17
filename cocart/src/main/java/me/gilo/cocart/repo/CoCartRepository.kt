@@ -2,6 +2,7 @@ package me.gilo.cocart.repo
 
 import me.gilo.cocart.data.api.ItemsAPI
 import me.gilo.cocart.data.requests.CartItemRequest
+import me.gilo.cocart.data.requests.CartRequest
 import me.gilo.cocart.model.CartItem
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -35,12 +36,24 @@ class CoCartRepository(private var baseUrl: String, consumerKey: String, consume
         apiService = retrofit.create(ItemsAPI::class.java)
     }
 
-    fun addToCart(productId: Int, quantity: Int): Call<Map<String, CartItem>> {
+    fun addToCart(productId: Int, quantity: Int): Call<CartItem> {
         val cartItemRequest = CartItemRequest(
             productId = productId, quantity = quantity
         )
 
         return apiService.addToCart(cartItemRequest)
+    }
+
+    fun cart(): Call<Map<String, CartItem>> {
+        return apiService.list()
+    }
+
+    fun cart(customerId: Int, thumb:Boolean = false): Call<Map<String, CartItem>> {
+        return apiService.list(thumb)
+    }
+
+    fun getCustomerCart(customerId: String, thumb:Boolean = false): Call<Map<String, CartItem>> {
+        return apiService.getCustomerCart(CartRequest(customerId=customerId, thumb = true))
     }
 
 

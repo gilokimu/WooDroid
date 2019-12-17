@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import android.content.Context;
 import com.google.firebase.firestore.DocumentReference;
+
+import me.gilo.cocart.model.CartItem;
 import me.gilo.woodroid.app.common.CompletionGenericLiveData;
 import me.gilo.woodroid.app.common.QueryLiveData;
 import me.gilo.woodroid.app.common.WooLiveData;
@@ -74,8 +76,12 @@ public final class ProductViewModel extends ViewModel {
         return cartRepository.setQuantity(cartLineItem, quantity);
     }
 
-    public WooLiveData<Map<String, LineItem>> cart(Context context) {
-        return cartRepository.cart(context);
+    public WooLiveData<Map<String, CartItem>> cart(Context context, String customerId) {
+        return cartRepository.cart(context, customerId);
+    }
+
+    public WooLiveData<CartItem> addToCart(Context context, int productId, int quantity) {
+        return cartRepository.addToCart(context, productId, quantity);
     }
 
     public WooLiveData<List<Product>> products(ProductFilter filter) {
