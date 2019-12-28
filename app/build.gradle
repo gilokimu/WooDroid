@@ -199,6 +199,7 @@ dependencies {
     implementation project(path: ':woodroid')
     implementation project(path: ':firebasecart')
     implementation project(path: ':core')
+    implementation project(path: ':cocart')
 
     implementation 'org.fabiomsr:moneytextview:1.1.0'
 

@@ -51,9 +51,9 @@ public final class CartViewModel extends ViewModel {
         return cartRepository.setQuantity(cartLineItem, quantity);
     }
 
-    public WooLiveData<Map<String, LineItem>> cart(Context context) {
-        return cartRepository.cart(context);
-    }
+//    public WooLiveData<Map<String, CartLineItem>> cart(Context context) {
+//        return cartRepository.cart(context);
+//    }
 
     public WooLiveData<Order> createOrder(Order order) {
         return orderRepository.create(order);

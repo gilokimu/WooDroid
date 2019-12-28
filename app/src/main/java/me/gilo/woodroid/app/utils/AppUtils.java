@@ -63,7 +63,7 @@ public class AppUtils {
 
     public String getCartSession() {
         SharedPreferences prefs = context.getSharedPreferences(MY_PREFS_NAME, context.MODE_PRIVATE);
-        return  prefs.getString("cartSession", null);
+        return  prefs.getString("cartSession", "");
     }
 
     public String getExpiry() {
