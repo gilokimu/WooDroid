@@ -237,5 +237,6 @@ The sample app implements an MVVM approach which would look slightly different f
 ## Contribution
 Contributions are highly welcomed, just create a PR
 
-
+## Slack
+You can also reach out through <a href="https://join.slack.com/t/woodroid/shared_invite/enQtODg1ODYzMDAzOTcxLTE4NDA0MTYyYjY5ZmVmNTU4OTEzYWQzZDcwN2Y1ZTZkMzk4ZDY0ZGU4NmZlMzQ1NjlhM2RlZDc4Mjc4ZjE2NzI">slack</a> in case of any issues with installation or feature request
 
