@@ -23,7 +23,9 @@ import me.gilo.woodroid.app.models.CartLineItem
 import me.gilo.woodroid.app.ui.state.ProgressDialogFragment
 import me.gilo.woodroid.app.utils.AppUtils
 import me.gilo.woodroid.app.viewmodels.ProductViewModel
+import me.gilo.woodroid.core.cart.CartItem
 import me.gilo.woodroid.models.Product
+import me.gilo.woodroid.offlinecart.repo.RoomCartRepository
 import org.greenrobot.eventbus.EventBus
 
 
@@ -57,57 +59,22 @@ class ProductActivity : BaseActivity() {
         }
 
         cart()
-        viewCart(AppUtils(baseContext).cartSession)
+
 
 
     }
 
 
     private fun addToCart(product: Product) {
-        viewModel.addToCart(baseContext, product.id, 1).observe(this, Observer { response ->
-            when (response!!.status()) {
-                Status.LOADING -> {
+        RoomCartRepository(baseContext).addToCart(
+            CartItem(
+                productId = product.id,
+                productImage = product.getFeatureImage(),
+                quantity = 1,
+                productPrice = product.price
+            )
 
-                }
-
-                Status.SUCCESS -> {
-                    toast("success!")
-                    val cartItem = response.data()
-                    AppUtils(baseContext).saveCartSession(cartItem.key, "")
-                }
-
-                Status.ERROR -> {
-                    toast("error : " + response.error().message)
-                }
-
-                Status.EMPTY -> {
-
-                }
-            }
-        })
-    }
-
-    private fun viewCart(customerId: String) {
-        viewModel.cart(baseContext, customerId).observe(this, Observer { response ->
-            when (response!!.status()) {
-                Status.LOADING -> {
-
-                }
-
-                Status.SUCCESS -> {
-                    toast("success!")
-
-                }
-
-                Status.ERROR -> {
-                    toast("error : " + response.error().message)
-                }
-
-                Status.EMPTY -> {
-
-                }
-            }
-        })
+        )
     }
 
     private fun removeFromCart(cartLineItem: CartLineItem) {

@@ -18,7 +18,7 @@ constructor() {
     fun create(category: Category): WooLiveData<Category> {
         val callBack = WooLiveData<Category>()
 
-        woocommerce!!.CategoryRepository().create(category).enqueue(callBack)
+        woocommerce.CategoryRepository().create(category).enqueue(callBack)
         return callBack
     }
 
@@ -26,42 +26,42 @@ constructor() {
     fun category(id: Int): WooLiveData<Category> {
         val callBack = WooLiveData<Category>()
 
-        woocommerce!!.CategoryRepository().category(id).enqueue(callBack)
+        woocommerce.CategoryRepository().category(id).enqueue(callBack)
         return callBack
     }
 
     fun categories(): WooLiveData<List<Category>> {
         val callBack = WooLiveData<List<Category>>()
 
-        woocommerce!!.CategoryRepository().categories().enqueue(callBack)
+        woocommerce.CategoryRepository().categories().enqueue(callBack)
         return callBack
     }
 
     fun categories(productCategoryFilter: ProductCategoryFilter): WooLiveData<List<Category>> {
         val callBack = WooLiveData<List<Category>>()
 
-        woocommerce!!.CategoryRepository().categories(productCategoryFilter).enqueue(callBack)
+        woocommerce.CategoryRepository().categories(productCategoryFilter).enqueue(callBack)
         return callBack
     }
 
     fun update(id: Int, category: Category): WooLiveData<Category> {
         val callBack = WooLiveData<Category>()
 
-        woocommerce!!.CategoryRepository().update(id, category).enqueue(callBack)
+        woocommerce.CategoryRepository().update(id, category).enqueue(callBack)
         return callBack
     }
 
     fun delete(id: Int): WooLiveData<Category> {
         val callBack = WooLiveData<Category>()
 
-        woocommerce!!.CategoryRepository().delete(id).enqueue(callBack)
+        woocommerce.CategoryRepository().delete(id).enqueue(callBack)
         return callBack
     }
 
     fun delete(id: Int, force: Boolean): WooLiveData<Category> {
         val callBack = WooLiveData<Category>()
 
-        woocommerce!!.CategoryRepository().delete(id, force).enqueue(callBack)
+        woocommerce.CategoryRepository().delete(id, force).enqueue(callBack)
         return callBack
     }
 

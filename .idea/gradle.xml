@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/cocart" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/firebasecart" />
+            <option value="$PROJECT_DIR$/offlinecart" />
             <option value="$PROJECT_DIR$/woodroid" />
           </set>
         </option>

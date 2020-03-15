@@ -8,10 +8,10 @@ abstract class CartRepository{
 
     abstract fun clear(): LiveData<String>
     abstract fun count(id: Int): LiveData<Int>
-    abstract fun cart(): LiveData<List<LineItem>>
-    abstract fun addToCart(lineItem: LineItem): LiveData<LineItem>
+    abstract fun cart(): LiveData<Cart>
+    abstract fun addToCart(cartItem: CartItem)
     abstract fun delete(cartId: String): LiveData<String>
     abstract fun restore(cartId: String): LiveData<String>
-    abstract fun update(cartId: String, quantity: Int): LiveData<LineItem>
+    abstract fun update(cartId: String, quantity: Int)
 
 }

@@ -2,10 +2,6 @@ package me.gilo.woodroid.app.viewmodels;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import android.content.Context;
-import com.google.firebase.firestore.DocumentReference;
-
-import me.gilo.cocart.model.CartItem;
 import me.gilo.woodroid.app.common.CompletionGenericLiveData;
 import me.gilo.woodroid.app.common.QueryLiveData;
 import me.gilo.woodroid.app.common.WooLiveData;
@@ -13,7 +9,7 @@ import me.gilo.woodroid.app.models.CartLineItem;
 import me.gilo.woodroid.app.repo.CartRepository;
 import me.gilo.woodroid.app.repo.OrderRepository;
 import me.gilo.woodroid.app.repo.ProductRepository;
-import me.gilo.woodroid.models.LineItem;
+
 import me.gilo.woodroid.models.Order;
 import me.gilo.woodroid.models.Product;
 import me.gilo.woodroid.models.ProductReview;
@@ -52,9 +48,6 @@ public final class ProductViewModel extends ViewModel {
         return productRepository.products();
     }
 
-    public CompletionGenericLiveData<DocumentReference> addToCart(Product product) {
-        return cartRepository.addToCart(product);
-    }
 
     public WooLiveData<Order> addToCart(int productId) {
         return orderRepository.addToCart(productId);
@@ -74,14 +67,6 @@ public final class ProductViewModel extends ViewModel {
 
     public CompletionGenericLiveData<Void> setQuantity(CartLineItem cartLineItem, int quantity) {
         return cartRepository.setQuantity(cartLineItem, quantity);
-    }
-
-    public WooLiveData<Map<String, CartItem>> cart(Context context, String customerId) {
-        return cartRepository.cart(context, customerId);
-    }
-
-    public WooLiveData<CartItem> addToCart(Context context, int productId, int quantity) {
-        return cartRepository.addToCart(context, productId, quantity);
     }
 
     public WooLiveData<List<Product>> products(ProductFilter filter) {

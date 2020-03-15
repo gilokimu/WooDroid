@@ -200,6 +200,9 @@ dependencies {
     implementation project(path: ':firebasecart')
     implementation project(path: ':core')
     implementation project(path: ':cocart')
+    implementation project(path: ':offlinecart')
+
+    debugImplementation 'im.dino:dbinspector:3.4.1@aar'
 
     implementation 'org.fabiomsr:moneytextview:1.1.0'
 

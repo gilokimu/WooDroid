@@ -137,26 +137,6 @@ class ShopActivity : BaseActivity() {
 
     private fun cart() {
         val cartKey = AppUtils(baseContext).cartSession
-        viewModel.cart(baseContext, cartKey).observe(this, androidx.lifecycle.Observer { response ->
-            when (response!!.status()) {
-                Status.LOADING -> {
-                }
-
-                Status.SUCCESS -> {
-                    val cartResponse = response.data()
-                }
-
-                Status.ERROR -> {
-
-
-                }
-
-                Status.EMPTY -> {
-
-                }
-            }
-
-        })
     }
 
     private fun search(query : String) {

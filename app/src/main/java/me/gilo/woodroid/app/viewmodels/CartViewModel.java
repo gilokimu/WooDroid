@@ -31,10 +31,6 @@ public final class CartViewModel extends ViewModel {
         this.customerRepository = customerRepository;
     }
 
-    public CompletionGenericLiveData<DocumentReference> addToCart(Product product) {
-        return cartRepository.addToCart(product);
-    }
-
     public QueryLiveData<CartLineItem> cart() {
         return cartRepository.cart();
     }
@@ -50,10 +46,6 @@ public final class CartViewModel extends ViewModel {
     public CompletionGenericLiveData<Void> setQuantity(CartLineItem cartLineItem, int quantity) {
         return cartRepository.setQuantity(cartLineItem, quantity);
     }
-
-//    public WooLiveData<Map<String, CartLineItem>> cart(Context context) {
-//        return cartRepository.cart(context);
-//    }
 
     public WooLiveData<Order> createOrder(Order order) {
         return orderRepository.create(order);

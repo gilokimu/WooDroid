@@ -7,14 +7,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import me.gilo.cocart.model.CartItem
 import me.gilo.woodroid.app.common.CompletionGenericLiveData
 import me.gilo.woodroid.app.common.QueryLiveData
 import me.gilo.woodroid.app.common.WooLiveData
 import me.gilo.woodroid.app.models.CartLineItem
 import me.gilo.woodroid.Woocommerce
+import me.gilo.woodroid.core.cart.Cart
+import me.gilo.woodroid.core.cart.CartItem
 
 import me.gilo.woodroid.models.Product
+import me.gilo.woodroid.offlinecart.repo.RoomCartRepository
 import javax.inject.Inject
 
 open class CartRepository @Inject
@@ -70,35 +72,6 @@ constructor() {
 
             null
         }
-    }
-
-
-    fun addToCart(product: Product): CompletionGenericLiveData<DocumentReference> {
-        val completion = CompletionGenericLiveData<DocumentReference>()
-
-        val lineItem = CartLineItem()
-        lineItem.setProductId(product.id)
-        lineItem.product = product
-        lineItem.setQuantity(1)
-
-        cart.add(lineItem).addOnCompleteListener(completion)
-
-        return completion
-
-    }
-
-    fun addToCart(context: Context, productId: Int, quantity: Int): WooLiveData<CartItem> {
-        val callBack = WooLiveData<CartItem>()
-        woocommerce.CartRepository(context).addToCart(productId, quantity).enqueue(callBack)
-
-        return callBack
-    }
-
-    fun cart(context: Context, customerId: String): WooLiveData<Map<String, CartItem>> {
-        val callBack = WooLiveData<Map<String, CartItem>>()
-        woocommerce.CartRepository(context).cart(customerId).enqueue(callBack)
-
-        return callBack
     }
 
 }

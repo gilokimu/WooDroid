@@ -5,6 +5,7 @@ import dagger.Provides
 import me.gilo.woodroid.app.Config
 import me.gilo.woodroid.app.WcApp
 import me.gilo.woodroid.Woocommerce
+import me.gilo.woodroid.offlinecart.repo.RoomCartRepository
 
 import javax.inject.Singleton
 
@@ -34,5 +35,12 @@ class AppModule {
             .setConsumerSecret(Config.consumerSecret)
             .build()
     }
+
+
+    @Provides
+    @Singleton
+    internal fun providesRoomCartRepository(): RoomCartRepository = RoomCartRepository(app!!.baseContext)
+
+
 
 }

@@ -68,6 +68,13 @@ class Product : Serializable {
     var menu_order: Int = 0
     lateinit var meta_data: ArrayList<Metadata>
     lateinit var images: ArrayList<Image>
-}
 
+    fun getFeatureImage(): String{
+        if(this.images.isEmpty()){
+            return ""
+        }
+
+        return this.images.first().src!!
+    }
+}
 
