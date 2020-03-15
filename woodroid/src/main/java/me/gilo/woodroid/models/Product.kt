@@ -1,5 +1,6 @@
 package me.gilo.woodroid.models
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.ArrayList
 import java.util.Date
@@ -61,7 +62,10 @@ class Product : Serializable {
     lateinit var purchase_note: String
     lateinit var categories: ArrayList<Category>
     lateinit var tags: ArrayList<Tag>
+
+    @SerializedName("attributes")
     lateinit var productAttributes: ArrayList<ProductAttribute>
+
     lateinit var default_attributes: ArrayList<DefaultAttribute>
     lateinit var variations: ArrayList<Int>
     lateinit var grouped_products: ArrayList<Int>
