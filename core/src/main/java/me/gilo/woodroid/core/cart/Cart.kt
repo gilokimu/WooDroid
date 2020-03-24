@@ -1,6 +1,7 @@
 package me.gilo.woodroid.core.cart
 
 
+import androidx.lifecycle.LiveData
 import me.gilo.woodroid.core.cart.lines.FeeLine
 import me.gilo.woodroid.core.cart.lines.LineItem
 import me.gilo.woodroid.core.cart.lines.ShippingLine
@@ -32,6 +33,7 @@ data class Cart(
 
     var feeLines: List<FeeLine> = ArrayList(),
 
-    var couponLines: List<Any> = ArrayList()
+    var couponLines: List<Any> = ArrayList(),
+    var items: LiveData<List<CartItem>>
 
 )

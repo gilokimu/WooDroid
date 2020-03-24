@@ -8,7 +8,7 @@ import me.gilo.woodroid.core.cart.CartItem
 @Entity(tableName = "cart_item")
 data class CartItemEntity (
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = 0,
+    var id: Int?,
 
     @ColumnInfo(name = "created_at")
     var createdAt: Long? = null,

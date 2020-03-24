@@ -55,13 +55,25 @@ class ProductActivity : BaseActivity() {
 
         if (productId != 0){
             product(productId)
-
+            checkIfExistsInCart(productId)
         }
 
         cart()
 
+    }
 
+    private fun checkIfExistsInCart(productId: Int) {
+        RoomCartRepository(baseContext).exists(productId).observe(this, Observer {productExists ->
+            if (productExists) {
+                fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.carnation_red))
+                fab.setImageDrawable(ContextCompat.getDrawable(baseContext, R.drawable.baseline_remove_shopping_cart_24))
+            }else{
+                fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+                fab.setImageDrawable(ContextCompat.getDrawable(baseContext, R.drawable.baseline_add_shopping_cart_24))
+            }
 
+            productInCart = productExists
+        })
     }
 
 
@@ -79,27 +91,6 @@ class ProductActivity : BaseActivity() {
 
     private fun removeFromCart(cartLineItem: CartLineItem) {
 
-        viewModel.deleteItem(cartLineItem).observe(this, androidx.lifecycle.Observer { response ->
-            when (response!!.status()) {
-                Status.LOADING -> {
-
-                }
-
-                Status.SUCCESS -> {
-
-
-                }
-
-                Status.ERROR -> {
-                    toast("error : " + response.error().message)
-                }
-
-                Status.EMPTY -> {
-
-                }
-            }
-
-        })
     }
 
 
@@ -135,7 +126,7 @@ class ProductActivity : BaseActivity() {
 
 
     private fun cart() {
-        viewModel.cart().observe(this, androidx.lifecycle.Observer { response ->
+        viewModel.cart().observe(this, Observer { response ->
             when (response!!.status()) {
                 Status.LOADING -> {
 
@@ -156,8 +147,6 @@ class ProductActivity : BaseActivity() {
                         }
                     }
 
-                    toggleFab()
-
                     if (cartItems.size == 0 && tvCartCounter != null){
                         tvCartCounter?.visibility = View.GONE
                     }else{
@@ -175,7 +164,6 @@ class ProductActivity : BaseActivity() {
                 Status.EMPTY -> {
                     productInCart = false
                     cartItems.clear()
-                    toggleFab()
 
                     if (cartItems.size == 0 && tvCartCounter != null){
                         tvCartCounter?.visibility = View.GONE
@@ -189,17 +177,6 @@ class ProductActivity : BaseActivity() {
         })
 
     }
-
-    private fun toggleFab() {
-        if (productInCart) {
-            fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.carnation_red))
-            fab.setImageDrawable(ContextCompat.getDrawable(baseContext, R.drawable.baseline_remove_shopping_cart_24))
-        }else{
-            fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            fab.setImageDrawable(ContextCompat.getDrawable(baseContext, R.drawable.baseline_add_shopping_cart_24))
-        }
-    }
-
 
     private fun setUpPage(product: Product) {
         tvTitle.text = product.name

@@ -2,19 +2,18 @@ package me.gilo.woodroid.offlinecart.repo
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.room.Room
-import me.gilo.moneta.room.task.DeleteCartItem
-import me.gilo.moneta.room.task.InsertCartItem
-import me.gilo.moneta.room.task.RetrieveCartItems
-import me.gilo.moneta.room.task.UpdateCartItem
-import me.gilo.woodroid.offlinecart.utils.AppUtils
+import me.gilo.woodroid.offlinecart.task.DeleteCartItem
+import me.gilo.woodroid.offlinecart.task.InsertCartItem
+import me.gilo.woodroid.offlinecart.task.UpdateCartItem
+import me.gilo.woodroid.core.cart.Cart
 import me.gilo.woodroid.core.cart.CartItem
 import me.gilo.woodroid.offlinecart.config.Config
 import me.gilo.woodroid.offlinecart.db.AppDatabase
 import me.gilo.woodroid.offlinecart.entity.CartItemEntity
 import me.gilo.woodroid.offlinecart.entity.toCartItem
+import me.gilo.woodroid.offlinecart.utils.AppUtils
 
 class RoomCartRepository(val context: Context){
 
@@ -32,6 +31,8 @@ class RoomCartRepository(val context: Context){
         InsertCartItem(appDatabase, cartItem).execute()
     }
 
+
+
     fun update(cartItem: CartItem) {
         cartItem.modifiedAt = AppUtils.currentDateTime.time
         UpdateCartItem(appDatabase, cartItem).execute()
@@ -40,6 +41,10 @@ class RoomCartRepository(val context: Context){
 
     fun count(): LiveData<Int> {
         return appDatabase.cartItemDao().count()
+    }
+
+    fun exists(productId: Int): LiveData<Boolean> {
+        return appDatabase.cartItemDao().exists(productId)
     }
 
     fun delete(cartItem: CartItem) {
@@ -53,11 +58,12 @@ class RoomCartRepository(val context: Context){
         }
     }
 
-    fun items(): LiveData<List<CartItem>> {
-        val data: MutableLiveData<List<CartItem>> = MutableLiveData()
-        RetrieveCartItems(appDatabase, data).execute()
-
-        return data
+    fun cart(): Cart {
+        return Cart(
+            items = Transformations.map(appDatabase.cartItemDao().items()){
+                it.map { cartItemEntity -> cartItemEntity.toCartItem() }
+            }
+        )
     }
 
 }

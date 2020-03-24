@@ -2,7 +2,7 @@ package me.gilo.woodroid.core.cart
 
 
 data class CartItem (
-    var id: Int? = 0,
+    var id: Int? = null,
     var createdAt: Long? = null,
     var modifiedAt: Long? = null,
     var productId: Int = 0,
